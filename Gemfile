@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.3'
 gem 'tty-spinner'
 gem 'pry-rails'
 gem 'rails-i18n', '~> 5.1'
+gem 'webpacker'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
