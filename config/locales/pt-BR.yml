@@ -1,0 +1,29 @@
+pt-BR:
+  actual_locale: Português Brasil
+  acronym: Sigla
+  are_you_sure: Você tem certeza?
+  back: Voltar
+  coins: Moedas
+  coin_registration: Cadastro de moedas
+  description: Descrição
+  destroy: Excluir
+  editing_coin: Editar Moeda
+  edit: Editar
+  editing_mining_type: Editando o tipo de mineração
+  english: Inglês
+  hello: "Olá mundo"
+  home: Página inicial
+  image: Imagem
+  mining_type: Tipo de mineração
+  mining_types: Tipos de mineração
+  new_coin: Nova moeda
+  new_mining_type: Novo tipo de mineração
+  portuguese: Português
+  registration_of_mining_types: Cadastro de Tipos de Mineração
+  show: Mostrar
+  select: Selecionar
+  select_msg: Para começar, escolha uma das opções abaixo.
+  update: Atualizar
+  url_image: Url da imagem
+  welcome: Seja bem vindo
+  welcome_msg: Este é o Crypto Wallet. Um app para você cadastrar e acompanhar as suas criptomoedas

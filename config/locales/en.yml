@@ -30,4 +30,31 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  actual_locale: English (International)
+  acronym: Acronym
+  are_you_sure: Are you sure?
+  back: Back
+  coins: Coins
+  coin_registration: Coin registration
+  description: Description
+  destroy: Destroy
+  editing_coin: Editing Coin
+  edit: Edit
+  editing_mining_type: Editing mining type
+  english: English
   hello: "Hello world"
+  home: Home
+  image: Image
+  mining_types: Mining Types
+  mining_type: Mining Type
+  new_coin: New coin
+  new_mining_type: New mining type
+  portuguese: Portuguese
+  registration_of_mining_types: Registration of Mining Types
+  show: Show
+  select: Select
+  select_msg: To get started, choose one of the options below.
+  update: Update
+  url_image: Url image
+  welcome: Welcome
+  welcome_msg: "This is the Crypto Wallet. An app for you to register and accompany your crypto-coins"
