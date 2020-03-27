@@ -1,0 +1,19 @@
+{
+    "name": "nodestudio/composer",
+    "description": "Projeto composer",
+    "require": {
+        "dompdf/dompdf": "^0.8.5"
+    },
+    "authors": [
+        {
+            "name": "Danilo Casimiro",
+            "email": "dan_Casimiro@hotmail.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    }
+}
