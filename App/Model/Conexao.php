@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Model;
+  session_start();
+  $localhost = "localhost";
+  $user = "root";
+  $passw = "";
+  $banco = "sistema_pesquisa";
 
-class Conexao {
+  global $pdo;
+  try{
 
-  private static $instance;
-
-  public static function getConn(){
-    if(!isset(self::$instance)):
-      self::$instance = new \PDO('mysql:host=localhost;dbname=pdo;charset=utf8', 'root', '');
-    endif;
-
-    return self::$instance;
+    $pdo = new PDO("mysql:dbname=".$banco."; host=".$localhost, $user, $passw);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  }catch(PDOException $e){
+    echo "ERRO: ".$e->getMessage();
+    exit;
   }
-}
