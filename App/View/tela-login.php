@@ -4,7 +4,7 @@ require_once '../Model/Usuario.php';
 require_once '../Model/Conexao.php';
 
 if(isset($_SESSION['id'])) {
-    header("Location: pagina-inicial.php");
+    header("Location: ../View/pagina-inicial.php");
 }
 
 $objFunc = new \App\Model\Usuario();
@@ -27,16 +27,16 @@ endif;
 
     <title>Nome da empresa | </title>
 
-    <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="../Public/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../stylesheets/font-awesome.min.css" rel="stylesheet">
+    <link href="../Public/stylesheets/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../stylesheets/nprogress.css" rel="stylesheet">
+    <link href="../Public/stylesheets/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="../stylesheets/animate.min.css" rel="stylesheet">
+    <link href="../Public/stylesheets/animate.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../stylesheets/custom.min.css" rel="stylesheet">
+    <link href="../Public/stylesheets/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="login">

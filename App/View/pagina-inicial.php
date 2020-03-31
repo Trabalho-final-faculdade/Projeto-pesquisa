@@ -1,8 +1,8 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 
-include_once 'App/includes/header.php';
+include_once '../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
@@ -942,5 +942,5 @@ if(!isset($_SESSION['id'])) {
   </div>
 </div>
 <?php
-include_once 'App/includes/footer.php';
+include_once '../includes/footer.php';
 ?>

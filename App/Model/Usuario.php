@@ -20,11 +20,15 @@ class Usuario {
   }
 
   public function setEmail($email) {
-    $this->usuario = $email;
+    $this->email = $email;
   }
 
   public function getSenha() {
     return $this->senha;
+  }
+
+  public function setSenha($senha) {
+    $this->senha = $senha;
   }
 
   public function logar($email, $senha) {

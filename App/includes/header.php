@@ -10,14 +10,14 @@
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>Gentelella Alela! | </title>
-    <link href="App/stylesheets/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <link href="App/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="App/stylesheets/custom.min.css" rel="stylesheet">
-    <link href="App/stylesheets/daterangepicker.css" rel="stylesheet">
-    <link href="App/stylesheets/font-awesome.min.css" rel="stylesheet">
-    <link href="App/stylesheets/green.css" rel="stylesheet">
-    <link href="App/stylesheets/jqvmap.min.css" rel="stylesheet">
-    <link href="App/stylesheets/nprogress.css" rel="stylesheet">
+    <link href="../Public/stylesheets/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="../Public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="../Public/stylesheets/custom.min.css" rel="stylesheet">
+    <link href="../Public/stylesheets/daterangepicker.css" rel="stylesheet">
+    <link href="../Public/stylesheets/font-awesome.min.css" rel="stylesheet">
+    <link href="../Public/stylesheets/green.css" rel="stylesheet">
+    <link href="../Public/stylesheets/jqvmap.min.css" rel="stylesheet">
+    <link href="../Public/stylesheets/nprogress.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">

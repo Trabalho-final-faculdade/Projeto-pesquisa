@@ -10,8 +10,8 @@
 		<title>Transitive by TEMPLATED</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../stylesheets/main.css" />
-		<link rel="stylesheet" href="../stylesheets/font-awesome.min.css" />
+		<link rel="stylesheet" href="../Public/stylesheets/main.css" />
+		<link rel="stylesheet" href="../Public/stylesheets/font-awesome.min.css" />
 	</head>
 	<body>
 
@@ -24,7 +24,7 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Página inicial</a></li>
+					<li><a href="index.php">Página inicial</a></li>
 					<li><a href="tela-login.php">Logar</a></li>
 					<li><a href="elements.html">Pesquisas abertas</a></li>
 					<li><a href="elements.html">Quem somos</a></li>
@@ -207,12 +207,12 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="../javascripts/jquery.min.js"></script>
-			<script src="../javascripts/jquery.scrolly.min.js"></script>
-			<script src="../javascripts/jquery.scrollex.min.js"></script>
-			<script src="../javascripts/skel.min.js"></script>
-			<script src="../javascripts/util.js"></script>
-			<script src="../javascripts/main.js"></script>
+			<script src="../Public/javascripts/jquery.min.js"></script>
+			<script src="../Public/javascripts/jquery.scrolly.min.js"></script>
+			<script src="../Public/javascripts/jquery.scrollex.min.js"></script>
+			<script src="../Public/javascripts/skel.min.js"></script>
+			<script src="../Public/javascripts/util.js"></script>
+			<script src="../Public/javascripts/main.js"></script>
 
 	</body>
 </html>
