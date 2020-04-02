@@ -44,5 +44,17 @@
 
 
 
+
+<!-- jQuery -->
+    <!-- Bootstrap -->
+    <!-- FastClick -->
+    <!-- NProgress -->
+    <!-- jQuery Smart Wizard -->
+    <script src="../Public/javascripts/jquery.smartWizard.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+
+
+
   </body>
 </html>

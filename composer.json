@@ -2,7 +2,8 @@
     "name": "nodestudio/composer",
     "description": "Projeto composer",
     "require": {
-        "dompdf/dompdf": "^0.8.5"
+        "dompdf/dompdf": "^0.8.5",
+        "phpmailer/phpmailer": "6.0.*"
     },
     "authors": [
         {
@@ -15,5 +16,5 @@
         "psr-4": {
             "App\\": "App/"
         }
-    }
+    },
 }

@@ -1,19 +1,18 @@
 <?php
+session_start();
 
 require_once '../Model/Usuario.php';
 require_once '../Model/Conexao.php';
-
-if(isset($_SESSION['id'])) {
-    header("Location: ../View/pagina-inicial.php");
-}
-
-$objFunc = new \App\Model\Usuario();
 
 if(isset($_POST['btnLogar'])):
   $erros = array();
   $usuario = mysqli_espape_string($instance, $_POST['usuario']);
   $senha = mysqli_espape_string($instance, $_POST['senha']);
 endif;
+
+if(isset($_SESSION['id'])) {
+    header("Location: ../View/pagina-inicial.php");
+}
 
 ?>
 <!DOCTYPE html>
@@ -68,7 +67,7 @@ endif;
               ?>
               <div>
                 <button type="submit" name="btnLogar" class="btn btn-default submit">Logar</button>
-                <a class="reset_pass" href="#">Esqueci minha senha?</a>
+                <a class="reset_pass" href="recuperar-senha.php">Esqueci minha senha?</a>
               </div>
 
               <div class="clearfix"></div>
