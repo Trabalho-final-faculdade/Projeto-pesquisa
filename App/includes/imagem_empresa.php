@@ -11,6 +11,6 @@
     </div>
     <div class="profile_info">
     <span>Seja Bem-vindo,</span>
-    <h2><?php echo $usuario_logado[1]; ?></h2>
+    <h2><?php echo $usuario['nome']; ?></h2>
     </div>
 </div>

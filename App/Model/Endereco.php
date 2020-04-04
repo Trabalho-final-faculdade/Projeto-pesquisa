@@ -27,7 +27,7 @@ class Endereco {
     return $this->numero;
   }
 
-  public function setNumero() {
+  public function setNumero($numero) {
     $this->numero = $numero;
   }
 
@@ -35,7 +35,7 @@ class Endereco {
     return $this->cidade;
   }
 
-  public function setCidade() {
+  public function setCidade($cidade) {
     $this->cidade = $cidade;
   }
 
@@ -43,7 +43,7 @@ class Endereco {
     return $this->estado;
   }
 
-  public function setEstado() {
+  public function setEstado($estado) {
     $this->estado = $estado;
   }
 
@@ -51,14 +51,15 @@ class Endereco {
     return $this->pais;
   }
 
-  public function setPais() {
-    $this->pais = $pai;
+  public function setPais($pais) {
+    $this->pais = $pais;
   }
 
   public function getCep() {
     return $this->cep;
   }
 
-  public function setCep() {
+  public function setCep($cep) {
     $this->cep = $cep;
   }
+}

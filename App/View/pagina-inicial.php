@@ -10,7 +10,13 @@ if(!isset($_SESSION['id'])) {
 }
 
 $usuario_logado = new \App\Model\Usuario();
-$usuario_logado = $usuario_logado->traz_usuario_logado($_SESSION['id']);
+$ud = new \App\Model\UsuarioDao();
+$ud->read($_SESSION['id']);
+
+foreach($ud->read($_SESSION['id']) as $usuario):
+  $usuario_logado->setNome = $usuario['nome'];
+endforeach;
+
 ?>
 <div class="container body">
   <div class="main_container">

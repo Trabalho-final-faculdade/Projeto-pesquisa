@@ -5,7 +5,7 @@ require_once "../Model/Conexao.php";
 
 class Telefone {
 
-  private $id, $numero;
+  private $id, $telefone, $celular;
 
   public function getId() {
     return $this->id;
@@ -15,10 +15,19 @@ class Telefone {
     $this->id = $id;
   }
 
-  public function getNumero() {
-    return $this->numero;
+  public function getTelefone() {
+    return $this->telefone;
   }
 
-  public function setNumero($numero) {
-    $this->numero = $numero;
+  public function setTelefone($telefone) {
+    $this->telefone = $telefone;
   }
+
+  public function getCelular() {
+    return $this->celular;
+  }
+
+  public function setCelular($celular) {
+    $this->celular = $celular;
+  }
+}

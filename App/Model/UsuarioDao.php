@@ -1,47 +1,65 @@
 <?php
 
 namespace App\Model;
+require_once "../Model/Conexao.php";
 
-class ProdutoDao {
+
+class UsuarioDao {
 
   public function create(Usuario $u) {
-    $sql = 'INSERT INTO usuarios (usuario, senha) VALUES(?,MD5(?))';
+    global $pdo;
+    $sql = 'INSERT INTO usuarios (id, nome, cpf, data_nascimento, genero, email, senha, endereco_id, telefone_id, nivel_acesso_id, empresa_id) VALUES(default, :nome, :cpf, DATE( :data_nascimento ), :genero, :email, MD5(:senha), :endereco_id, :telefone_id, :nivelAcesso_id, :empresa_id)';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue('nome', $u->getNome());
+    $stmt->bindValue('cpf', $u->getCpf());
+    $stmt->bindValue('data_nascimento', $u->getNascimento());
+    $stmt->bindValue('genero', $u->getGenero());
+    $stmt->bindValue('email', $u->getEmail());
+    $stmt->bindValue('senha', $u->getSenha());
+    $stmt->bindValue('endereco_id', $u->getEnderecoId());
+    $stmt->bindValue('telefone_id', $u->getTelefoneId());
+    $stmt->bindValue('nivelAcesso_id', $u->getNivelAcessoId());
+    $stmt->bindValue('empresa_id', $u->getEmpresaId());
 
-    $stmt = Conexao::getConn()->prepare($sql);
-    $stmt->bindValue(1, $p->getUsuario());
-    $stmt->bindValue(2, $p->getSenha());
     $stmt->execute();
-
   }
 
-  public function read() {
-    $sql = 'SELECT usuario from usuarios';
-    $stmt = Conexao::getConn()->prepare($sql);
-    $stmt->execute();
+  
+  public function read($id) {
+    global $pdo;
+    $sql = "Select * from usuarios where id = :id";
+    $sql = $pdo->prepare($sql);
 
-    if($stmt->rowCount() > 0):
-      $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-      return $resultado;
+    $sql->bindValue("id", $id);
+    $sql->execute();
+
+     if($sql->rowCount() > 0):
+       $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
     endif;
-
   }
 
-  public function update(Usuario $p) {
-    $sql = 'UPDATE usuarios SET usuario = ?, senha = MD5(?) WHERE id =?';
-
-    $stmt = Conexao::getConn()->prepare($sql);
-    $stmt->bindValue(1, $p->getUsuario());
-    $stmt->bindValue(2, $p->getSenha());
-    $stmt->bindValue(3, $p->getId());
+  public function update(Usuario $u) {
+    global $pdo;
+    $sql = 'UPDATE usuarios SET nome = :nome, cpf = :cpf, data_nascimento = DATE(:data_nascimento), genero = :genero, email = :email, senha = MD5(:senha), nivel_acesso_id = :nivelAcesso_id WHERE id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue('nome', $u->getNome());
+    $stmt->bindValue('cpf', $u->getCpf());
+    $stmt->bindValue('data_nascimento', $u->getNascimento());
+    $stmt->bindValue('genero', $u->getGenero());
+    $stmt->bindValue('email', $u->getEmail());
+    $stmt->bindValue('senha', $u->getSenha());
+    $stmt->bindValue('nivelAcesso_id', $u->getNivelAcessoId());
+    $stmt->bindValue('id', $u->getId());
 
     $stmt->execute();
+
+   
   }
 
   public function delete($id) {
     $sql = 'DELETE FROM usuarios WHERE id = ?';
 
-    $stmt = Conexao::getConn()->prepare($sql);
-    $stmt->bindValue(1, $id->getId());
-    $stmt->execute();
+   
   }
 }

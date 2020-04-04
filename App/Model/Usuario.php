@@ -5,7 +5,7 @@ require_once "../Model/Conexao.php";
 
 class Usuario {
 
-  private $id, $nome, $cpf, $email, $senha, $endereco_id, $telefone_id, $nivel_acesso_id, $empresa_id;
+  private $id, $nome, $cpf, $data_nascimento, $genero, $email, $senha, $endereco_id, $telefone_id, $nivel_acesso_id, $empresa_id;
 
   public function getId() {
     return $this->id;
@@ -13,6 +13,22 @@ class Usuario {
 
   public function setId($id) {
     $this->id = $id;
+  }
+
+  public function getNascimento() {
+    return $this->data_nascimento;
+  }
+
+  public function setNascimento($data_nascimento) {
+    $this->data_nascimento = $data_nascimento;
+  }
+
+  public function getGenero() {
+    return $this->genero;
+  }
+
+  public function setGenero($genero) {
+    $this->genero = $genero;
   }
 
   public function getNome() {
@@ -60,7 +76,7 @@ class Usuario {
   }
 
   public function setTelefoneId($telefone_id) {
-    $this->telefone = $telefone_id;
+    $this->telefone_id = $telefone_id;
   }
 
   public function getNivelAcessoId() {
@@ -77,26 +93,6 @@ class Usuario {
 
   public function setEmpresaId($empresa_id) {
     $this->empresa_id = $empresa_id;
-  }
-
-  public function traz_usuario_logado($id) {
-    global $pdo;
-
-      $sql = "Select * from usuarios where id = :id";
-      $sql = $pdo->prepare($sql);
-
-      $sql->bindValue("id", $id);
-      $sql->execute();
-
-       if($sql->rowCount() > 0)
-       {
-          return $resultado = $sql->fetch();
-
-        }else
-        {
-          return false;
-        }
-
   }
 
   public function logar($email, $senha) {
@@ -119,4 +115,5 @@ class Usuario {
         }
 
     }
+  
 }

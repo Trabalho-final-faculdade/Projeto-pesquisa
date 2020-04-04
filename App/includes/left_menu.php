@@ -2,25 +2,20 @@
           <div class="menu_section">
             <h3>Geral</h3>
             <ul class="nav side-menu">
-              <li><a href="index.html"><i class="fa fa-home"></i> Pagina inicial</span></a>
+              <li><a href="pagina-inicial.php"><i class="fa fa-home"></i> Pagina inicial</span></a>
                 
               </li>
               <li><a><i class="fa fa-edit"></i> Pesquisas <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="form.html">Nova</a></li>
+                  <li><a href="">Nova</a></li>
                   <li><a href="form_advanced.html">Em andamento</a></li>
                   <li><a href="form_validation.html">Concluidas</a></li>
                 </ul>
               </li>
-              <li><a><i class="fa fa-desktop"></i> Funcionarios <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="general_elements.html">Cadastrar</a></li>
-                  <li><a href="media_gallery.html">Alterar dados</a></li>
-                  <li><a href="typography.html">Listar</a></li>
-                </ul>
-              </li>
+             
               <li><a><i class="fa fa-table"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
+                  <li><a href="cadastro-usuario.php">Cadastrar</a></li>
                   <li><a href="tables.html">Buscar</a></li>
                   <li><a href="tables.html">Historico de pesquisas</a></li>
                   <li><a href="tables_dynamic.html">Listar bloqueados</a></li>

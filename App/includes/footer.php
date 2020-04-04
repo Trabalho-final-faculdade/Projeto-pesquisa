@@ -3,6 +3,11 @@
     <!--JavaScript at end of body for optimized loading-->
     <!-- jQuery -->
     <script src="../Public/javascripts/jquery.min.js"></script>
+
+    <script src="../Public/javascripts/jquery.mask.js"></script>
+    
+    <script src="../Public/javascripts/jquery.mask.min.js"></script>
+
     <!-- Bootstrap -->
     <script src="../Public/javascripts/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->
@@ -42,19 +47,9 @@
     <!-- Custom Theme Scripts -->
      <script src="../Public/javascripts/custom.min.js"></script>
 
-
-
-
-<!-- jQuery -->
-    <!-- Bootstrap -->
-    <!-- FastClick -->
-    <!-- NProgress -->
-    <!-- jQuery Smart Wizard -->
     <script src="../Public/javascripts/jquery.smartWizard.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
-
 
   </body>
 </html>

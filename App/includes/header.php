@@ -10,6 +10,7 @@
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>Gentelella Alela! | </title>
+
     <link href="../Public/stylesheets/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <link href="../Public/stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="../Public/stylesheets/custom.min.css" rel="stylesheet">

@@ -7,10 +7,10 @@
           <ul class=" navbar-right">
             <li class="nav-item dropdown open" style="padding-left: 15px;">
               <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                <img src="images/img.jpg" alt=""><?php echo $usuario_logado[1] ?>
+                <img src="images/img.jpg" alt=""><?php echo $usuario['nome'] ?>
               </a>
               <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item"  href="editar_dados.php"> Editar dados</a>
+                <a class="dropdown-item"  href="editar-dados.php"> Editar dados</a>
                   <a class="dropdown-item"  href="javascript:;">
                     <span class="badge bg-red pull-right">50%</span>
                     <span>Configuracoes</span>
