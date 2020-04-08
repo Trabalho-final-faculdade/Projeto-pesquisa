@@ -108,6 +108,7 @@ class Usuario {
        if($sql->rowCount() > 0){
           $resultado = $sql->fetch();
           $_SESSION['id'] = $resultado['id'];
+          $_SESSION['empresa_id'] = $resultado['empresa_id'];
           return true;
         }else
         {

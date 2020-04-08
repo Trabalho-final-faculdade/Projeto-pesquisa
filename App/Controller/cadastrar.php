@@ -29,12 +29,12 @@ $u->setCpf(addslashes($_POST['cpf']));
 $u->setGenero(addslashes($_POST['genero']));
 $u->setEmail(addslashes($_POST['email']));
 $u->setSenha(addslashes($_POST['senha']));
-$u->setEnderecoId(1);
+$u->setEnderecoId($_SESSION['empresa_id']);
 foreach($td->salvar_telefone($t) as $telefones):
   $u->setTelefoneId($telefones['id']);
 endforeach;
 $u->setNivelAcessoId(addslashes($_POST['nivel_acesso_id']));
-$u->setEmpresaId(1);
+$u->setEmpresaId($_SESSION['empresa_id']);
 
 if($ud->create($u)){
   $_SESSION['cadastro'] = true;

@@ -10,7 +10,7 @@
                 <img src="images/img.jpg" alt=""><?php echo $usuario['nome'] ?>
               </a>
               <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item"  href="editar-dados.php"> Editar dados</a>
+                <a class="dropdown-item"  href="editar-dados.php?id=<?php echo $usuario['id']?>"> Editar dados</a>
                   <a class="dropdown-item"  href="javascript:;">
                     <span class="badge bg-red pull-right">50%</span>
                     <span>Configuracoes</span>

@@ -5,23 +5,38 @@ namespace App\Model;
 class NivelDeAcessoDao {
 
   public function create(Usuario $u) {
-    // $sql = 'INSERT INTO usuarios (usuario, senha) VALUES(?,MD5(?))';
-    //
-    // $stmt = Conexao::getConn()->prepare($sql);
-    // $stmt->bindValue(1, $p->getUsuario());
-    // $stmt->bindValue(2, $p->getSenha());
-    // $stmt->execute();
+   
   }
 
   public function read() {
-    // $sql = 'SELECT usuario from usuarios';
-    // $stmt = Conexao::getConn()->prepare($sql);
-    // $stmt->execute();
-    //
-    // if($stmt->rowCount() > 0):
-    //   $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    //   return $resultado;
-    // endif;
+    global $pdo;
+    $sql = "Select * from nivel_acesso";
+    $sql = $pdo->prepare($sql);
+
+    $sql->execute();
+
+     if($sql->rowCount() > 0):
+       $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
+    endif;
+  }
+
+  public function buscar_nivel($u) {
+    global $pdo;
+    $sql = "Select * from nivel_acesso where id = :id";
+    $sql = $pdo->prepare($sql);
+
+    $sql->bindValue('id', $u);
+
+    $sql->execute();
+
+    if($sql->rowCount() > 0){
+        $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
+
+    }else{
+        return false;
+    }
   }
 
   public function update(Usuario $p) {

@@ -57,6 +57,34 @@ class UsuarioDao {
    
   }
 
+  public function buscar_usuarios($buscar, $valor, $empresa){
+    global $pdo;
+    if($buscar == 'id'){
+        $sql = "SELECT * FROM usuarios WHERE id = :valor AND empresa_id = :empresa";
+    }else if($buscar == 'cpf'){
+        $sql = "SELECT * FROM usuarios WHERE cpf = :valor AND empresa_id = :empresa";
+    }else if($buscar == 'nome'){
+        $sql = "SELECT * FROM usuarios WHERE nome like concat('%', :valor, '%') AND empresa_id = :empresa";
+    }else if($buscar == 'nivel'){
+        $sql = "SELECT * FROM usuarios WHERE nivel_acesso_id = ? AND empresa_id = :empresa";
+    }
+
+    $sql = $pdo->prepare($sql);
+
+    $sql->bindValue('valor', $valor);
+    $sql->bindValue('empresa', $empresa);
+
+    $sql->execute();
+
+    if($sql->rowCount() > 0){
+        $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
+
+    }else{
+        return false;
+    }
+  }
+
   public function delete($id) {
     $sql = 'DELETE FROM usuarios WHERE id = ?';
 

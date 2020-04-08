@@ -32,15 +32,16 @@ $u->setSenha(addslashes($_POST['senha']));
 $u->setTelefoneId(addslashes($_POST['telefone_id']));
 $u->setEnderecoId(1);
 $u->setNivelAcessoId(addslashes($_POST['nivel_acesso_id']));
-$u->setEmpresaId(1);
+$u->setEmpresaId($_POST['empresa_id']);
 
 if($td->update($t, $u));
-if($ud->update($u)){
-  $_SESSION['editar'] = true;
-}else{
-  $_SESSION['editar'] = false;
-}
+  if($ud->update($u)){
+    $_SESSION['editar'] = true;
+  }else{
+    $_SESSION['editar'] = false;
+  }
     
 }
-header("Location: ../View/editar-dados.php");
+header("Location: ../View/editar-dados.php?id=".$_POST['id']);
+
 ?>

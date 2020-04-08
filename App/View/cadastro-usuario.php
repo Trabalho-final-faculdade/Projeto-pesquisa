@@ -1,6 +1,8 @@
 <?php
 
 require_once '../../vendor/autoload.php';
+require_once '../Model/Nivel_de_acessoDao.php';
+
 
 include_once '../includes/header.php';
 
@@ -11,6 +13,8 @@ if(!isset($_SESSION['id'])) {
 
 $usuario_logado = new \App\Model\Usuario();
 $ud = new \App\Model\UsuarioDao();
+$nd = new \App\Model\NivelDeAcessoDao();
+
 $ud->read($_SESSION['id']);
 
 foreach($ud->read($_SESSION['id']) as $usuario):
@@ -143,17 +147,18 @@ endforeach;
                             </div>
                           </div>
                           <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="nivel_acesso_id">Nivel de acesso <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                              <select name="nivel_acesso_id" id="select" class="form-control" required="required">
-                                <option value="">Selecione</option>
-                                <option value="1">Administrador</option>
-                                <option value="2">Gerencial</option>
-                                <option value="3">Supervisional</option>
-                                <option value="4">Operacional</option>
-                              </select>
-                            </div>
+                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="nivel_acesso_id">Nivel de acesso <span class="required">*</span>
+                          </label>
+
+                          <?php $query = $nd->read() ?>
+                          <div class="col-md-6 col-sm-6 ">
+                            <select name="nivel_acesso_id" id="select" class="form-control" required="required">
+                              <?php foreach($query as $nivel) { ?>
+                                  <option value="<?php echo $nivel['id']?>">
+                                      <?php echo $nivel['nivel']; ?>
+                                  </option>
+                              <?php } ?>
+                            </select>
                           </div>
                           <div class="actionBar">
                             <div class="loader">
@@ -167,7 +172,7 @@ endforeach;
             </div>
           </div>
         </div>
-        <script>
+        <script>qw
           function validaForm(frm){
 
             if(frm.senha.value != frm.confirmar_senha.value ){
