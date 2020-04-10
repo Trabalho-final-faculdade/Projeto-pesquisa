@@ -36,7 +36,7 @@ class UsuarioDao {
      if($sql->rowCount() > 0):
        $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
         return $resultado;
-    endif;
+      endif;
   }
 
   public function update(Usuario $u) {

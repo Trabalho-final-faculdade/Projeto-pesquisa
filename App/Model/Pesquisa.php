@@ -5,7 +5,7 @@ require_once "../Model/Conexao.php";
 
 class Pesquisa {
 
-  private $id, $titulo, $visualizacao_id, $empresa_id;
+  private $id, $titulo, $data_inicial, $data_final, $observacao, $status;
 
   public function getId() {
     return $this->id;
@@ -23,18 +23,35 @@ class Pesquisa {
     $this->titulo = $titulo;
   }
 
-  public function getVisualizacaoId() {
-    return $this->visualizacao_id;
+  public function getDataInicial() {
+    return $this->data_inicial;
   }
 
-  public function setVisualizacaoId($visualizacao_id) {
-    $this->visualizacao_id = $visualizacao_id;
+  public function setDataInicial($data_inicial) {
+    $this->data_inicial = $data_inicial;
   }
 
-  public function getEmpresaId() {
-    return $this->empresa_id;
+  public function getDataFinal() {
+    return $this->data_final;
   }
 
-  public function setEmpresaId($empresa_id) {
-    $this->empresa_id = $empresa_id;
+  public function setDataFinal($data_final) {
+    $this->data_final = $data_final;
   }
+
+  public function getObservacao() {
+    return $this->observacao;
+  }
+
+  public function setObservacao($observacao) {
+    $this->observacao = $observacao;
+  }
+
+  public function getStatus() {
+    return $this->status;
+  }
+
+  public function setStatus($status) {
+    $this->status = $status;
+  }
+}
