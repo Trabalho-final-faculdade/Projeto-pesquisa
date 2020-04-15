@@ -16,6 +16,8 @@ $usuario_buscado = new \App\Model\Usuario();
 $p = new \App\Model\Pesquisa();
 $pd = new \App\Model\PesquisaDao();
 $ud = new \App\Model\UsuarioDao();
+$perguntaDao = new \App\Model\PerguntaDao();
+$respostaDao = new \App\Model\RespostaDao();
 
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
@@ -27,7 +29,9 @@ $p->setDataInicial($resultados[0]['data_inicial']);
 $p->setDataFinal($resultados[0]['data_final']);
 $p->setObservacao($resultados[0]['observacao']);
 $p->setTitulo($resultados[0]['titulo']);
-$p->setStatus($resultados[0]['status']);                      
+$p->setStatus($resultados[0]['status']); 
+
+$todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
 
 ?>
 <div class="container body">
@@ -63,7 +67,7 @@ $p->setStatus($resultados[0]['status']);
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Editando os dados.</h2>
+                    <h2>Editando os dados da pesquisa.</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -72,7 +76,7 @@ $p->setStatus($resultados[0]['status']);
                   </div>
                   <div class="x_content">
                   <div id="step-1">
-                  <form class="form-horizontal form-label-left" action="../Controller/editar-pesquisa.php?id=<?php echo $p->getId();?>" method="POST" onsubmit="return validaForm(this);"> 
+                  <form class="form-horizontal form-label-left" action="../Controller/editar-pesquisa.php" method="POST" onsubmit="return validaForm(this);"> 
                      <input type='hidden' name="id" id="id" value="<?php echo $p->getId();?>">
                       <div class="form-group row">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="titulo">Título: <span class="required">*</span>
@@ -116,12 +120,36 @@ $p->setStatus($resultados[0]['status']);
                           </select>
                         </div>
                       </div>
-            
                       <div class="actionBar">
                         <div class="loader">
                           <button type="submit" name="btnCadastrar" class="buttonNext btn btn-success">Editar</button>
                         </div>
                       </div>
+                    </br></br>
+                      <h2>Perguntas e respostas.</h2></br></br>
+                      <?php foreach($todas_perguntas as $per):?>
+                        <div class="form-group row">
+                          <label class="col-form-label col-md-3 col-sm-3 label-align">Pergunta<span class="required">*</span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 ">
+                            <input type="text" disabled="true" name="pergunta[<?php echo $per['id']?>]" class="date-picker form-control" required="required" value="<?php echo $per['pergunta']?> ">
+                           </div>
+                        </div>
+                        <?php foreach($respostaDao->read($per['id']) as $resposta):  ?>
+                          <div class="form-group row">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="resposta">Resposta: <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                              <input type="text"  disabled="true" name="resposta[<?php echo $resposta['id']?>]" minlength="5" value="<?php echo $resposta['resposta'] ?>" required="required" autocomplete="off" class="form-control" maxlength="40">
+                            </div>
+                          </div>
+                        <?php endforeach;?>
+                        <td><a href="../View/editar-dados-pergunta.php?id=<?php echo $per['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
+
+                      </br>
+
+                      <?php endforeach; ?>
+                      
                     </form>
                   </div>
                 </div>

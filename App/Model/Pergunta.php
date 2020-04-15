@@ -5,7 +5,7 @@ require_once "../Model/Conexao.php";
 
 class Pergunta {
 
-  private $id, $pergunta, $empresa_id;
+  private $id, $pergunta, $tipo_pergunta, $pesquisa_id;
 
   public function getId() {
     return $this->id;
@@ -23,10 +23,19 @@ class Pergunta {
     $this->pergunta = $pergunta;
   }
 
-  public function getEmpresaId() {
-    return $this->empresa;
+  public function getTipoPergunta() {
+    return $this->tipo_pergunta;
   }
 
-  public function setEmpresaId($empresa_id) {
-    $this->empresa = $empresa_id;
+  public function setTipoPergunta($tipo_pergunta) {
+    $this->tipo_pergunta = $tipo_pergunta;
   }
+
+  public function getPesquisaId() {
+    return $this->pesquisa_id;
+  }
+
+  public function setPesquisaId($pesquisa_id) {
+    $this->pesquisa_id = $pesquisa_id;
+  }
+}

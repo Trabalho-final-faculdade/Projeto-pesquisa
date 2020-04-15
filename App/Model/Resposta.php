@@ -16,7 +16,7 @@ class Resposta {
   }
 
   public function getResposta() {
-    return $this-> $resposta;
+    return $this->resposta;
   }
 
   public function setResposta($resposta) {
@@ -30,3 +30,4 @@ class Resposta {
   public function setPerguntaID($pergunta_id) {
     $this->pergunta_id = $pergunta_id;
   }
+}

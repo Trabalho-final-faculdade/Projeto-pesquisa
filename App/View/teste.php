@@ -1,9 +1,7 @@
-<?php 
+<?php
 
 
-
-
-
-var_dump($_POST['nome']);
-
+foreach($_POST['pergunta'] as $pergunta):
+    echo $pergunta;
+endforeach;
 ?>

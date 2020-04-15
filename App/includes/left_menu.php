@@ -16,9 +16,8 @@
               <li><a><i class="fa fa-edit"></i> Pesquisas <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                   <li><a href="cadastrar-pesquisa.php">Nova pesquisa</a></li> 
-                  <li><a href="pesquisas-andamento.php">Em andamento</a></li>
-                  <li><a href="pesquisas-concluida.php">Concluidas</a></li>
-                  <li><a href="pesquisas-cancelada.php">Canceladas</a></li>
+                  <li><a href="buscar-pesquisa.php">Buscar pesquisa</a></li>
+                  
                 </ul>
               </li>
             

@@ -20,19 +20,48 @@ class PesquisaDao {
 
   }
 
-  public function buscar_pesquisas($status) {
+  public function buscar_pesquisas($valor, $buscar) {
     global $pdo;
-    $sql = 'SELECT * FROM pesquisas where status = :status';
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue('status', $status);
+    if($buscar == 'id'){
+        $sql = "SELECT * FROM pesquisas WHERE id = :valor";
+    }else if($buscar == 'periodo'){
+        $sql = "SELECT * FROM pesquisas WHERE cpf = :valor";
+    }else if($buscar == 'titulo'){
+        $sql = "SELECT * FROM pesquisas WHERE titulo like concat('%', :valor, '%')";
+    }
 
-    $stmt->execute();
+    $sql = $pdo->prepare($sql);
 
-    if($stmt->rowCount() > 0):
-      $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-       return $resultado;
-    endif;
+    $sql->bindValue('valor', $valor);
 
+    $sql->execute();
+
+    if($sql->rowCount() > 0){
+        $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
+
+    }else{
+        return false;
+    }
+  }
+
+  public function buscar_pesquisas_estado($status) {
+    global $pdo;
+    $sql = "SELECT * FROM pesquisas WHERE status = :status";
+    
+    $sql = $pdo->prepare($sql);
+
+    $sql->bindValue('status', $status);
+
+    $sql->execute();
+
+    if($sql->rowCount() > 0){
+        $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
+
+    }else{
+        return false;
+    }
   }
 
   public function read($id){
@@ -49,6 +78,21 @@ class PesquisaDao {
     endif;
 
   } 
+
+  public function buscar_pesquisas_titulo($id){
+    global $pdo;
+    $sql = 'SELECT * FROM pesquisas where titulo = :titulo ORDER BY titulo DESC limit 1';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue('titulo', $id);
+
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0):
+      $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+       return $resultado;
+    endif;
+
+  }
 
   public function update(Pesquisa $p) {
     global $pdo;

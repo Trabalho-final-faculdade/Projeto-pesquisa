@@ -20,9 +20,10 @@ if(isset($_POST['observacao']) && !empty($_POST['observacao'])
     $p->setStatus("em andamento");
 
     if($pd->create($p)){
-        header("Location: ../View/cadastrar-pergunta.php");
+       $resultado = $pd->buscar_pesquisas_titulo($_POST['titulo']);
+       header("Location: ../View/cadastrar-pergunta.php?id=".$resultado[0]['id']);
     }else{
-        header("Location: ../View/cadastrar-pesquisa.php");
+       header("Location: ../View/cadastrar-pesquisa.php");
     }
     
 }else{
