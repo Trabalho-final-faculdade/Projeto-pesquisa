@@ -17,7 +17,7 @@
                 <ul class="nav child_menu">
                   <li><a href="cadastrar-pesquisa.php">Nova pesquisa</a></li> 
                   <li><a href="buscar-pesquisa.php">Buscar pesquisa</a></li>
-                  
+                  <li><a href="verifica-usuario-pesquisa.php">Iniciar uma pesquisa</a></li>
                 </ul>
               </li>
             

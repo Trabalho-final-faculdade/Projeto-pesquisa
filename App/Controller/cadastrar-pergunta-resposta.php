@@ -20,7 +20,7 @@ if(isset($_POST['pesquisa']) && !empty($_POST['pesquisa'])
 
     $p->setPesquisaId(addslashes($_POST['pesquisa']));
     $p->setPergunta(addslashes($_POST['pergunta']));
-    $p->setTipoPesquisa(addslashes($_POST['tipo_pergunta']));
+    $p->setTipoPergunta(addslashes($_POST['tipo_pergunta']));
 
     if($pd->create($p)){
         $resultado = $pd->buscar_pergunta_nome($_POST['pergunta']);

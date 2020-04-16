@@ -39,6 +39,21 @@ class UsuarioDao {
       endif;
   }
 
+  public function buscar_entrevistado($valor, $empresa) {
+    global $pdo;
+    $sql = "SELECT * FROM usuarios WHERE cpf = :valor AND empresa_id = :empresa_id AND nivel_acesso_id = 5";
+    $sql = $pdo->prepare($sql);
+
+    $sql->bindValue("valor", $valor);
+    $sql->bindValue("empresa_id", $empresa);
+    $sql->execute();
+
+     if($sql->rowCount() > 0):
+       $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
+      endif;
+  }
+
   public function update(Usuario $u) {
     global $pdo;
     $sql = 'UPDATE usuarios SET nome = :nome, cpf = :cpf, data_nascimento = DATE(:data_nascimento), genero = :genero, email = :email, senha = MD5(:senha), nivel_acesso_id = :nivelAcesso_id WHERE id = :id';

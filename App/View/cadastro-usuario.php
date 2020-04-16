@@ -172,7 +172,7 @@ endforeach;
             </div>
           </div>
         </div>
-        <script>qw
+        <script>
           function validaForm(frm){
 
             if(frm.senha.value != frm.confirmar_senha.value ){
