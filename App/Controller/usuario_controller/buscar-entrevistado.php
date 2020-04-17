@@ -13,9 +13,9 @@ $ud = new \App\Model\UsuarioDao();
     $resultado = $ud->buscar_entrevistado($_POST['cpf'], $_SESSION['empresa_id']);
     if(isset($resultado)){
         $_SESSION['id_entrevistado'] = $resultado[0]['id'];
-        header("Location: ../View/pesquisa.php");
+        header("Location: ../View/pesquisa/pesquisa.php");
     }else{
-        header("Location: ../View/verifica-usuario-pesquisa.php");
+        header("Location: ../View/usuario/verifica-usuario-pesquisa.php");
     }
     
 }

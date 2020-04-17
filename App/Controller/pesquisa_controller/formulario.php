@@ -26,7 +26,7 @@ if(isset($_POST['indice'])
     if($qd->create($q)){
         $_SESSION['indice'] = $numero;
         $_SESSION['pesquisa_id'] = $_POST['pesquisa'];
-        header("Location: ../View/pesquisa.php");
+        header("Location: ../View/pesquisa/pesquisa.php");
     }else{
         return false;
     }

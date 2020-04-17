@@ -5,7 +5,7 @@ require_once '../Model/Usuario.php';
 require_once '../Model/Conexao.php';
 
 if(isset($_SESSION['id'])) {
-    header("Location: ../View/pagina-inicial.php");
+    header("Location: ../View/sistema/pagina-inicial.php");
 }
 
 ?>
@@ -61,7 +61,7 @@ if(isset($_SESSION['id'])) {
               ?>
               <div>
                 <button type="submit" name="btnLogar" class="btn btn-default submit">Logar</button>
-                <a class="reset_pass" href="recuperar-senha.php">Esqueci minha senha?</a>
+                <a class="reset_pass" href="sistema/recuperar-senha.php">Esqueci minha senha?</a>
               </div>
 
               <div class="clearfix"></div>

@@ -43,5 +43,5 @@ if($ud->create($u)){
 }
     
 }
-header("Location: ../View/cadastro-usuario.php");
+header("Location: ../View/usuario/cadastro-usuario.php");
 ?>

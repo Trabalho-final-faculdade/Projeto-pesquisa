@@ -8,7 +8,7 @@ include_once '../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: tela-login.php");
+    header("Location: sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();

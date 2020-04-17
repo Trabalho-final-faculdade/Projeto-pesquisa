@@ -6,7 +6,7 @@ include_once '../includes/header.php';
 include_once '../Model/Nivel_de_acessoDao.php';
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: tela-login.php");
+    header("Location: sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -150,7 +150,7 @@ $resultado = $cd->read($_SESSION['empresa_id']);
                               <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $e->getCep(); ?>">
                             </div>
                           </div>
-                          <a href="../View/editar-dados-empresa.php?id=<?php echo $e->getId()?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                          <a href="../View/empresa/editar-dados-empresa.php?id=<?php echo $e->getId()?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
                           </form>
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">

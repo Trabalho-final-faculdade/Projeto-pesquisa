@@ -33,5 +33,5 @@ if($ed->create($e)){
     
 }
 
-header("Location: ../View/configuracoes.php");
+header("Location: ../View/sistema/configuracoes.php");
 ?>

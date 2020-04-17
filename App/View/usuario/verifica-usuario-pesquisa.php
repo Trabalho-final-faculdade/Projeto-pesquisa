@@ -6,7 +6,7 @@ include_once '../includes/header.php';
 include_once '../Model/Nivel_de_acessoDao.php';
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: tela-login.php");
+    header("Location: sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();

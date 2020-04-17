@@ -6,7 +6,7 @@ include_once '../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: tela-login.php");
+    header("Location: sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -370,7 +370,7 @@ endforeach;
                   <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
                   <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
                   </li>
-                  <li><i class="fa fa-area-chart"></i><a href="tela-login.php">Logout</a>
+                  <li><i class="fa fa-area-chart"></i><a href="sistema/tela-login.php">Logout</a>
                   </li>
                 </ul>
 

@@ -27,13 +27,13 @@ if(isset($_POST['pesquisa']) && !empty($_POST['pesquisa'])
         foreach($_POST['descricao'] as $descricao):
             $rd->create($descricao, $resultado[0]['id']);
         endforeach;
-        header("Location: ../View/cadastrar-pergunta.php?id=".$_POST['pesquisa']); 
+        header("Location: ../View/pergunta/cadastrar-pergunta.php?id=".$_POST['pesquisa']); 
        
     }else{
         $_SESSION['cadastro_sucesso'] = false;
     }
 }else{
-    header("Location: ../View/pagina-inicial.php");
+    header("Location: ../View/sistema/pagina-inicial.php");
 }
 
 ?> 

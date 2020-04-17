@@ -6,7 +6,7 @@ include_once '../includes/header.php';
 include_once '../Model/Nivel_de_acessoDao.php';
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: tela-login.php");
+    header("Location: sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -150,8 +150,8 @@ $p = new \App\Model\Pesquisa();
                                         <td><?php echo date('d-m-Y', strtotime($resultado['data_final'])); ?> </td>
                                         <td><?php echo $resultado['observacao'] ?> </td>
                                         <td><?php echo $resultado['status'] ?> </td>
-                                        <td> <a href="../View/visualizar-pesquisa.php?id=<?php echo $resultado['id']?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Visualizar </a></td>     
-                                        <td><a href="../View/editar-dados-pesquisa.php?id=<?php echo $resultado['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
+                                        <td> <a href="../View/pesquisa/visualizar-pesquisa.php?id=<?php echo $resultado['id']?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Visualizar </a></td>     
+                                        <td><a href="../View/pesquisa/editar-dados-pesquisa.php?id=<?php echo $resultado['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
                                       </tr>
                                       <?php } ?>
                                     </tbody>

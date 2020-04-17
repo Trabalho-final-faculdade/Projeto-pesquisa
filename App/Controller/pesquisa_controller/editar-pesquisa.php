@@ -28,7 +28,7 @@ if(isset($_POST['id']) && !empty($_POST['id'])
   }else{
     $_SESSION['editar_pesquisa'] = false;
   }
-  header("Location: ../View/pagina-inicial.php");      
+  header("Location: ../View/sistema/pagina-inicial.php");      
 }
 
 

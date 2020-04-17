@@ -42,6 +42,6 @@ if($td->update($t, $u));
   }
     
 }
-header("Location: ../View/editar-dados.php?id=".$_POST['id']);
+header("Location: ../View/usuario/editar-dados.php?id=".$_POST['id']);
 
 ?>

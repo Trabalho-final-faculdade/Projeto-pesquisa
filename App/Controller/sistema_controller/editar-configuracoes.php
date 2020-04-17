@@ -33,7 +33,7 @@ if(isset($_POST['cadastro']) && !empty($_POST['cadastro'])
    
  }
   
-header("Location: ../View/configuracoes.php");
+header("Location: ../View/sistema/configuracoes.php");
   
   ?>
 

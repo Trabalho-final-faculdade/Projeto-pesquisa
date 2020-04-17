@@ -21,12 +21,12 @@ if(isset($_POST['observacao']) && !empty($_POST['observacao'])
 
     if($pd->create($p)){
        $resultado = $pd->buscar_pesquisas_titulo($_POST['titulo']);
-       header("Location: ../View/cadastrar-pergunta.php?id=".$resultado[0]['id']);
+       header("Location: ../View/pergunta/cadastrar-pergunta.php?id=".$resultado[0]['id']);
     }else{
-       header("Location: ../View/cadastrar-pesquisa.php");
+       header("Location: ../View/pesquisa/cadastrar-pesquisa.php");
     }
     
 }else{
-    header("Location: ../View/cadastrar-pesquisa.php");
+    header("Location: ../View/pesquisa/cadastrar-pesquisa.php");
 }
 ?>

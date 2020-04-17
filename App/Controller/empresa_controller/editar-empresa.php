@@ -36,6 +36,6 @@ if(isset($_POST['id']) && !empty($_POST['id'])
       
 }
 
-header("Location: ../View/configuracoes.php");
+header("Location: ../View/sistema/configuracoes.php");
 
 ?>

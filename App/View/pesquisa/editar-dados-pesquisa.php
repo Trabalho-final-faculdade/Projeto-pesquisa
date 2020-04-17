@@ -8,7 +8,7 @@ include_once '../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: tela-login.php");
+    header("Location: sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -144,7 +144,7 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
                             </div>
                           </div>
                         <?php endforeach;?>
-                        <td><a href="../View/editar-dados-pergunta.php?id=<?php echo $per['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
+                        <td><a href="../View/pergunta/editar-dados-pergunta.php?id=<?php echo $per['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
 
                       </br>
 

@@ -36,7 +36,7 @@ if(isset($_POST['pergunta']) && !empty($_POST['pergunta'])
     }else{
         $_SESSION['editar_pesquisa'] = false;
     }
-  header("Location: ../View/editar-dados-pergunta.php?id=".$_POST['id']);      
+  header("Location: ../View/pergunta/editar-dados-pergunta.php?id=".$_POST['id']);      
 }
     
 ?>
