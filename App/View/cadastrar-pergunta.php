@@ -88,7 +88,7 @@ endforeach;
             <div class="row">
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
-                        <form method="POST" name="frm_campo_dinamico" action="../Controller/cadastrar-pergunta-resposta.php">
+                        <form method="POST" name="frm_campo_dinamico" action="../Controller/pergunta_controller/cadastrar-pergunta-resposta.php">
                           <div class="x_title">
                                 <h2>Cadastrar pergunta.</h2>
                                 <ul class="nav navbar-right panel_toolbox">

@@ -62,7 +62,7 @@ endforeach;
                   </div>
                   <div class="x_content">
                     <div id="step-1">
-                      <form class="form-horizontal form-label-left" action="../Controller/buscar-entrevistado.php" method="POST">
+                      <form class="form-horizontal form-label-left" action="../Controller/usuario_controller/buscar-entrevistado.php" method="POST">
                         <div class="form-group row">
                             
                           <div class="form-group row" id="busca">

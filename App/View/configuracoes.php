@@ -154,7 +154,7 @@ $resultado = $cd->read($_SESSION['empresa_id']);
                           </form>
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <form class="form-horizontal form-label-left" action="../Controller/editar-configuracoes.php" method="POST" >
+                        <form class="form-horizontal form-label-left" action="../Controller/sistema_controller/editar-configuracoes.php" method="POST" >
                          
                         <input type="hidden" name="empresa_id" value="<?php echo $_SESSION['empresa_id']?>">
                           <div class="form-group row">

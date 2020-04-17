@@ -40,7 +40,7 @@ if(isset($_SESSION['id'])) {
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form action="../Controller/logar.php" method="POST">
+            <form action="../Controller/sistema_controller/logar.php" method="POST">
               <h1>Frase ou banner a escolher</h1>
 
               <div>

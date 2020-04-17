@@ -80,7 +80,7 @@ $telefone->setCelular($retorno_telefone[0]['celular']);
                   </div>
                   <div class="x_content">
                     <div id="step-1">
-                    <form class="form-horizontal form-label-left" action="../Controller/editar.php?id=<?php echo $_GET['id']?>" method="POST" onsubmit="return validaForm(this);">
+                    <form class="form-horizontal form-label-left" action="../Controller/usuario_controller/editar.php?id=<?php echo $_GET['id']?>" method="POST" onsubmit="return validaForm(this);">
                     <input type="hidden" name="id" value="<?php echo $usuario_buscado->getId();?>">
                     <input type="hidden" name="telefone_id" value="<?php echo $retorno_telefone[0]['id'];?>">
                     <?php

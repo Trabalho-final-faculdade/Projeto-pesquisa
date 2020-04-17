@@ -120,7 +120,7 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
                                     
                                     }
                                     ?>
-                                    <form action="../Controller/formulario.php" method="POST">
+                                    <form action="../Controller/pesquisa_controller/formulario.php" method="POST">
                                         <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
                                             <div class="panel">
                                                 <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">

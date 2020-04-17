@@ -76,7 +76,7 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
                   </div>
                   <div class="x_content">
                   <div id="step-1">
-                  <form class="form-horizontal form-label-left" action="../Controller/editar-pesquisa.php" method="POST" onsubmit="return validaForm(this);"> 
+                  <form class="form-horizontal form-label-left" action="../Controller/pesquisa_controller/editar-pesquisa.php" method="POST" onsubmit="return validaForm(this);"> 
                      <input type='hidden' name="id" id="id" value="<?php echo $p->getId();?>">
                       <div class="form-group row">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="titulo">Título: <span class="required">*</span>

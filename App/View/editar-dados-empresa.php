@@ -76,7 +76,7 @@ $e->setCep($resultados[0]['cep']);
                   </div>
                   <div class="x_content">
                   <div id="step-1">
-                  <form class="form-horizontal form-label-left" action="../Controller/editar-empresa.php?id=<?php echo $e->getId();?>" method="POST" onsubmit="return validaForm(this);"> 
+                  <form class="form-horizontal form-label-left" action="../Controller/empresa_controller/editar-empresa.php?id=<?php echo $e->getId();?>" method="POST" onsubmit="return validaForm(this);"> 
                      <input type='hidden' name="id" id="id" value="<?php echo $e->getId();?>">
                       <div class="form-group row">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="razao_social">Razao social <span class="required">*</span>

@@ -67,7 +67,7 @@ endforeach;
                   </div>
                   <div class="x_content">
                        <div id="step-1">
-                        <form class="form-horizontal form-label-left" action="../Controller/cadastrar.php" method="POST" onsubmit="return validaForm(this);">
+                        <form class="form-horizontal form-label-left" action="../Controller/usuario_controller/cadastrar.php" method="POST" onsubmit="return validaForm(this);">
                         <?php
                           if(isset($_SESSION['cadastro'])):
                           

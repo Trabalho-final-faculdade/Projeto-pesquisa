@@ -54,7 +54,7 @@ endforeach;
             <div class="row">
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
-                        <form action="../Controller/cadastrar-pesquisa.php" method="POST">
+                        <form action="../Controller/pesquisa_controller/cadastrar-pesquisa.php" method="POST">
                             <div class="x_title">
                                 <h2>Iniciar uma nova pesquisa.</h2>
                                 <ul class="nav navbar-right panel_toolbox">

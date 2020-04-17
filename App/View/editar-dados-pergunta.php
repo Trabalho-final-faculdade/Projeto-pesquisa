@@ -74,7 +74,7 @@ $resultado = $perguntaDao->buscar_pergunta($pergunta->getId());
                   </div>
                   <div class="x_content">
                   <div id="step-1">
-                  <form class="form-horizontal form-label-left" action="../Controller/editar-pergunta.php" method="POST" onsubmit="return validaForm(this);"> 
+                  <form class="form-horizontal form-label-left" action="../Controller/pergunta_controller/editar-pergunta.php" method="POST" onsubmit="return validaForm(this);"> 
                      <input type='hidden' name="id" id="id" value="<?php echo $pergunta->getId();?>">
                       <h2>Pergunta e respostas.</h2></br></br>
                         <div class="form-group row">

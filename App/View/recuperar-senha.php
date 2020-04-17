@@ -1,8 +1,6 @@
 <?php session_start();
 
 require_once '../Model/Conexao.php';
-require_once '../Controller/recuperar.php';
-   verifica_dados($pdo)
 ?>
 <!DOCTYPE html>
 <html lang="en">
