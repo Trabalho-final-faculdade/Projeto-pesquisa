@@ -1,10 +1,10 @@
 <?php
 
-require_once '../../vendor/autoload.php';
-require_once '../Model/Nivel_de_acessoDao.php';
+require_once '../../../vendor/autoload.php';
+require_once '../../Model/Nivel_de_acessoDao.php';
 
 
-include_once '../includes/header.php';
+include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
@@ -38,11 +38,11 @@ endforeach;
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
         <?php 
-            include_once '../includes/imagem_empresa.php';        
+            include_once '../../includes/imagem_empresa.php';        
      
-            include_once '../includes/left_menu.php';        
+            include_once '../../includes/left_menu.php';        
       
-            include_once '../includes/menu_top.php';
+            include_once '../../includes/menu_top.php';
        ?>
         <div class="right_col" role="main">
           <div class="">
@@ -156,12 +156,12 @@ endforeach;
         </div>
    <?php 
    
-   include_once '../includes/rodape_pagina.php';
+   include_once '../../includes/rodape_pagina.php';
    
    ?>
     <!-- /footer content -->
   </div>
 </div>
 <?php
-include_once '../includes/footer.php';
+include_once '../../includes/footer.php';
 ?>

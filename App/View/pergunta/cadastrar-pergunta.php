@@ -1,10 +1,10 @@
 <?php
 
-require_once '../../vendor/autoload.php';
-require_once '../Model/Nivel_de_acessoDao.php';
+require_once '../../../vendor/autoload.php';
+require_once '../../Model/Nivel_de_acessoDao.php';
 
 
-include_once '../includes/header.php';
+include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
@@ -39,11 +39,11 @@ endforeach;
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
         <?php 
-            include_once '../includes/imagem_empresa.php';        
+            include_once '../../includes/imagem_empresa.php';        
      
-            include_once '../includes/left_menu.php';        
+            include_once '../../includes/left_menu.php';        
       
-            include_once '../includes/menu_top.php';
+            include_once '../../includes/menu_top.php';
        ?>
         <div class="right_col" role="main">
           <div class="">
@@ -88,7 +88,7 @@ endforeach;
             <div class="row">
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
-                        <form method="POST" name="frm_campo_dinamico" action="../Controller/pergunta_controller/cadastrar-pergunta-resposta.php">
+                        <form method="POST" name="frm_campo_dinamico" action="../../Controller/pergunta_controller/cadastrar-pergunta-resposta.php">
                           <div class="x_title">
                                 <h2>Cadastrar pergunta.</h2>
                                 <ul class="nav navbar-right panel_toolbox">
@@ -185,12 +185,12 @@ endforeach;
         </div>
    <?php 
    
-   include_once '../includes/rodape_pagina.php';
+   include_once '../../includes/rodape_pagina.php';
    
    ?>
     <!-- /footer content -->
   </div>
 </div>
 <?php
-include_once '../includes/footer.php';
+include_once '../../includes/footer.php';
 ?>

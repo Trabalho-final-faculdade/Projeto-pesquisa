@@ -1,8 +1,8 @@
 <?php
 
-require_once '../../vendor/autoload.php';
+require_once '../../../vendor/autoload.php';
 
-include_once '../includes/header.php';
+include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
@@ -23,7 +23,7 @@ endforeach;
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
         <?php 
-            include_once '../includes/imagem_empresa.php';        
+            include_once '../../includes/imagem_empresa.php';        
        ?>
         <!-- /menu profile quick info -->
 
@@ -31,11 +31,11 @@ endforeach;
 
         <!-- sidebar menu -->
        <?php 
-            include_once '../includes/left_menu.php';        
+            include_once '../../includes/left_menu.php';        
        ?>
     <!-- top navigation -->
        <?php 
-            include_once '../includes/menu_top.php';
+            include_once '../../includes/menu_top.php';
        ?>
     <!-- /top navigation -->
 
@@ -724,12 +724,12 @@ endforeach;
     <!-- footer content -->
    <?php 
    
-   include_once '../includes/rodape_pagina.php';
+   include_once '../../includes/rodape_pagina.php';
    
    ?>
     <!-- /footer content -->
   </div>
 </div>
 <?php
-include_once '../includes/footer.php';
+include_once '../../includes/footer.php';
 ?>

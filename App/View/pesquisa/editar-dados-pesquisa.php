@@ -1,10 +1,10 @@
 <?php
 
-require_once '../../vendor/autoload.php';
-require_once '../Model/Nivel_de_acessoDao.php';
+require_once '../../../vendor/autoload.php';
+require_once '../../Model/Nivel_de_acessoDao.php';
 
 
-include_once '../includes/header.php';
+include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
@@ -39,9 +39,9 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
         <?php 
-          include_once '../includes/imagem_empresa.php';   
-          include_once '../includes/left_menu.php';    
-          include_once '../includes/menu_top.php';    
+          include_once '../../includes/imagem_empresa.php';   
+          include_once '../../includes/left_menu.php';    
+          include_once '../../includes/menu_top.php';    
         ?>
         <div class="right_col" role="main">
           <div class="">
@@ -76,7 +76,7 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
                   </div>
                   <div class="x_content">
                   <div id="step-1">
-                  <form class="form-horizontal form-label-left" action="../Controller/pesquisa_controller/editar-pesquisa.php" method="POST" onsubmit="return validaForm(this);"> 
+                  <form class="form-horizontal form-label-left" action="../../Controller/pesquisa_controller/editar-pesquisa.php" method="POST" onsubmit="return validaForm(this);"> 
                      <input type='hidden' name="id" id="id" value="<?php echo $p->getId();?>">
                       <div class="form-group row">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="titulo">Título: <span class="required">*</span>
@@ -144,7 +144,7 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
                             </div>
                           </div>
                         <?php endforeach;?>
-                        <td><a href="../View/pergunta/editar-dados-pergunta.php?id=<?php echo $per['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
+                        <td><a href="../../View/pergunta/editar-dados-pergunta.php?id=<?php echo $per['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
 
                       </br>
 
@@ -168,10 +168,10 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
           }
         </script>
       <?php  
-        include_once '../includes/rodape_pagina.php';   
+        include_once '../../includes/rodape_pagina.php';   
       ?>
   </div>
 </div>
 <?php
-include_once '../includes/footer.php';
+include_once '../../includes/footer.php';
 ?>

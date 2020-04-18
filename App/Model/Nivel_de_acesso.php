@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Model;
-require_once "../Model/Conexao.php";
+require_once "../../Model/Conexao.php";
 
 class NivelDeAcesso {
 
@@ -22,3 +22,4 @@ class NivelDeAcesso {
   public function setNivel($nivel) {
     $this->nivel = $nivel;
   }
+}

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Model;
-require_once "../Model/Conexao.php";
+require_once "../../Model/Conexao.php";
 
 
 class UsuarioDao {
@@ -81,7 +81,7 @@ class UsuarioDao {
     }else if($buscar == 'nome'){
         $sql = "SELECT * FROM usuarios WHERE nome like concat('%', :valor, '%') AND empresa_id = :empresa";
     }else if($buscar == 'nivel'){
-        $sql = "SELECT * FROM usuarios WHERE nivel_acesso_id = ? AND empresa_id = :empresa";
+        $sql = "SELECT * FROM usuarios WHERE nivel_acesso_id = :valor AND empresa_id = :empresa";
     }
 
     $sql = $pdo->prepare($sql);

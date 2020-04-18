@@ -1,10 +1,10 @@
 <?php
 
-require_once '../../vendor/autoload.php';
-require_once '../Model/Nivel_de_acessoDao.php';
+require_once '../../../vendor/autoload.php';
+require_once '../../Model/Nivel_de_acessoDao.php';
 
 
-include_once '../includes/header.php';
+include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
@@ -42,9 +42,9 @@ $telefone->setCelular($retorno_telefone[0]['celular']);
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
         <?php 
-          include_once '../includes/imagem_empresa.php';   
-          include_once '../includes/left_menu.php';    
-          include_once '../includes/menu_top.php';    
+          include_once '../../includes/imagem_empresa.php';   
+          include_once '../../includes/left_menu.php';    
+          include_once '../../includes/menu_top.php';    
         ?>
         <div class="right_col" role="main">
           <div class="">
@@ -80,7 +80,7 @@ $telefone->setCelular($retorno_telefone[0]['celular']);
                   </div>
                   <div class="x_content">
                     <div id="step-1">
-                    <form class="form-horizontal form-label-left" action="../Controller/usuario_controller/editar.php?id=<?php echo $_GET['id']?>" method="POST" onsubmit="return validaForm(this);">
+                    <form class="form-horizontal form-label-left" action="../../Controller/usuario_controller/editar.php?id=<?php echo $_GET['id']?>" method="POST" onsubmit="return validaForm(this);">
                     <input type="hidden" name="id" value="<?php echo $usuario_buscado->getId();?>">
                     <input type="hidden" name="telefone_id" value="<?php echo $retorno_telefone[0]['id'];?>">
                     <?php
@@ -198,10 +198,10 @@ $telefone->setCelular($retorno_telefone[0]['celular']);
           }
         </script>
       <?php  
-        include_once '../includes/rodape_pagina.php';   
+        include_once '../../includes/rodape_pagina.php';   
       ?>
   </div>
 </div>
 <?php
-include_once '../includes/footer.php';
+include_once '../../includes/footer.php';
 ?>

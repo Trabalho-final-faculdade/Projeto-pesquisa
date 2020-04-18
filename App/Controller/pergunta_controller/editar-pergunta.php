@@ -6,13 +6,11 @@ if(isset($_POST['pergunta']) && !empty($_POST['pergunta'])
 && isset($_POST['tipo_pergunta']) && !empty($_POST['tipo_pergunta'])){
 
 
-  require '../Model/conexao.php';
-  require '../Model/Pesquisa.php';
-  require '../Model/PesquisaDao.php';
-  require '../Model/Resposta.php';
-  require '../Model/RespostaDao.php';
-  require '../Model/Pergunta.php';
-  require '../Model/PerguntaDao.php';
+  require '../../Model/conexao.php';
+  require '../../Model/Resposta.php';
+  require '../../Model/RespostaDao.php';
+  require '../../Model/Pergunta.php';
+  require '../../Model/PerguntaDao.php';
 
 
   $p = new \App\Model\Pergunta();
@@ -36,7 +34,7 @@ if(isset($_POST['pergunta']) && !empty($_POST['pergunta'])
     }else{
         $_SESSION['editar_pesquisa'] = false;
     }
-  header("Location: ../View/pergunta/editar-dados-pergunta.php?id=".$_POST['id']);      
+  header("Location: ../../View/pergunta/editar-dados-pergunta.php?id=".$_POST['id']);      
 }
     
 ?>

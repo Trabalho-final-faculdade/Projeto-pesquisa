@@ -11,9 +11,9 @@ if(isset($_POST['id']) && !empty($_POST['id'])
 && !empty($_POST['cep'])){
 
 
-  require '../Model/conexao.php';
-  require '../Model/Empresa.php';
-  require '../Model/EmpresaDao.php';
+  require '../../Model/conexao.php';
+  require '../../Model/Empresa.php';
+  require '../../Model/EmpresaDao.php';
 
   $e = new \App\Model\Empresa();
   $ed = new \App\Model\EmpresaDao();
@@ -36,6 +36,6 @@ if(isset($_POST['id']) && !empty($_POST['id'])
       
 }
 
-header("Location: ../View/sistema/configuracoes.php");
+header("Location: ../../View/sistema/configuracoes.php");
 
 ?>

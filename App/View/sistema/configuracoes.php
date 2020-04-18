@@ -1,9 +1,9 @@
 <?php
 
-require_once '../../vendor/autoload.php';
+require_once '../../../vendor/autoload.php';
 
-include_once '../includes/header.php';
-include_once '../Model/Nivel_de_acessoDao.php';
+include_once '../../includes/header.php';
+include_once '../../Model/Nivel_de_acessoDao.php';
 session_start();
 if(!isset($_SESSION['id'])) {
     header("Location: sistema/tela-login.php");
@@ -50,9 +50,9 @@ $resultado = $cd->read($_SESSION['empresa_id']);
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
         <?php 
-          include_once '../includes/imagem_empresa.php';   
-          include_once '../includes/left_menu.php';    
-          include_once '../includes/menu_top.php';    
+          include_once '../../includes/imagem_empresa.php';   
+          include_once '../../includes/left_menu.php';    
+          include_once '../../includes/menu_top.php';    
         ?>
         <div class="right_col" role="main">
           <div class="">
@@ -150,11 +150,11 @@ $resultado = $cd->read($_SESSION['empresa_id']);
                               <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $e->getCep(); ?>">
                             </div>
                           </div>
-                          <a href="../View/empresa/editar-dados-empresa.php?id=<?php echo $e->getId()?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                          <a href="../empresa/editar-dados-empresa.php?id=<?php echo $e->getId()?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
                           </form>
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <form class="form-horizontal form-label-left" action="../Controller/sistema_controller/editar-configuracoes.php" method="POST" >
+                        <form class="form-horizontal form-label-left" action="../../Controller/sistema_controller/editar-configuracoes.php" method="POST" >
                          
                         <input type="hidden" name="empresa_id" value="<?php echo $_SESSION['empresa_id']?>">
                           <div class="form-group row">
@@ -264,10 +264,10 @@ $resultado = $cd->read($_SESSION['empresa_id']);
         </div>
       
       <?php  
-        include_once '../includes/rodape_pagina.php';   
+        include_once '../../includes/rodape_pagina.php';   
       ?>
   </div>
 </div>
 <?php
-include_once '../includes/footer.php';
+include_once '../../includes/footer.php';
 ?>

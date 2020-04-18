@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Model;
-require_once "../Model/Conexao.php";
+require_once "../../Model/Conexao.php";
 
 class Usuario {
 

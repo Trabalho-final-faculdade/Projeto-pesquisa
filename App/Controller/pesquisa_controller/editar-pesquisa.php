@@ -8,9 +8,9 @@ if(isset($_POST['id']) && !empty($_POST['id'])
 && isset($_POST['status']) && !empty($_POST['status'])){
 
 
-  require '../Model/conexao.php';
-  require '../Model/Pesquisa.php';
-  require '../Model/PesquisaDao.php';
+  require '../../Model/conexao.php';
+  require '../../Model/Pesquisa.php';
+  require '../../Model/PesquisaDao.php';
 
   $p = new \App\Model\Pesquisa();
   $pd = new \App\Model\PesquisaDao();
@@ -28,7 +28,7 @@ if(isset($_POST['id']) && !empty($_POST['id'])
   }else{
     $_SESSION['editar_pesquisa'] = false;
   }
-  header("Location: ../View/sistema/pagina-inicial.php");      
+  header("Location: ../../View/pesquisa/editar-dados-pesquisa.php?id=".$_POST['id']); 
 }
 
 

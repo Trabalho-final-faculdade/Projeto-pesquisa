@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once '../Model/Usuario.php';
-require_once '../Model/Conexao.php';
+require_once '../../Model/conexao.php';
+require_once '../../Model/Usuario.php';
 
 if(isset($_SESSION['id'])) {
     header("Location: ../View/sistema/pagina-inicial.php");
@@ -20,16 +20,16 @@ if(isset($_SESSION['id'])) {
 
     <title>Nome da empresa | </title>
 
-    <link href="../Public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="../../Public/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../Public/stylesheets/font-awesome.min.css" rel="stylesheet">
+    <link href="../../Public/stylesheets/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../Public/stylesheets/nprogress.css" rel="stylesheet">
+    <link href="../../Public/stylesheets/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="../Public/stylesheets/animate.min.css" rel="stylesheet">
+    <link href="../../Public/stylesheets/animate.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../Public/stylesheets/custom.min.css" rel="stylesheet">
+    <link href="../../Public/stylesheets/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="login">
@@ -40,7 +40,7 @@ if(isset($_SESSION['id'])) {
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form action="../Controller/sistema_controller/logar.php" method="POST">
+            <form action="../../Controller/sistema_controller/logar.php" method="POST">
               <h1>Frase ou banner a escolher</h1>
 
               <div>
@@ -61,7 +61,7 @@ if(isset($_SESSION['id'])) {
               ?>
               <div>
                 <button type="submit" name="btnLogar" class="btn btn-default submit">Logar</button>
-                <a class="reset_pass" href="sistema/recuperar-senha.php">Esqueci minha senha?</a>
+                <a class="reset_pass" href="../sistema/recuperar-senha.php">Esqueci minha senha?</a>
               </div>
 
               <div class="clearfix"></div>

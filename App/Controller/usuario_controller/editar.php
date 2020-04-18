@@ -8,11 +8,11 @@ if(isset($_POST['nome']) && !empty($_POST['nome'])
 && !empty($_POST['nivel_acesso_id'])){
 
 
-require '../Model/conexao.php';
-require '../Model/Usuario.php';
-require '../Model/UsuarioDao.php';
-require '../Model/Telefone.php';
-require '../Model/TelefoneDao.php';
+require '../../Model/conexao.php';
+require '../../Model/Usuario.php';
+require '../../Model/UsuarioDao.php';
+require '../../Model/Telefone.php';
+require '../../Model/TelefoneDao.php';
 
 $u = new \App\Model\Usuario();
 $ud = new \App\Model\UsuarioDao();
@@ -42,6 +42,6 @@ if($td->update($t, $u));
   }
     
 }
-header("Location: ../View/usuario/editar-dados.php?id=".$_POST['id']);
+header("Location: ../../View/usuario/editar-dados.php?id=".$_POST['id']);
 
 ?>

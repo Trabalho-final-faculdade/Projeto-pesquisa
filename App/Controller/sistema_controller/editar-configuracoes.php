@@ -7,9 +7,9 @@ if(isset($_POST['cadastro']) && !empty($_POST['cadastro'])
 && isset($_POST['gerar_relatorio']) && !empty($_POST['gerar_relatorio'])
 && isset($_POST['empresa_id']) && !empty($_POST['empresa_id'])){
 
-    require '../Model/conexao.php';
-    require '../Model/Configuracao.php';
-    require '../Model/ConfiguracaoDao.php';
+    require '../../Model/conexao.php';
+    require '../../Model/Configuracao.php';
+    require '../../Model/ConfiguracaoDao.php';
   
     $c = new \App\Model\Configuracao();
     $cd = new \App\Model\ConfiguracaoDao();
@@ -33,7 +33,7 @@ if(isset($_POST['cadastro']) && !empty($_POST['cadastro'])
    
  }
   
-header("Location: ../View/sistema/configuracoes.php");
+header("Location: ../../View/sistema/configuracoes.php");
   
   ?>
 

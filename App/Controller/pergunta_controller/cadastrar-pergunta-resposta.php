@@ -7,11 +7,11 @@ if(isset($_POST['pesquisa']) && !empty($_POST['pesquisa'])
 && isset($_POST['tipo_pergunta']) && !empty($_POST['tipo_pergunta'])
 && isset($_POST['descricao']) && !empty($_POST['descricao'])){
 
-    require '../Model/conexao.php';
-    require '../Model/Resposta.php';
-    require '../Model/RespostaDao.php';
-    require '../Model/Pergunta.php';
-    require '../Model/PerguntaDao.php';
+    require '../../Model/conexao.php';
+    require '../../Model/Resposta.php';
+    require '../../Model/RespostaDao.php';
+    require '../../Model/Pergunta.php';
+    require '../../Model/PerguntaDao.php';
 
     $p = new \App\Model\Pergunta();
     $pd = new \App\Model\PerguntaDao();
@@ -27,13 +27,13 @@ if(isset($_POST['pesquisa']) && !empty($_POST['pesquisa'])
         foreach($_POST['descricao'] as $descricao):
             $rd->create($descricao, $resultado[0]['id']);
         endforeach;
-        header("Location: ../View/pergunta/cadastrar-pergunta.php?id=".$_POST['pesquisa']); 
+        header("Location: ../../View/pergunta/cadastrar-pergunta.php?id=".$_POST['pesquisa']); 
        
     }else{
         $_SESSION['cadastro_sucesso'] = false;
     }
 }else{
-    header("Location: ../View/sistema/pagina-inicial.php");
+    header("Location: ../../View/sistema/pagina-inicial.php");
 }
 
 ?> 

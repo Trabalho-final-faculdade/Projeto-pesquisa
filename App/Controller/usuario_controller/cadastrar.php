@@ -8,11 +8,11 @@ if(isset($_POST['nome']) && !empty($_POST['nome'])
 && !empty($_POST['nivel_acesso_id'])){
 
 
-require '../Model/conexao.php';
-require '../Model/Usuario.php';
-require '../Model/UsuarioDao.php';
-require '../Model/Telefone.php';
-require '../Model/TelefoneDao.php';
+require '../../Model/conexao.php';
+require '../../Model/Usuario.php';
+require '../../Model/UsuarioDao.php';
+require '../../Model/Telefone.php';
+require '../../Model/TelefoneDao.php';
 
 $u = new \App\Model\Usuario();
 $ud = new \App\Model\UsuarioDao();
@@ -43,5 +43,5 @@ if($ud->create($u)){
 }
     
 }
-header("Location: ../View/usuario/cadastro-usuario.php");
+header("Location: ../../View/usuario/cadastro-usuario.php");
 ?>

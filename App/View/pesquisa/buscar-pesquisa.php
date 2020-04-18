@@ -1,9 +1,9 @@
 <?php
 
-require_once '../../vendor/autoload.php';
+require_once '../../../vendor/autoload.php';
 
-include_once '../includes/header.php';
-include_once '../Model/Nivel_de_acessoDao.php';
+include_once '../../includes/header.php';
+include_once '../../Model/Nivel_de_acessoDao.php';
 session_start();
 if(!isset($_SESSION['id'])) {
     header("Location: sistema/tela-login.php");
@@ -24,9 +24,9 @@ $p = new \App\Model\Pesquisa();
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
         <?php 
-          include_once '../includes/imagem_empresa.php';   
-          include_once '../includes/left_menu.php';    
-          include_once '../includes/menu_top.php';    
+          include_once '../../includes/imagem_empresa.php';   
+          include_once '../../includes/left_menu.php';    
+          include_once '../../includes/menu_top.php';    
         ?>
         <div class="right_col" role="main">
           <div class="">
@@ -150,8 +150,8 @@ $p = new \App\Model\Pesquisa();
                                         <td><?php echo date('d-m-Y', strtotime($resultado['data_final'])); ?> </td>
                                         <td><?php echo $resultado['observacao'] ?> </td>
                                         <td><?php echo $resultado['status'] ?> </td>
-                                        <td> <a href="../View/pesquisa/visualizar-pesquisa.php?id=<?php echo $resultado['id']?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Visualizar </a></td>     
-                                        <td><a href="../View/pesquisa/editar-dados-pesquisa.php?id=<?php echo $resultado['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
+                                        <td> <a href="../../View/pesquisa/visualizar-pesquisa.php?id=<?php echo $resultado['id']?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Visualizar </a></td>     
+                                        <td><a href="../../View/pesquisa/editar-dados-pesquisa.php?id=<?php echo $resultado['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
                                       </tr>
                                       <?php } ?>
                                     </tbody>
@@ -206,10 +206,10 @@ $p = new \App\Model\Pesquisa();
             });
         </script>
       <?php  
-        include_once '../includes/rodape_pagina.php';   
+        include_once '../../includes/rodape_pagina.php';   
       ?>
   </div>
 </div>
 <?php
-include_once '../includes/footer.php';
+include_once '../../includes/footer.php';
 ?>
