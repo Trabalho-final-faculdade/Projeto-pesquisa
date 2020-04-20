@@ -8,7 +8,7 @@ if(isset($_POST['id']) && !empty($_POST['id'])
 && isset($_POST['status']) && !empty($_POST['status'])){
 
 
-  require '../../Model/conexao.php';
+  require '../../Model/Conexao.php';
   require '../../Model/Pesquisa.php';
   require '../../Model/PesquisaDao.php';
 

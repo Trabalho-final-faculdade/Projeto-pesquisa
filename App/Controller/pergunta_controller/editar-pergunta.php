@@ -6,7 +6,7 @@ if(isset($_POST['pergunta']) && !empty($_POST['pergunta'])
 && isset($_POST['tipo_pergunta']) && !empty($_POST['tipo_pergunta'])){
 
 
-  require '../../Model/conexao.php';
+  require '../../Model/Conexao.php';
   require '../../Model/Resposta.php';
   require '../../Model/RespostaDao.php';
   require '../../Model/Pergunta.php';

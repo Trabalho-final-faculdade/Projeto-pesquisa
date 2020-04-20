@@ -4,7 +4,7 @@ session_start();
 if(isset($_POST['cpf']) && !empty($_POST['cpf'])
 && isset($_SESSION['empresa_id']) && !empty($_SESSION['empresa_id'])){
 
-require '../../Model/conexao.php';
+require '../../Model/Conexao.php';
 require '../../Model/Usuario.php';
 require '../../Model/UsuarioDao.php';
 

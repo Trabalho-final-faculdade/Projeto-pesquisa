@@ -11,7 +11,7 @@ if(isset($_POST['id']) && !empty($_POST['id'])
 && !empty($_POST['cep'])){
 
 
-  require '../../Model/conexao.php';
+  require '../../Model/Conexao.php';
   require '../../Model/Empresa.php';
   require '../../Model/EmpresaDao.php';
 

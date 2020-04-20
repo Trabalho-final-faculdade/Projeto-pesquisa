@@ -2,6 +2,9 @@
 
 namespace App\Model;
 
+require_once "../../Model/Conexao.php";
+
+
 class PerguntaDao {
 
   public function create(Pergunta $p) {

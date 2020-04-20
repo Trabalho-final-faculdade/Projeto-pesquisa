@@ -7,7 +7,7 @@ if(isset($_POST['cadastro']) && !empty($_POST['cadastro'])
 && isset($_POST['gerar_relatorio']) && !empty($_POST['gerar_relatorio'])
 && isset($_POST['empresa_id']) && !empty($_POST['empresa_id'])){
 
-    require '../../Model/conexao.php';
+    require '../../Model/Conexao.php';
     require '../../Model/Configuracao.php';
     require '../../Model/ConfiguracaoDao.php';
   

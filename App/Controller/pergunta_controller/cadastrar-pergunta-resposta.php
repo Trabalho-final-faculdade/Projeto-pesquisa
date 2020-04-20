@@ -7,7 +7,7 @@ if(isset($_POST['pesquisa']) && !empty($_POST['pesquisa'])
 && isset($_POST['tipo_pergunta']) && !empty($_POST['tipo_pergunta'])
 && isset($_POST['descricao']) && !empty($_POST['descricao'])){
 
-    require '../../Model/conexao.php';
+    require '../../Model/Conexao.php';
     require '../../Model/Resposta.php';
     require '../../Model/RespostaDao.php';
     require '../../Model/Pergunta.php';

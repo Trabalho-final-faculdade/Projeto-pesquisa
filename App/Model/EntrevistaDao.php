@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Model;
+require_once "../../Model/Conexao.php";
+
 
 class EntrevistaDao {
 

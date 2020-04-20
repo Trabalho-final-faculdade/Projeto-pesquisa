@@ -8,7 +8,7 @@ if(isset($_POST['nome']) && !empty($_POST['nome'])
 && !empty($_POST['nivel_acesso_id'])){
 
 
-require '../../Model/conexao.php';
+require '../../Model/Conexao.php';
 require '../../Model/Usuario.php';
 require '../../Model/UsuarioDao.php';
 require '../../Model/Telefone.php';

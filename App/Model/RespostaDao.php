@@ -2,6 +2,9 @@
 
 namespace App\Model;
 
+require_once "../../Model/Conexao.php";
+
+
 class RespostaDao {
 
   public function create($resposta, $pergunta_id) {

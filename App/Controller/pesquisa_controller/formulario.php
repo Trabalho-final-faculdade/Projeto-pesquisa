@@ -9,7 +9,7 @@ if(isset($_POST['indice'])
 && isset($_POST['entrevistado']) && !empty($_POST['entrevistado']) 
 && isset($_POST['resposta']) && !empty($_POST['resposta'])){
 
-    require '../../Model/conexao.php';
+    require '../../Model/Conexao.php';
     require '../../Model/Questionario.php';
     require '../../Model/QuestionarioDao.php';
     

@@ -2,6 +2,9 @@
 
 namespace App\Model;
 
+require_once "../../Model/Conexao.php";
+
+
 class TelefoneDao {
 
   public function create(Telefone $t) {

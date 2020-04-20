@@ -6,7 +6,7 @@ if(isset($_POST['observacao']) && !empty($_POST['observacao'])
 && isset($_POST['data_inicial']) && !empty($_POST['data_inicial'])
 && isset($_POST['titulo']) && !empty($_POST['titulo'])){
 
-    require '../../Model/conexao.php';
+    require '../../Model/Conexao.php';
     require '../../Model/Pesquisa.php';
     require '../../Model/PesquisaDao.php';
 

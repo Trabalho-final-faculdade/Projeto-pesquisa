@@ -8,7 +8,7 @@ if(isset($_POST['razao_social']) && !empty($_POST['razao_social']) && isset($_PO
 && isset($_POST['pais']) && !empty($_POST['pais']) && isset($_POST['cep'])
 && !empty($_POST['cep'])){
 
-require '../Model/conexao.php';
+require '../Model/Conexao.php';
 require '../Model/Empresa.php';
 require '../Model/EmpresaDao.php';
 

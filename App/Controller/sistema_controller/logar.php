@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) && !empty($_POST['senha'])){
 
-  require '../../Model/conexao.php';
+  require '../../Model/Conexao.php';
   require '../../Model/Usuario.php';
 
   $u = new \App\Model\Usuario();
