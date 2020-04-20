@@ -10,8 +10,8 @@
 		<title>Transitive by TEMPLATED</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="Public/stylesheets/main.css" />
-		<link rel="stylesheet" href="Public/stylesheets/font-awesome.min.css" />
+		<link rel="stylesheet" href="App/Public/stylesheets/main.css" />
+		<link rel="stylesheet" href="App/Public/stylesheets/font-awesome.min.css" />
 	</head>
 	<body>
 
@@ -40,7 +40,7 @@
 			formats to work correctly.
 		-->
 				<div class="image fit">
-					<img src="Public/imagens/banner-tela-inicial.jpg" alt="" />
+					<img src="App/Public/imagens/banner-tela-inicial.jpg" alt="" />
 					<div class="inner" style="position: absolute; top: 200px; width: 1400px; text-align: center; line-height: 30px; font-size: 120%">
 						<h1>Transitive</h1>
 						<p>A full responsive, business-oriented HTML5/CSS3 template<br />
@@ -56,7 +56,7 @@
 					<div>
 						<div class="box">
 							<div class="image fit">
-								<img src="Public/tela-inicial/images/pic01.jpg" alt="" />
+								<img src="App/Public/tela-inicial/images/pic01.jpg" alt="" />
 							</div>
 							<div class="content">
 								<header class="align-center">
@@ -115,7 +115,7 @@
 						<div>
 							<div class="box">
 								<div class="image fit">
-									<img src="Public/tela-inicial/images/pic02.jpg" alt="" />
+									<img src="App/Public/tela-inicial/images/pic02.jpg" alt="" />
 								</div>
 								<div class="content">
 									<header class="align-center">
@@ -131,7 +131,7 @@
 						<div>
 							<div class="box">
 								<div class="image fit">
-									<img src="Public/tela-inicial/images/pic03.jpg" alt="" />
+									<img src="App/Public/tela-inicial/images/pic03.jpg" alt="" />
 								</div>
 								<div class="content">
 									<header class="align-center">
@@ -207,12 +207,12 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="Public/javascripts/jquery.min.js"></script>
-			<script src="Public/javascripts/jquery.scrolly.min.js"></script>
-			<script src="Public/javascripts/jquery.scrollex.min.js"></script>
-			<script src="Public/javascripts/skel.min.js"></script>
-			<script src="Public/javascripts/util.js"></script>
-			<script src="Public/javascripts/main.js"></script>
+			<script src="App/Public/javascripts/jquery.min.js"></script>
+			<script src="App/Public/javascripts/jquery.scrolly.min.js"></script>
+			<script src="App/Public/javascripts/jquery.scrollex.min.js"></script>
+			<script src="App/Public/javascripts/skel.min.js"></script>
+			<script src="App/Public/javascripts/util.js"></script>
+			<script src="App/Public/javascripts/main.js"></script>
 
 	</body>
 </html>
