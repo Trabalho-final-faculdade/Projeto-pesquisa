@@ -38,16 +38,10 @@ class RespostaDao {
       $stmt->bindValue('resposta', $resposta);
   
       $stmt->execute();
-    endforeach;    
 
-    // $sql = 'UPDATE usuarios SET usuario = ?, senha = MD5(?) WHERE id =?';
-    //
-    // $stmt = Conexao::getConn()->prepare($sql);
-    // $stmt->bindValue(1, $p->getUsuario());
-    // $stmt->bindValue(2, $p->getSenha());
-    // $stmt->bindValue(3, $p->getId());
-    //
-    // $stmt->execute();
+      
+    endforeach;    
+    return true;
   }
 
   public function delete($id) {

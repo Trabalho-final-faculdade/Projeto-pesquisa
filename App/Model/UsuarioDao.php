@@ -39,6 +39,19 @@ class UsuarioDao {
       endif;
   }
 
+  public function todos_usuarios() {
+    global $pdo;
+    $sql = "Select * from usuarios";
+    $sql = $pdo->prepare($sql);
+
+    $sql->execute();
+
+     if($sql->rowCount() > 0):
+       $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
+      endif;
+  }
+
   public function buscar_entrevistado($valor, $empresa) {
     global $pdo;
     $sql = "SELECT * FROM usuarios WHERE cpf = :valor AND empresa_id = :empresa_id AND nivel_acesso_id = 5";

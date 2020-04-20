@@ -8,7 +8,7 @@ include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: sistema/tela-login.php");
+    header("Location: ../sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -61,7 +61,26 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
               </div>
             </div>
             <div class="clearfix"></div>
-
+            <?php
+                if(isset($_SESSION['editar_pesquisa']) && $_SESSION['editar_pesquisa'] == true):
+            ?>
+              <div class="alert alert-success" role="alert">
+                <p>Pesquisa editada com sucesso!!!</p>
+              </div>
+            <?php
+              unset($_SESSION['editar_pesquisa']);
+            endif;
+            ?>
+             <?php
+                if(isset($_SESSION['editar_pergunta']) && $_SESSION['editar_pergunta'] == true):
+            ?>
+              <div class="alert alert-success" role="alert">
+                <p>Pergunta editada com sucesso!!!</p>
+              </div>
+            <?php
+              unset($_SESSION['editar_pergunta']);
+            endif;
+            ?>
             <div class="row">
 
               <div class="col-md-12 col-sm-12 ">
@@ -122,7 +141,12 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
                       </div>
                       <div class="actionBar">
                         <div class="loader">
-                          <button type="submit" name="btnCadastrar" class="buttonNext btn btn-success">Editar</button>
+                          <button type="submit" name="btnEditar" class="buttonNext btn btn-success">Editar</button>
+                        </div>
+                      </div>
+                      <div class="actionBar">
+                        <div class="loader">     
+                          <a href="../../View/pergunta/cadastrar-pergunta.php?id=<?php echo $p->getId() ?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Adicionar pergunta </a>                                                           
                         </div>
                       </div>
                     </br></br>

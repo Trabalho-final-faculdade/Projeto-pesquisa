@@ -6,16 +6,19 @@ include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: sistema/tela-login.php");
+    header("Location: ../sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
 $ud = new \App\Model\UsuarioDao();
+$pesquisas = new \App\Model\PesquisaDao();
 $ud->read($_SESSION['id']);
-
+$todos_usuarios = $ud->todos_usuarios();
+$count = 0;
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
 endforeach;
+$pesquisas_andamento = $pesquisas->buscar_pesquisas_estado('em andamento');
 
 ?>
 <div class="container body">
@@ -42,49 +45,34 @@ endforeach;
     <!-- page content -->
     <div class="right_col" role="main">
       <!-- top tiles -->
-      <div class="row" style="display: inline-block;" >
+      <div class="row" style="display: block;" >
       <div class="tile_count">
-        <div class="col-md-2 col-sm-4  tile_stats_count">
-          <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-          <div class="count">2500</div>
-          <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+        <div class="col-sm-4  tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Total de usuários</span>
+          <div class="count"><?php echo count($todos_usuarios) ?></div>
         </div>
-        <div class="col-md-2 col-sm-4  tile_stats_count">
-          <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-          <div class="count">123.50</div>
-          <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+        <div class="col-sm-4  tile_stats_count">
+          <span class="count_top"><i class="fa fa-clock-o"></i> Pesquisas andamento </span>
+          <div class="count"><?php echo count($pesquisas_andamento) ?> </div>
         </div>
-        <div class="col-md-2 col-sm-4  tile_stats_count">
-          <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-          <div class="count green">2,500</div>
-          <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-        </div>
-        <div class="col-md-2 col-sm-4  tile_stats_count">
-          <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-          <div class="count">4,567</div>
-          <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
-        </div>
-        <div class="col-md-2 col-sm-4  tile_stats_count">
-          <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-          <div class="count">2,315</div>
-          <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-        </div>
-        <div class="col-md-2 col-sm-4  tile_stats_count">
-          <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-          <div class="count">7,325</div>
-          <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+        <div class="col-sm-4  tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Pesquisas respondidas</span>
+          <?php foreach($pesquisas->retornar_numero_pesquisas_realizadas() as $todas_pesquisas):
+            $count += $todas_pesquisas['count(DISTINCT entrevistado_id)'];
+            
+          endforeach;?>
+          <div class="count"><?php echo $count ?> </div>
         </div>
       </div>
     </div>
       <!-- /top tiles -->
-
       <div class="row">
         <div class="col-md-12 col-sm-12 ">
           <div class="dashboard_graph">
 
             <div class="row x_title">
               <div class="col-md-6">
-                <h3>Network Activities <small>Graph title sub-title</small></h3>
+                <h3>Pesquisas finalizadas <small>nos últimos 6 dias </small></h3>
               </div>
               <div class="col-md-6">
                 <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
@@ -99,7 +87,7 @@ endforeach;
             </div>
             <div class="col-md-3 col-sm-3  bg-white">
               <div class="x_title">
-                <h2>Top Campaign Performance</h2>
+                <h2>Top pesquisa mais respondidas</h2>
                 <div class="clearfix"></div>
               </div>
 

@@ -9,8 +9,8 @@
                 <ul class="nav child_menu">
                   <li><a href="../usuario/cadastro-usuario.php">Cadastrar</a></li>
                   <li><a href="../usuario/buscar-usuarios.php">Buscar</a></li>
-                  <li><a href="tables.html">Historico de pesquisas</a></li>
-                  <li><a href="tables_dynamic.html">Listar bloqueados</a></li>
+                  <li><a href="tables.html">Historico de pesquisas#</a></li>
+                  <li><a href="tables_dynamic.html">Listar bloqueados#</a></li>
                 </ul>
               </li>
               <li><a><i class="fa fa-edit"></i> Pesquisas <span class="fa fa-chevron-down"></span></a>
@@ -21,16 +21,16 @@
                 </ul>
               </li>
             
-              <li><a><i class="fa fa-bar-chart-o"></i> Configuracoes <span class="fa fa-chevron-down"></span></a>
+              <li><a><i class="fa fa-bar-chart-o"></i> Configuracoes#<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="chartjs.html">Sistema</a></li>
-                  <li><a href="chartjs2.html">Layout</a></li>
+                  <li><a href="chartjs.html">Sistema#</a></li>
+                  <li><a href="chartjs2.html">Layout#</a></li>
                  
                 </ul>
               </li>
-              <li><a><i class="fa fa-clone"></i>Relatorios <span class="fa fa-chevron-down"></span></a>
+              <li><a><i class="fa fa-clone"></i>Relatorios# <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="fixed_sidebar.html">Resultados de pesquisas</a></li>
+                  <li><a href="fixed_sidebar.html">Resultados de pesquisas#</a></li>
                 </ul>
               </li>
             </ul>

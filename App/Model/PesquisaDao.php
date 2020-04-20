@@ -94,6 +94,20 @@ class PesquisaDao {
 
   }
 
+  public function retornar_numero_pesquisas_realizadas(){
+    global $pdo;
+    $sql = 'select pesquisa_id, count(DISTINCT entrevistado_id) from questionarios group by pesquisa_id';
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0):
+      $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+       return $resultado;
+    endif;
+
+  }
+
   public function update(Pesquisa $p) {
     global $pdo;
     $sql = 'UPDATE pesquisas SET titulo = :titulo,  data_inicial = :data_inicial, data_final = :data_final, status = :status , observacao = :observacao WHERE id = :id';

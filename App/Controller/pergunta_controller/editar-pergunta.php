@@ -12,7 +12,6 @@ if(isset($_POST['pergunta']) && !empty($_POST['pergunta'])
   require '../../Model/Pergunta.php';
   require '../../Model/PerguntaDao.php';
 
-
   $p = new \App\Model\Pergunta();
   $pd = new \App\Model\PerguntaDao();
 
@@ -30,11 +29,11 @@ if(isset($_POST['pergunta']) && !empty($_POST['pergunta'])
   }
 
     if($rd->update($_POST['resposta'])){ 
-        $_SESSION['editar_pesquisa'] = true;
+        $_SESSION['editar_pergunta'] = true;
     }else{
-        $_SESSION['editar_pesquisa'] = false;
+        $_SESSION['editar_pergunta'] = false;
     }
-  header("Location: ../../View/pergunta/editar-dados-pergunta.php?id=".$_POST['id']);      
+  header("Location: ../../View/pesquisa/editar-dados-pesquisa.php?id=".$_POST['pesquisa_id']);      
 }
     
 ?>

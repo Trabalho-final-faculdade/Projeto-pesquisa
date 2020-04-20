@@ -6,7 +6,7 @@ include_once '../../includes/header.php';
 include_once '../../Model/Nivel_de_acessoDao.php';
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: sistema/tela-login.php");
+    header("Location: ../sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -93,10 +93,17 @@ endforeach;
                           </div>
                           
                           <div class="form-group row" id="busca">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="input_busca">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="input_busca">Busca:
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text" id="input_busca" value="<?php if(isset($_POST['input_busca'])){ echo $_POST['input_busca'];} ?>" name="input_busca" autocomplete="off" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group row" id="busca_cpf">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="input_cpf">CPF:
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                              <input type="text" id="input_cpf" name="input_cpf" value="<?php if(isset($_POST['input_cpf'])){ echo $_POST['input_cpf'];} ?>" minlength="14" autocomplete="off" maxlength="11" class="form-control" onkeypress="$(this).mask('000.000.000-00');">
                             </div>
                           </div>
                           <div class="ln_solid">
@@ -110,11 +117,15 @@ endforeach;
                       $busca_usuario = filter_input(INPUT_POST, 'SendPesqUser', FILTER_SANITIZE_STRING);
                       $select = filter_input(INPUT_POST, 'select_busca', FILTER_SANITIZE_STRING);
                       $valor = filter_input(INPUT_POST, 'input_busca', FILTER_SANITIZE_STRING);
+                      $cpf = filter_input(INPUT_POST, 'input_cpf', FILTER_SANITIZE_STRING);
                       $nivel_acesso = filter_input(INPUT_POST, 'nivel_acesso', FILTER_SANITIZE_STRING);
                       if($busca_usuario == true){
-                        if(isset($valor) && $valor == ''){
+                        if(isset($select) && $select == 'nivel'){
                           $valor = $nivel_acesso;
-                        }
+                        }else if(isset($select) && $select == 'cpf'){
+                          $valor = $cpf;
+                        };
+            
                         $resultados = $ud->buscar_usuarios($select, $valor, $_SESSION['empresa_id']);
                       
                         if(isset($resultados[0]['id']) && $resultados[0]['id'] > 0){
@@ -163,8 +174,8 @@ endforeach;
                         <?php 
                         }else{
                         ?>
-                        <div class="alert alert-error" role="alert">
-                          Nada encontrado na pesquisa!!!
+                        <div class="alert alert-danger" role="alert">
+                          Nada encontrado nesta pesquisa!
                         </div>
                      
                       <?php }
@@ -179,6 +190,7 @@ endforeach;
           $(document).ready(function(){
 	
           var busca = document.getElementById('busca');
+              busca_cpf = document.getElementById('busca_cpf');
               input_busca = document.getElementById('input_busca');
               select = document.getElementById('select_busca');
               nivel = document.getElementById('nivel_acesso_id');
@@ -186,10 +198,17 @@ endforeach;
                 if(select.value == ''){
                   busca.style.display = 'none';
                   nivel.style.display = 'none';
+                  busca_cpf.style.display = 'none';
                 }else if(select.value == 'nivel'){
                   busca.style.display = 'none';
+                  busca_cpf.style.display = 'none';
                   nivel.style.display = 'block';
+                }else if(select.value == 'cpf'){
+                  busca_cpf.style.display = 'block';
+                  busca.style.display = 'none';
+                  nivel.style.display = 'none';
                 }else{
+                  busca_cpf.style.display = 'none';
                   busca.style.display = 'block';
                   nivel.style.display = 'none';
                   input_busca.placeholder = "Insira a informação aqui";

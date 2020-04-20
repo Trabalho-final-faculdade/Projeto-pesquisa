@@ -1,23 +1,21 @@
 <?php
 
-require_once '../../vendor/autoload.php';
+require_once '../../../vendor/autoload.php';
 
-include_once '../includes/header.php';
+include_once '../../includes/header.php';
 session_start();
-if(!isset($_SESSION['id'])) {
-    header("Location: sistema/tela-login.php");
-}
-
+if(!isset($_SESSION['id'])):
+    header("Location: ../sistema/tela-login.php");
+endif;
+$count = 1;
 $usuario_logado = new \App\Model\Usuario();
 $ud = new \App\Model\UsuarioDao();
-
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
 endforeach;
 
 $pd = new \App\Model\PesquisaDao(); 
 $p = new \App\Model\Pesquisa();
-
 if(isset($_SESSION['indice'])){
     $i = $_SESSION['indice'];
 }else{
@@ -39,9 +37,9 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <?php 
-                include_once '../includes/imagem_empresa.php';   
-                include_once '../includes/left_menu.php';    
-                include_once '../includes/menu_top.php';    
+                include_once '../../includes/imagem_empresa.php';   
+                include_once '../../includes/left_menu.php';    
+                include_once '../../includes/menu_top.php';    
                 ?>
                 <div class="right_col" role="main">
                     <div class="">
@@ -111,16 +109,15 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
                                 <?php
                                 $busca_pesquisa = filter_input(INPUT_POST, 'SendPesqUser', FILTER_SANITIZE_STRING);
                                 $select = filter_input(INPUT_POST, 'resultado_pesquisa', FILTER_SANITIZE_STRING);
-                                if($busca_pesquisa == true || $_SESSION['indice']){
-                                    if(isset($_SESSION['pesquisa_id'])){
+                                if($busca_pesquisa == true || (isset($_SESSION['indice']) && $_SESSION['indice'] > 0)):
+                                    if(isset($_SESSION['pesquisa_id'])):
                                        $select = $_SESSION['pesquisa_id'];
-                                    }
-                                    if(isset($select)){
+                                    endif;
+                                    if(isset($select)):
                                         $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($select);
-                                    
-                                    }
+                                    endif;
                                     ?>
-                                    <form action="../Controller/pesquisa_controller/formulario.php" method="POST">
+                                    <form action="../../Controller/pesquisa_controller/formulario.php" method="POST">
                                         <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
                                             <div class="panel">
                                                 <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
@@ -140,18 +137,16 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    
+                                                                <tr>                                      
                                                                     <?php
-                                                                        foreach($respostaDao->read($todas_perguntas[$i]['id']) as $r): ?>
-                                                                            <?php if($todas_perguntas[$i]['tipo'] == 'dicotonica' || $todas_perguntas[$i]['tipo'] == 'resposta_unica'){ ?>
-
-                                                                                <td><input type='radio' value="<?php echo $r['id'] ?>" name="resposta[]" ><?php echo $r['resposta'] ?></td>
-                                                                            <?php  }else{ ?>
-                                                                                <td><input type='checkbox' value="<?php echo $r['id'] ?>" name="resposta[]" ><?php echo $r['resposta'] ?></td>
-                                                                            <?php  }?>
-                                                                            </br>
-                                                                        <?php  endforeach; ?>
+                                                                    foreach($respostaDao->read($todas_perguntas[$i]['id']) as $r): ?>
+                                                                        <?php if($todas_perguntas[$i]['tipo'] == 'dicotonica' || $todas_perguntas[$i]['tipo'] == 'resposta_unica'){ ?>
+                                                                            <td><input type='radio' value="<?php echo $r['id'] ?>" name="resposta[]" ><?php echo $r['resposta'] ?></td>
+                                                                        <?php  }else{ ?>
+                                                                            <td><input type='checkbox' value="<?php echo $r['id'] ?>" name="resposta[]" ><?php echo $r['resposta'] ?></td>
+                                                                        <?php  }
+                                                                    endforeach;?>
+                                                                    </br>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -162,16 +157,19 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <?php }else{
-                                                               $_SESSION['indice'] = 0;
-                                                        } ?>
+                                                    <?php }else{
+                                                        $_SESSION['indice'] = 0;
+                                                        unset($_SESSION['pesquisa_id']);?>
+                                                        <div class="alert alert-success" role="alert">
+                                                            Pesquisa realizada com sucesso!!!
+                                                        </div>
+                                                    <?php } ?>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
-                                <?php 
-                                } ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -181,5 +179,5 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
     </div>
 </div>
 <?php
-include_once '../includes/footer.php';
+include_once '../../includes/footer.php';
 ?>

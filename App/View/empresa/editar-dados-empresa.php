@@ -8,7 +8,7 @@ include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: sistema/tela-login.php");
+    header("Location: ../sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -90,7 +90,7 @@ $e->setCep($resultados[0]['cep']);
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="cnpj">Cnpj <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <input type="text" id="cnpj" name="cnpj" minlength="5" value="<?php echo $e->getCnpj(); ?>" required="required" autocomplete="off" class="form-control" maxlength="40">
+                          <input type="text" id="cnpj" name="cnpj" minlength="5" value="<?php echo $e->getCnpj(); ?>" required="required" autocomplete="off" class="form-control" maxlength="40" onkeypress="$(this).mask('99.999.999/9999-99')">
                         </div>
                       </div>
                   
@@ -138,7 +138,7 @@ $e->setCep($resultados[0]['cep']);
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="cep">Cep: <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <input type="text" id="cep" name="cep" minlength="5" value="<?php echo $e->getCep(); ?>" required="required" autocomplete="off" class="form-control" maxlength="40">
+                          <input type="text" id="cep" name="cep" minlength="5" value="<?php echo $e->getCep(); ?>" required="required" autocomplete="off" class="form-control" maxlength="40" onkeypress="$(this).mask('99999-999')">
                         </div>
                       </div>
                       <div class="actionBar">

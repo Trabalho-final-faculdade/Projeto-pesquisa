@@ -98,7 +98,7 @@ class Usuario {
   public function logar($email, $senha) {
     global $pdo;
 
-      $sql = "Select * from usuarios where email = :email and senha = :senha";
+      $sql = "Select * from usuarios where email = :email and senha = :senha and nivel_acesso_id <> 5";
       $sql = $pdo->prepare($sql);
 
       $sql->bindValue("email", $email);

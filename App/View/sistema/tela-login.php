@@ -5,7 +5,7 @@ require_once '../../Model/conexao.php';
 require_once '../../Model/Usuario.php';
 
 if(isset($_SESSION['id'])) {
-    header("Location: ../View/sistema/pagina-inicial.php");
+    header("Location: ../../View/sistema/pagina-inicial.php");
 }
 
 ?>
@@ -52,7 +52,7 @@ if(isset($_SESSION['id'])) {
               <?php
                 if(isset($_SESSION['nao_autenticado'])):
               ?>
-              <div class="">
+              <div class="alert alert-danger" role="alert">
                 <p>ERRO: Usuário ou senha INVALIDOS</p>
               </div>
               <?php

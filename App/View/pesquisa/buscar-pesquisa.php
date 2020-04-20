@@ -6,7 +6,7 @@ include_once '../../includes/header.php';
 include_once '../../Model/Nivel_de_acessoDao.php';
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: sistema/tela-login.php");
+    header("Location: ../sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -78,7 +78,7 @@ $p = new \App\Model\Pesquisa();
                             </div>
                           </div>
                           <div class="form-group row" id="estado">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="busca">Busca por: <span class="required">*</span>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="busca">Status: <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                               <select name="select_estado" id="select_estado" class="form-control">
@@ -108,7 +108,7 @@ $p = new \App\Model\Pesquisa();
                       $select = filter_input(INPUT_POST, 'select_estado', FILTER_SANITIZE_STRING);
                       $select_busca = filter_input(INPUT_POST, 'select_busca', FILTER_SANITIZE_STRING);
                       if($busca_pesquisa == true){
-                        if(isset($_POST['input_busca']) && $_POST['input_busca'] != ""){
+                        if(isset($_POST['input_busca']) && $_POST['input_busca'] != "" && $select_busca != 'estado'){
                           $resultados = $pd->buscar_pesquisas($_POST['input_busca'], $select_busca);
                         }else{
                           $resultados = $pd->buscar_pesquisas_estado($select);

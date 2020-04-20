@@ -8,7 +8,7 @@ include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: sistema/tela-login.php");
+    header("Location: ../sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -28,6 +28,7 @@ $pergunta->setId($resultados[0]['id']);
 $pergunta->setTipoPergunta($resultados[0]['tipo']);
 $pergunta->setPergunta($resultados[0]['pergunta']);
 $pergunta->setTipoPergunta($resultados[0]['tipo']);
+$pergunta->setPesquisaId($resultados[0]['pesquisa_id']);
 
 $resultado = $perguntaDao->buscar_pergunta($pergunta->getId());
 
@@ -76,7 +77,8 @@ $resultado = $perguntaDao->buscar_pergunta($pergunta->getId());
                   <div id="step-1">
                   <form class="form-horizontal form-label-left" action="../../Controller/pergunta_controller/editar-pergunta.php" method="POST" onsubmit="return validaForm(this);"> 
                      <input type='hidden' name="id" id="id" value="<?php echo $pergunta->getId();?>">
-                      <h2>Pergunta e respostas.</h2></br></br>
+                     <input type='hidden' name="pesquisa_id" id="pesquisa_id" value="<?php echo $pergunta->getPesquisaId();?>">
+                     <h2>Pergunta e respostas.</h2></br></br>
                         <div class="form-group row">
                           <label class="col-form-label col-md-3 col-sm-3 label-align">Pergunta<span class="required">*</span>
                           </label>

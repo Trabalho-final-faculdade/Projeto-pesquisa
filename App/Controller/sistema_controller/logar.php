@@ -27,7 +27,7 @@ if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) &
   }
 }else{
   $_SESSION['nao_autenticado'] = true;
-  header("Location: ../../View/sistema/tela-login.php");
+  header("Location: ../../../View/sistema/tela-login.php");
   exit;
 }
 

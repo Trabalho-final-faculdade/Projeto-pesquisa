@@ -8,7 +8,7 @@ include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: sistema/tela-login.php");
+    header("Location: ../sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -90,8 +90,18 @@ endforeach;
                     <div class="x_panel">
                         <form method="POST" name="frm_campo_dinamico" action="../../Controller/pergunta_controller/cadastrar-pergunta-resposta.php">
                           <div class="x_title">
+                                <?php
+                                  if(isset($_SESSION['pesquisa_cadastrada']) && $_SESSION['pesquisa_cadastrada'] == true):
+                                ?>
+                                <div class="alert alert-success" role="alert">
+                                  <p>Pesquisa cadastrada com sucesso!!!</p>
+                                </div>
+                                <?php
+                                  unset($_SESSION['pesquisa_cadastrada']);
+                                endif;
+                                ?>
                                 <h2>Cadastrar pergunta.</h2>
-                                <ul class="nav navbar-right panel_toolbox">
+                                    <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                                 </ul>
                                 <div class="clearfix"></div>
@@ -102,8 +112,8 @@ endforeach;
                                   <label class="col-form-label col-md-3 col-sm-3 label-align" for="pesquisa">Pergunta relacionada a pesquisa: <span class="required">*</span>
                                   </label>
                                   <div class="col-md-6 col-sm-6 ">
-                                  <input type="hidden" id="pesquisa" name="pesquisa" minlength="5" value="<?php echo $p->getId()?>" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required="required" autocomplete="off" class="form-control" maxlength="40">  
-                                  <input type="text" id="" disabled="true" name="" minlength="5" value="<?php echo $p->getTitulo()?>" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required="required" autocomplete="off" class="form-control" maxlength="40">
+                                  <input type="hidden" id="pesquisa" name="pesquisa" minlength="5" value="<?php echo $p->getId()?>" required="required" autocomplete="off" class="form-control" maxlength="40">  
+                                  <input type="text" id="" disabled="true" name="" minlength="5" value="<?php echo $p->getTitulo()?>" required="required" autocomplete="off" class="form-control" maxlength="40">
                                 </div>
                             </div>
                             <div class="x_content">
@@ -112,7 +122,7 @@ endforeach;
                                   <label class="col-form-label col-md-3 col-sm-3 label-align" for="pergunta">Pergunta: <span class="required">*</span>
                                   </label>
                                   <div class="col-md-6 col-sm-6 ">
-                                  <input type="text" id="pergunta" name="pergunta" minlength="5" value="" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required="required" autocomplete="off" class="form-control" maxlength="40">
+                                  <input type="text" id="pergunta" name="pergunta" minlength="5" value="" required="required" autocomplete="off" class="form-control" maxlength="40">
                                 </div>
                             </div>
                             <div class="form-group row">

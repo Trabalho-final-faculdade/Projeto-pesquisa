@@ -1,12 +1,12 @@
 <?php
 
-require_once '../../vendor/autoload.php';
+require_once '../../../vendor/autoload.php';
 
-include_once '../includes/header.php';
-include_once '../Model/Nivel_de_acessoDao.php';
+include_once '../../includes/header.php';
+include_once '../../Model/Nivel_de_acessoDao.php';
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: sistema/tela-login.php");
+    header("Location: ../sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -23,9 +23,9 @@ endforeach;
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
         <?php 
-          include_once '../includes/imagem_empresa.php';   
-          include_once '../includes/left_menu.php';    
-          include_once '../includes/menu_top.php';    
+          include_once '../../includes/imagem_empresa.php';   
+          include_once '../../includes/left_menu.php';    
+          include_once '../../includes/menu_top.php';    
         ?>
         <div class="right_col" role="main">
           <div class="">
@@ -62,7 +62,7 @@ endforeach;
                   </div>
                   <div class="x_content">
                     <div id="step-1">
-                      <form class="form-horizontal form-label-left" action="../Controller/usuario_controller/buscar-entrevistado.php" method="POST">
+                      <form class="form-horizontal form-label-left" action="../../Controller/usuario_controller/buscar-entrevistado.php" method="POST">
                         <div class="form-group row">
                             
                           <div class="form-group row" id="busca">
@@ -110,10 +110,10 @@ endforeach;
             });
         </script>
       <?php  
-        include_once '../includes/rodape_pagina.php';   
+        include_once '../../includes/rodape_pagina.php';   
       ?>
   </div>
 </div>
 <?php
-include_once '../includes/footer.php';
+include_once '../../includes/footer.php';
 ?>

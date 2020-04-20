@@ -21,6 +21,7 @@ if(isset($_POST['observacao']) && !empty($_POST['observacao'])
 
     if($pd->create($p)){
        $resultado = $pd->buscar_pesquisas_titulo($_POST['titulo']);
+       $_SESSION['pesquisa_cadastrada'] = true;
        header("Location: ../../View/pergunta/cadastrar-pergunta.php?id=".$resultado[0]['id']);
     }else{
        header("Location: ../../View/pesquisa/cadastrar-pesquisa.php");

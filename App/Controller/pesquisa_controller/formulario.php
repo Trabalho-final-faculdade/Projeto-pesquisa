@@ -9,9 +9,9 @@ if(isset($_POST['indice'])
 && isset($_POST['entrevistado']) && !empty($_POST['entrevistado']) 
 && isset($_POST['resposta']) && !empty($_POST['resposta'])){
 
-    require '../Model/conexao.php';
-    require '../Model/Questionario.php';
-    require '../Model/QuestionarioDao.php';
+    require '../../Model/conexao.php';
+    require '../../Model/Questionario.php';
+    require '../../Model/QuestionarioDao.php';
     
     $q = new \App\Model\Questionario();
     $qd = new \App\Model\QuestionarioDao();
@@ -26,7 +26,7 @@ if(isset($_POST['indice'])
     if($qd->create($q)){
         $_SESSION['indice'] = $numero;
         $_SESSION['pesquisa_id'] = $_POST['pesquisa'];
-        header("Location: ../View/pesquisa/pesquisa.php");
+        header("Location: ../../View/pesquisa/pesquisa.php");
     }else{
         return false;
     }

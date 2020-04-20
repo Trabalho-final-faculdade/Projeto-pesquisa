@@ -8,7 +8,7 @@ include_once '../../includes/header.php';
 
 session_start();
 if(!isset($_SESSION['id'])) {
-    header("Location: sistema/tela-login.php");
+    header("Location: ../sistema/tela-login.php");
 }
 
 $usuario_logado = new \App\Model\Usuario();
@@ -68,7 +68,7 @@ endforeach;
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="titulo">Titulo da pesquisa: <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="titulo" name="titulo" minlength="5" value="" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required="required" autocomplete="off" class="form-control" maxlength="40">
+                                    <input type="text" id="titulo" name="titulo" minlength="5" value="" required="required" autocomplete="off" class="form-control" maxlength="40">
                                 </div>
                             </div>
                             <div class="form-group row">
