@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-include '../../Model/conexao.php';
 require_once '../../Model/Usuario.php';
 
 if(isset($_SESSION['id'])) {
