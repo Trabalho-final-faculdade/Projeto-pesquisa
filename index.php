@@ -25,7 +25,7 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="index.php">Página inicial</a></li>
-					<li><a href="sistema/tela-login.php">Logar</a></li>
+					<li><a href="App/View/sistema/tela-login.php">Logar</a></li>
 					<li><a href="elements.html">Pesquisas abertas</a></li>
 					<li><a href="elements.html">Quem somos</a></li>
 					<li><a href="elements.html">Dúvidas frequentes</a></li>
