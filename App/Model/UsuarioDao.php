@@ -67,6 +67,20 @@ class UsuarioDao {
       endif;
   }
 
+  public function verificar_email($email) {
+    global $pdo;
+    $sql = "SELECT * FROM usuarios WHERE email = :email";
+    $sql = $pdo->prepare($sql);
+
+    $sql->bindValue("email", $email);
+    $sql->execute();
+
+     if($sql->rowCount() > 0):
+       $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
+      endif;
+  }
+
   public function update(Usuario $u) {
     global $pdo;
     $sql = 'UPDATE usuarios SET nome = :nome, cpf = :cpf, data_nascimento = DATE(:data_nascimento), genero = :genero, email = :email, senha = MD5(:senha), nivel_acesso_id = :nivelAcesso_id WHERE id = :id';
@@ -82,6 +96,19 @@ class UsuarioDao {
 
     $stmt->execute();
 
+   
+  }
+
+  public function alterar_senha($senha, $id) {
+    global $pdo;
+    $sql = 'UPDATE usuarios SET senha = MD5(:senha) WHERE id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue('senha', $senha);
+    $stmt->bindValue('id', $id);
+   
+    $stmt->execute();
+
+    return true;
    
   }
 

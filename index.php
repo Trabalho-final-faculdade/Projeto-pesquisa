@@ -1,10 +1,4 @@
-
 <!DOCTYPE HTML>
-<!--
-	Transitive by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <html>
 	<head>
 		<title>Transitive by TEMPLATED</title>
@@ -14,14 +8,10 @@
 		<link rel="stylesheet" href="App/Public/stylesheets/font-awesome.min.css" />
 	</head>
 	<body>
-
-		<!-- Header -->
-			<header id="header" class="alt">
-				<div class="logo"><a href="index.php">Nome da empresa <span>Texto auxiliar</span></a></div>
-				<a href="#menu" class="toggle"><span>Menu</span></a>
-			</header>
-
-		<!-- Nav -->
+		<header id="header" class="alt">
+			<div class="logo"><a href="index.php">Nome da empresa <span>Texto auxiliar</span></a></div>
+			<a href="#menu" class="toggle"><span>Menu</span></a>
+		</header>
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="index.php">Página inicial</a></li>
@@ -32,25 +22,16 @@
 					<li><a href="elements.html">Fale conosco</a></li>
 				</ul>
 			</nav>
-
-		<!-- Banner -->
-		<!--
-			To use a video as your background, set data-video to the name of your video without
-			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
-			formats to work correctly.
-		-->
-				<div class="image fit">
-					<img src="App/Public/imagens/banner-tela-inicial.jpg" alt="" />
-					<div class="inner" style="position: absolute; top: 200px; width: 1400px; text-align: center; line-height: 30px; font-size: 120%">
-						<h1>Transitive</h1>
-						<p>A full responsive, business-oriented HTML5/CSS3 template<br />
-						built by <a href="https://templated.co/">Templated</a> and released under the <a href="https://templated.co/license">Creative Commons</a>.</p>
-						<a href="#one" class="button special scrolly">Get Started</a>
-					</div>
+			<div class="image fit">
+				<img src="App/Public/imagens/banner-tela-inicial.jpg" alt="" />
+				<div class="inner" style="position: absolute; top: 200px; width: 1400px; text-align: center; line-height: 30px; font-size: 120%">
+					<h1>Transitive</h1>
+					<p>A full responsive, business-oriented HTML5/CSS3 template<br />
+					built by <a href="https://templated.co/">Templated</a> and released under the <a href="https://templated.co/license">Creative Commons</a>.</p>
+					<a href="#one" class="button special scrolly">Get Started</a>
 				</div>
+			</div>
 
-
-		<!-- One -->
 			<section id="one" class="wrapper style2">
 				<div class="inner">
 					<div>
@@ -72,7 +53,6 @@
 				</div>
 			</section>
 
-		<!-- Two -->
 			<section id="two" class="wrapper style3">
 				<div class="inner">
 					<div id="flexgrid">
@@ -107,7 +87,6 @@
 				</div>
 			</section>
 
-		<!-- Three -->
 			<section id="three" class="wrapper style2">
 				<div class="inner">
 					<div class="grid-style">

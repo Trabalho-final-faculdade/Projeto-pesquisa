@@ -59,6 +59,16 @@ if(isset($_SESSION['id'])) {
                 unset($_SESSION['nao_autenticado']);
               endif;
               ?>
+               <?php
+                if(isset($_SESSION['senha_alterada'])):
+              ?>
+              <div class="alert alert-success" role="alert">
+                <p>Senha alterada com sucesso!!!</p>
+              </div>
+              <?php
+                unset($_SESSION['senha_alterada']);
+              endif;
+              ?>
               <div>
                 <button type="submit" name="btnLogar" class="btn btn-default submit">Logar</button>
                 <a class="reset_pass" href="../sistema/recuperar-senha.php">Esqueci minha senha?</a>

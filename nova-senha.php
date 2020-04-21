@@ -1,8 +1,14 @@
 <?php session_start();
 
-require_once '../../Model/Conexao.php';
+require_once 'App/Model/Conexao.php';
+require 'App/Model/Senha_recuperadaDao.php';
+if(!isset($_GET['rash'])) {
+    header("Location: ../sistema/tela-login.php");
+}
 
+$sr = new \App\Model\SenhaRecuperadaDao();
 
+$resultado = $sr->read($_GET['rash']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,16 +21,16 @@ require_once '../../Model/Conexao.php';
 
     <title>Nome da empresa | </title>
 
-    <link href="../../Public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="App/Public/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../../Public/stylesheets/font-awesome.min.css" rel="stylesheet">
+    <link href="App/Public/stylesheets/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../../Public/stylesheets/nprogress.css" rel="stylesheet">
+    <link href="App/Public/stylesheets/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="../../Public/stylesheets/animate.min.css" rel="stylesheet">
+    <link href="App/Public/stylesheets/animate.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../../Public/stylesheets/custom.min.css" rel="stylesheet">
+    <link href="App/Public/stylesheets/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="login">
@@ -35,32 +41,12 @@ require_once '../../Model/Conexao.php';
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form action="../../Controller/sistema_controller/recuperar_senha.php" method="POST">
+            <form action="App/Controller/usuario_controller/editar_senha.php" method="POST">
               <h1>Frase ou banner a escolher</h1>
               <div>
-                <input type="text" name="email" class="form-control" placeholder="Insira seu email aqui" required="" />
-              </div>
-
-              <?php
-                if(isset($_SESSION['nao_encontrado'])):
-              ?>
-              <div class="">
-                <p>ERRO: Email nao encontrado</p>
-              </div>
-              <?php
-                unset($_SESSION['nao_encontrado']);
-              endif;
-              ?>
-              <?php
-                if(isset($_SESSION['recuperar_senha'])):
-              ?>
-              <div class="">
-                <p>Sucesso: Email enviado com sucesso</p>
-              </div>
-              <?php
-                unset($_SESSION['recuperar_senha']);
-              endif;
-              ?>
+                <input type="hidden" name="email" class="form-control" value="<?php echo $resultado[0]['email'] ?>" />
+                <input type="text" name="senha" class="form-control" placeholder="Insira sua nova senha aqui" required="" />
+              </div>    
               <div>
                 <button type="submit" name="btnEnviar" class="btn btn-default submit">Enviar dados</button>
                 <input type="hidden" name="env" value="form">
