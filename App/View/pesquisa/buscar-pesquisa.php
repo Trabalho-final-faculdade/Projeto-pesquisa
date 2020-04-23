@@ -99,7 +99,8 @@ $p = new \App\Model\Pesquisa();
                           <div class="ln_solid">
                             <div class="form_group" id="btnBuscarUsuario">
                               <div class="col-md-6 offset-md-3">
-                              <input name="SendPesqUser" type="submit" value="Pesquisar">                              </div>
+                                <input name="SendPesqUser" type="submit" value="Pesquisar" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>>                      
+                              </div>
                             </div>
                           </div>
                       </form>

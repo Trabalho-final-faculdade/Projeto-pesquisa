@@ -2,7 +2,7 @@
 
 require_once '../../../vendor/autoload.php';
 require_once '../../Model/Nivel_de_acessoDao.php';
-
+header('Content-type: text/html; charset=utf-8');    
 
 include_once '../../includes/header.php';
 
@@ -19,7 +19,7 @@ $pergunta = new \App\Model\Pergunta();
 $perguntaDao = new \App\Model\PerguntaDao();
 $respostas = new \App\Model\Resposta();
 $respostasDao = new \App\Model\RespostaDao();
-
+$i = 0;
 $resultado_perguntas = $perguntaDao->buscar_pergunta_pesquisa($_GET['id']);
 
 $resultado = $pd->read($_GET['id']);
@@ -33,6 +33,7 @@ foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
 endforeach;
 ?>
+
 <div class="container body">
   <div class="main_container">
     <div class="col-md-3 left_col">
@@ -121,12 +122,13 @@ endforeach;
                             </div>
                             </br>
                             <?php foreach($resultado_perguntas as $questionario):?>
+                              <?php $i += 1 ?>
                             <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                                 <div class="panel">
-                                    <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <h4 class="panel-title"><?php echo $questionario['pergunta'] ?></h4>
+                                    <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $i ?>" aria-expanded="true" aria-controls="collapseOne">
+                                    <h4 class="panel-title"><?php echo utf8_encode($questionario['pergunta']) ?></h4>
                                     </a>
-                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div id="collapseOne<?php echo $i ?>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                         <div class="panel-body">
                                             <table class="table table-bordered">
                                                 <thead>
@@ -139,7 +141,7 @@ endforeach;
                                                     <?php foreach($respostasDao->read($questionario['id']) as $resposta):?>
                                                     <tr>
                                                     <th scope="row">1</th>
-                                                    <td><?php echo $resposta['resposta'];?></td>
+                                                    <td><?php echo utf8_encode($resposta['resposta']);?></td>
                                                     </tr>
                                                     <?php endforeach;?>
                                                 </tbody>

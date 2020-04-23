@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Transitive by TEMPLATED</title>
-		<meta charset="utf-8" />
+		<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="App/Public/stylesheets/main.css" />
 		<link rel="stylesheet" href="App/Public/stylesheets/font-awesome.min.css" />
@@ -12,7 +12,7 @@
 			<div class="logo"><a href="index.php">Nome da empresa <span>Texto auxiliar</span></a></div>
 			<a href="#menu" class="toggle"><span>Menu</span></a>
 		</header>
-			<nav id="menu">
+			<nav id="menu">			
 				<ul class="links">
 					<li><a href="index.php">Página inicial</a></li>
 					<li><a href="App/View/sistema/tela-login.php">Logar</a></li>
@@ -145,31 +145,20 @@
 					<section>
 						<div class="box">
 							<div class="content">
-								<h2 class="align-center">Get in Touch</h2>
+								<h2 class="align-center">Nos envie um email</h2>
 								<hr />
-								<form action="#" method="post">
+								<form action="App/Controller/sistema_controller/envio-mensagem.php" method="post">
 									<div class="field half first">
-										<label for="name">Name</label>
+										<label for="name">Nome</label>
 										<input name="name" id="name" type="text" placeholder="Name">
 									</div>
 									<div class="field half">
 										<label for="email">Email</label>
 										<input name="email" id="email" type="email" placeholder="Email">
 									</div>
+									
 									<div class="field">
-										<label for="dept">Department</label>
-										<div class="select-wrapper">
-											<select name="dept" id="dept">
-												<option value="">- Category -</option>
-												<option value="1">Manufacturing</option>
-												<option value="1">Shipping</option>
-												<option value="1">Administration</option>
-												<option value="1">Human Resources</option>
-											</select>
-										</div>
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
+										<label for="message">Mensagem</label>
 										<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
 									</div>
 									<ul class="actions align-center">

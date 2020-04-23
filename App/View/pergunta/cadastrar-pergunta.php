@@ -29,7 +29,7 @@ $p->setDataFinal(addslashes($resultado[0]['data_final']));
 $p->setObservacao(addslashes($resultado[0]['observacao']));
 $p->setTitulo(addslashes($resultado[0]['titulo']));
 $p->setStatus(addslashes($resultado[0]['status']));
-
+$i = 1;
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
 endforeach;
@@ -138,34 +138,46 @@ endforeach;
                                 </select>
                               </div>
                             </div>
-                        
+                          </br>
                           <div id="tudo">
                             <table cellpadding="4" cellspacing="6">
-                              <tr><td colspan="4" class="bd_titulo">Cadastrar respostas</td></tr>                          
-                              <tr>
+                              <h2>Cadastrar respostas.</h2>
+                              <hr>
+                              <div class="clearfix"></div>      
+                              <tr>                        
                                 <td class="bd_titulo">Respostas</td>
                               </tr>
                               <tr class="linhas">
-                                <td><input type="text" name="descricao[]" required="required"/></td>   
+                                <div class="x_content">
+                                  <div id="step-1">
+                                    <div class="form-group row">
+                                      <td><input type="text" name="descricao[]" required="required" class="form-control"/></td>   
+                                    </div>
+                                  </div>
+                                </div>
                                 <td><a href="#" class="removerCampo" title="Remover linha">Remover resposta</a></td>
                               </tr>
-                              <tr><td colspan="4">
+                              <tr>
+                                <td colspan="4">
                                   <a href="#" class="adicionarCampo" title="Adicionar item">Adicionar resposta</a>
-                              </td></tr>
+                                </td>
+                              </tr>
                               <tr>
                                 <td align="right" colspan="4"><input type="submit" id="btn-cadastrar" value="Cadastrar" /></td>
                               </tr> 
                             </table>
                           </div>
                         </form>
+                        <form>
                         <?php if(isset($resultado_perguntas)): ?>
-                          <?php foreach($resultado_perguntas as $questionario):?>
+                          <?php foreach($resultado_perguntas as $questionario):
+                            $i += 1;?>
                               <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                                   <div class="panel">
-                                      <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                      <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $i?>" aria-expanded="true" aria-controls="collapseOneaaa">
                                       <h4 class="panel-title"><?php echo $questionario['pergunta'] ?></h4>
                                       </a>
-                                      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                      <div id="collapseOne<?php echo $i?>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                           <div class="panel-body">
                                               <table class="table table-bordered">
                                                   <thead>
@@ -189,6 +201,7 @@ endforeach;
                               </div>  
                           <?php endforeach;?>
                         <?php endif;?>
+                                                      </form>
                   </div>
                 </div>
             </div>

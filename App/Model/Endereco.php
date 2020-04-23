@@ -5,7 +5,7 @@ require_once "../../Model/Conexao.php";
 
 class Endereco {
 
-  private $id, $rua, $numero, $cidade, $estado, $pais, $cep;
+  private $id, $rua, $numero, $bairro, $complemento, $cidade, $estado, $pais, $cep;
 
   public function getId() {
     return $this->id;
@@ -31,12 +31,29 @@ class Endereco {
     $this->numero = $numero;
   }
 
+
+  public function getBairro() {
+    return $this->bairro;
+  }
+
+  public function setBairro($bairro) {
+    $this->bairro = $bairro;
+  }
+
   public function getCidade() {
     return $this->cidade;
   }
 
   public function setCidade($cidade) {
     $this->cidade = $cidade;
+  }
+
+  public function getComplemento() {
+    return $this->complemento;
+  }
+
+  public function setComplemento($complemento) {
+    $this->complemento = $complemento;
   }
 
   public function getEstado() {

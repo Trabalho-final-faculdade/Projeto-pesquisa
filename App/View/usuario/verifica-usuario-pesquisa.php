@@ -62,22 +62,21 @@ endforeach;
                   </div>
                   <div class="x_content">
                     <div id="step-1">
-                      <form class="form-horizontal form-label-left" action="../../Controller/usuario_controller/buscar-entrevistado.php" method="POST">
-                        <div class="form-group row">
-                            
-                          <div class="form-group row" id="busca">
-                            <label class="col-form-label col-md-6 col-sm-3 label-align" for="cpf"> <span class="required">Insira aqui o CPF do entrevistado:</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <input type="text" id="cpf" value="<?php if(isset($_POST['cpf'])) echo $_POST['cpf'];?>" name="cpf" required="required" class="form-control" onkeypress="$(this).mask('000.000.000-00');">
+                      <form class="form-horizontal form-label-left" action="../../Controller/usuario_controller/buscar-entrevistado.php" method="POST">                 
+                        <div class="form-group row" id="busca">
+                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="cpf"> <span class="required">Insira aqui o CPF do entrevistado:</span>
+                          </label>
+                          <div class="col-md-3 col-sm-3 ">
+                              <input type="text" id="cpf" value="<?php if(isset($_POST['cpf'])) echo $_POST['cpf'];?>" name="cpf" required="required" class="form-control" onkeypress="$(this).mask('000.000.000-00');">
+                          </div>
+                        </div>
+                        <div class="ln_solid">
+                          <div class="form_group row" id="btnBuscarUsuario">
+                            <div class="col-md-6 offset-md-3">
+                              <input name="SendPesqUser" type="submit" value="Pesquisar" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>
                             </div>
                           </div>
-                          <div class="ln_solid">
-                            <div class="form_group" id="btnBuscarUsuario">
-                              <div class="col-md-1 offset-md-1">
-                              <input name="SendPesqUser" type="submit" value="Pesquisar">                              </div>
-                            </div>
-                          </div>
+                        </div>
                       </form>
                     </div>
                 </div>

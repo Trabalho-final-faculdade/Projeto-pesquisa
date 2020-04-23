@@ -3,6 +3,7 @@
 namespace App\Model;
 
 require_once "../../Model/Conexao.php";
+header('Content-Type: text/html; charset=utf-8');
 
 
 class RespostaDao {
@@ -15,19 +16,20 @@ class RespostaDao {
     $stmt->bindValue('pergunta_id', $pergunta_id);
     
     $stmt->execute();
+    
 
   }
 
   public function read($id) {
     global $pdo;
     $sql = 'SELECT * FROM respostas where pergunta_id = :id';
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue('id', $id);
+    $sql = $pdo->prepare($sql);
+    $sql->bindValue('id', $id);
 
-    $stmt->execute();
+    $sql->execute();
 
-    if($stmt->rowCount() > 0):
-      $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    if($sql->rowCount() > 0):
+      $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
        return $resultado;
     endif;
   }

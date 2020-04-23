@@ -13,7 +13,6 @@ $usuario_logado = new \App\Model\Usuario();
 $ud = new \App\Model\UsuarioDao();
 $nad = new \App\Model\NivelDeAcessoDao();
 
-
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
 endforeach;
@@ -53,7 +52,7 @@ endforeach;
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Buscar usuarios.</h2>
+                    <h2>Buscar usuarios bloqueados.</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -74,6 +73,7 @@ endforeach;
                                 <option value="nome" <?php if(isset($_POST['select_busca']) && ($_POST['select_busca'] == "nome")) echo "selected"; ?>>Nome</option>
                                 <option value="cpf" <?php if(isset($_POST['select_busca']) && ($_POST['select_busca'] == "cpf")) echo "selected"; ?>>Cpf</option>
                                 <option value="nivel" <?php if(isset($_POST['select_busca']) && ($_POST['select_busca'] == "nivel")) echo "selected"; ?>>Nivel</option>
+                                <option value="todos" <?php if(isset($_POST['select_busca']) && ($_POST['select_busca'] == "todos")) echo "selected"; ?>>Todos</option>
                               </select>
                             </div>
                           </div> 
@@ -109,20 +109,19 @@ endforeach;
                           <div class="ln_solid">
                             <div class="form_group" id="btnBuscarUsuario">
                               <div class="col-md-6 offset-md-3">
-                                <input name="SendPesqUser" class="buttonNext btn btn-success" type="submit" value="Pesquisar">  
-                              </div>
+                              <input name="SendPesqUser" type="submit" class="buttonNext btn btn-success" value="Pesquisar">                              </div>
                             </div>
-                          </div>
+                          </div>    
                       </form>
                       <?php
-                          if(isset($_SESSION['bloqueado'])):
+                          if(isset($_SESSION['desbloqueado'])):
                           
                           ?>
                             <div class="alert alert-success" role="alert">
-                              Usuário bloqueado com sucesso!!!
+                              Usuário desbloqueado com sucesso!!!
                             </div>
                           <?php 
-                              unset($_SESSION['bloqueado']);
+                              unset($_SESSION['desbloqueado']);
                             endif;
                           ?>
                       <?php 
@@ -138,12 +137,11 @@ endforeach;
                           $valor = $cpf;
                         };
             
-                        $resultados = $ud->buscar_usuarios($select, $valor, $_SESSION['empresa_id']);
+                        $resultados = $ud->buscar_usuarios_bloqueados($select, $valor, $_SESSION['empresa_id']);
                       
                         if(isset($resultados[0]['id']) && $resultados[0]['id'] > 0){
                         ?>
                         <form>
-                       
                         <div class="alert alert-success" role="alert">
                           Pesquisa realizada com sucesso!!!
                         </div>
@@ -161,9 +159,8 @@ endforeach;
                                         <th>Nome</th>
                                         <th>CPF</th>
                                         <th>Nível de acesso</th>
-                                        <th>Perfil</th>
-                                        <th>Dados</th>
-                                        <th>Bloquear usuário</th>
+                                        <th>Deletado em</th>
+                                        <th>Desbloquear usuário</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -174,9 +171,9 @@ endforeach;
                                         <td><?php echo $resultado['nome'] ?> </td>
                                         <td><?php echo $resultado['cpf'] ?> </td>
                                         <td><?php echo $na[0]['nivel'] ?> </td>
-                                        <td> <a href="../usuario/perfil-usuario.php?id=<?php echo $resultado['id']?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Visualizar </a></td>     
-                                        <td><a href="../usuario/editar-dados.php?id=<?php echo $resultado['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
-                                        <td><a href="../../Controller/usuario_controller/bloquear-usuario.php?id=<?php echo $resultado['id']?>" class="btn btn-danger"><i class="fa fa-pencil"></i> Bloquear </a></td>
+                                        <td><?php echo date('d/m/Y', strtotime($resultado['deletado_em'])); ?> </td>
+                                        <td><a href="../../Controller/usuario_controller/desbloquear-usuario.php?id=<?php echo $resultado['id']?>" class="btn btn-success"><i class="fa fa-pencil"></i> Desbloquear </a></td>
+  
                                       </tr>
                                       <?php } ?>
                                     </tbody>
@@ -222,6 +219,10 @@ endforeach;
                   busca_cpf.style.display = 'block';
                   busca.style.display = 'none';
                   nivel.style.display = 'none';
+                }else if(select.value == "todos"){
+                  busca_cpf.style.display = 'none';
+                  busca.style.display = 'none';
+                  nivel.style.display = 'none';
                 }else{
                   busca_cpf.style.display = 'none';
                   busca.style.display = 'block';
@@ -244,3 +245,4 @@ endforeach;
 <?php
 include_once '../../includes/footer.php';
 ?>
+ç

@@ -156,7 +156,7 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
                           <label class="col-form-label col-md-3 col-sm-3 label-align">Pergunta<span class="required">*</span>
                           </label>
                           <div class="col-md-6 col-sm-6 ">
-                            <input type="text" disabled="true" name="pergunta[<?php echo $per['id']?>]" class="date-picker form-control" required="required" value="<?php echo $per['pergunta']?> ">
+                            <input type="text" disabled="true" name="pergunta[<?php echo $per['id']?>]" class="date-picker form-control" required="required" value="<?php echo utf8_encode($per['pergunta']) ?> ">
                            </div>
                         </div>
                         <?php foreach($respostaDao->read($per['id']) as $resposta):  ?>
@@ -164,13 +164,16 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="resposta">Resposta: <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                              <input type="text"  disabled="true" name="resposta[<?php echo $resposta['id']?>]" minlength="5" value="<?php echo $resposta['resposta'] ?>" required="required" autocomplete="off" class="form-control" maxlength="40">
+                              <input type="text" disabled="true" name="resposta[<?php echo $resposta['id']?>]" minlength="5" value="<?php echo utf8_encode($resposta['resposta']) ?>" required="required" autocomplete="off" class="form-control" maxlength="40">
                             </div>
                           </div>
                         <?php endforeach;?>
-                        <td><a href="../../View/pergunta/editar-dados-pergunta.php?id=<?php echo $per['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
-
-                      </br>
+                        <div class="form-group row">
+                          <div class="col-lg-9" style="text-align: right;">
+                            <td><a href="../../View/pergunta/editar-dados-pergunta.php?id=<?php echo $per['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td>
+                          </div>
+                        </div>
+                        </br></br>
 
                       <?php endforeach; ?>
                       

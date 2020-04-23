@@ -96,7 +96,7 @@ endforeach;
                             </div>
                             <div class="actionBar">
                                 <div class="loader">
-                                <button type="submit" name="btnCadastrar" class="buttonNext btn btn-success">Cadastrar pesquisa</button>
+                                  <button type="submit" name="btnCadastrar" class="buttonNext btn btn-success">Cadastrar pesquisa</button>
                                 </div>
                             </div>
                         </form>

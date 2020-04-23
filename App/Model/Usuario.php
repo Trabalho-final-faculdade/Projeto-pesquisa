@@ -5,7 +5,7 @@ require_once "../../Model/Conexao.php";
 
 class Usuario {
 
-  private $id, $nome, $cpf, $data_nascimento, $genero, $email, $senha, $endereco_id, $telefone_id, $nivel_acesso_id, $empresa_id;
+  private $id, $nome, $cpf, $data_nascimento, $genero, $email, $senha, $endereco_id, $telefone_id, $nivel_acesso_id, $empresa_id, $criado_em, $deletado_em;
 
   public function getId() {
     return $this->id;
@@ -95,10 +95,26 @@ class Usuario {
     $this->empresa_id = $empresa_id;
   }
 
+  public function getCriadoEm() {
+    return $this->criado_em;
+  }
+
+  public function setCriadoEm($criado_em) {
+    $this->criado_em = $criado_em;
+  }
+
+  public function getDeletadoEm() {
+    return $this->deletado_em;
+  }
+
+  public function setDeletadoEm($deletado_em) {
+    $this->deletado_em = $deletado_em;
+  }
+
   public function logar($email, $senha) {
     global $pdo;
 
-      $sql = "Select * from usuarios where email = :email and senha = :senha and nivel_acesso_id <> 5";
+      $sql = "Select * from usuarios where email = :email and senha = :senha and nivel_acesso_id <> 5 and deletado_em is null";
       $sql = $pdo->prepare($sql);
 
       $sql->bindValue("email", $email);
