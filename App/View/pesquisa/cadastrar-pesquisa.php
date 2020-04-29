@@ -37,7 +37,7 @@ endforeach;
               <div class="title_left">
                 <h3>Cadastro pesquisa</h3>
               </div>
-
+            
               <div class="title_right">
                 <div class="col-md-5 col-sm-5  form-group row pull-right top_search">
                   <div class="input-group">
@@ -54,7 +54,17 @@ endforeach;
             <div class="row">
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
-                        <form action="../../Controller/pesquisa_controller/cadastrar-pesquisa.php" method="POST">
+                        <form action="../../Controller/pesquisa_controller/cadastrar-pesquisa.php" method="POST" enctype="multipart/form-data">
+                            <?php
+                              if(isset($_SESSION['pesquisa_cadastrada'])):                       
+                            ?>
+                              <div class="alert alert-success" role="alert">
+                                Pesquisa cadastrada com sucesso!!!
+                              </div>
+                            <?php 
+                                unset($_SESSION['pesquisa_cadastrada']);
+                              endif;
+                            ?>  
                             <div class="x_title">
                                 <h2>Iniciar uma nova pesquisa.</h2>
                                 <ul class="nav navbar-right panel_toolbox">
@@ -94,6 +104,27 @@ endforeach;
                                     <input type="text" id="observacao" name="observacao" minlength="5" value="" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required="required" autocomplete="off" class="form-control" maxlength="40">
                                 </div>
                             </div>
+                            <div class="form-group row" id="estado">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="busca">Pesquisa fechada: <span class="required">*</span>
+                            </label>
+                              <div class="col-md-6 col-sm-6 ">
+                                <select name="select_pesquisa" id="select_pesquisa" class="form-control">
+                                  <option value="1">Sim</option>
+                                  <option value="0">Não</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="x_content" id="div_arquivos">
+                              <div id="step-1">
+                                  <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="arquivos">Emails: <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                      <input type="file" name="arquivos" id="arquivos"><br>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
                             <div class="actionBar">
                                 <div class="loader">
                                   <button type="submit" name="btnCadastrar" class="buttonNext btn btn-success">Cadastrar pesquisa</button>
@@ -102,6 +133,28 @@ endforeach;
                         </form>
                     </div>
                 </div>
+                <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+              <script>
+                $(document).ready(function(){
+                  var pesquisa_fechada = document.getElementById('select_pesquisa');
+                      arquivos = document.getElementById('div_arquivos');
+
+                  function show(){
+                    if(pesquisa_fechada.value == '1'){
+                      arquivos.style.display = 'block';
+                    }else{
+                      arquivos.style.display = 'none';
+                    }
+                  }
+                  pesquisa_fechada.addEventListener('change', function(){
+                    show();
+                    
+                  });
+                  show();
+                });
+
+
+              </script>
             </div>
         </div>
    <?php 

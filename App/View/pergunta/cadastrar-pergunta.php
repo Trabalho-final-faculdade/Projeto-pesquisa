@@ -29,6 +29,7 @@ $p->setDataFinal(addslashes($resultado[0]['data_final']));
 $p->setObservacao(addslashes($resultado[0]['observacao']));
 $p->setTitulo(addslashes($resultado[0]['titulo']));
 $p->setStatus(addslashes($resultado[0]['status']));
+$p->setFechada(addslashes($resultado[0]['fechada']));
 $i = 1;
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
@@ -163,7 +164,13 @@ endforeach;
                                 </td>
                               </tr>
                               <tr>
-                                <td align="right" colspan="4"><input type="submit" id="btn-cadastrar" value="Cadastrar" /></td>
+                                <td align="right" colspan="4"><input type="submit" id="btn-cadastrar" value="Cadastrar" class="btn btn-danger"></td>
+                                <?php if($p->getFechada() == "1"){ ?>
+                                  <td><a href="../../Controller/pesquisa_controller/enviar-pesquisa-email.php?id=<?php echo $p->getId()?>" class="btn btn-info btn-xs"> Finalizar pesquisa </a></td>
+                              <?php }else{ 
+                                  $_SESSION['pesquisa_cadastrada'] = true;?>
+                                  <td><a href="../../View/pesquisa/cadastrar-pesquisa.php" class="btn btn-info btn-xs"> Finalizar pesquisa </a></td>
+                              <?php }?>
                               </tr> 
                             </table>
                           </div>
@@ -201,7 +208,7 @@ endforeach;
                               </div>  
                           <?php endforeach;?>
                         <?php endif;?>
-                                                      </form>
+                      </form>
                   </div>
                 </div>
             </div>

@@ -28,9 +28,9 @@
                  
                 </ul>
               </li>
-              <li><a><i class="fa fa-clone"></i>Relatórios# <span class="fa fa-chevron-down"></span></a>
+              <li><a><i class="fa fa-clone"></i>Relatórios <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="fixed_sidebar.html">Resultados de pesquisas#</a></li>
+                  <li><a href="../relatorio/resultado-pesquisa.php">Resultados de pesquisas</a></li>
                 </ul>
               </li>
             </ul>

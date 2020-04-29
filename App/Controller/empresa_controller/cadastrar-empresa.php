@@ -10,7 +10,7 @@ if(isset($_POST['razao_social']) && !empty($_POST['razao_social']) && isset($_PO
 
 require '../Model/Conexao.php';
 require '../Model/Empresa.php';
-require '../Model/EmpresaDao.php';// teste
+require '../Model/EmpresaDao.php';
 
 $e = new \App\Model\Empresa();
 $ed = new \App\Model\EmpresaDao();

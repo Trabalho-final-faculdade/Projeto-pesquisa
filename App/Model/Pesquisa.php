@@ -5,7 +5,7 @@ require_once "../../Model/Conexao.php";
 
 class Pesquisa {
 
-  private $id, $titulo, $data_inicial, $data_final, $observacao, $status;
+  private $id, $titulo, $data_inicial, $data_final, $observacao, $status, $criada_em, $fechada;
 
   public function getId() {
     return $this->id;
@@ -53,5 +53,21 @@ class Pesquisa {
 
   public function setStatus($status) {
     $this->status = $status;
+  }
+
+  public function getCriadaEm() {
+    return $this->criada_em;
+  }
+
+  public function setCriadaEm($criada_em) {
+    $this->criada_em = $criada_em;
+  }
+
+  public function getFechada() {
+    return $this->fechada;
+  }
+
+  public function setFechada($fechada) {
+    $this->fechada = $fechada;
   }
 }

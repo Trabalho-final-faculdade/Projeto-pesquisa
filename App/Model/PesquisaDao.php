@@ -2,20 +2,24 @@
 
 namespace App\Model;
 
-require_once "../../Model/Conexao.php";
+require_once "Conexao.php";
 
 
 class PesquisaDao {
 
   public function create(Pesquisa $p) {
+    date_default_timezone_set('America/Sao_Paulo');
+    $data = date('Y/m/d');
     global $pdo;
-    $sql = 'INSERT INTO pesquisas VALUES(default, :titulo, DATE(:data_inicial), DATE(:data_final), :observacao, :status)';
+    $sql = 'INSERT INTO pesquisas VALUES(default, :titulo, DATE(:data_inicial), DATE(:data_final), :observacao, :status, :criada_em, :fechada)';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue('titulo', $p->getTitulo());
     $stmt->bindValue('data_inicial', $p->getDataInicial());
     $stmt->bindValue('data_final', $p->getDataFinal());
     $stmt->bindValue('observacao', $p->getObservacao());
     $stmt->bindValue('status', $p->getStatus());
+    $stmt->bindValue('criada_em', $data);
+    $stmt->bindValue('fechada', $p->getFechada());
     
     $stmt->execute();
 
@@ -69,7 +73,7 @@ class PesquisaDao {
 
   public function read($id){
     global $pdo;
-    $sql = 'SELECT * FROM pesquisas where id = :id';
+    $sql = 'SELECT * FROM pesquisas WHERE id = :id';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue('id', $id);
 
@@ -82,6 +86,21 @@ class PesquisaDao {
 
   } 
 
+
+  public function buscar_finalizadas($id){
+    global $pdo;
+    $sql = 'SELECT * FROM questionarios WHERE pesquisa_id = :id GROUP BY entrevistado_id;';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue('id', $id);
+
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0):
+      $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+       return $resultado;
+    endif;
+
+  }
   public function buscar_pesquisas_titulo($id){
     global $pdo;
     $sql = 'SELECT * FROM pesquisas where titulo = :titulo ORDER BY titulo DESC limit 1';

@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Model;
-require_once "../../Model/Conexao.php";
-
-
+require_once "Conexao.php";
 class QuestionarioDao {
 
   public function create(Questionario $q) {
@@ -21,6 +19,36 @@ class QuestionarioDao {
     return true;
 
   }
+
+  public function read($id){
+    global $pdo;
+    $sql = 'SELECT * FROM questionarios WHERE pergunta_id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue('id', $id);
+
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0):
+      $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+       return $resultado;
+    endif;
+
+  } 
+
+  public function buscar_questionario_pesquisa($id){
+    global $pdo;
+    $sql = 'SELECT * FROM questionarios WHERE pesquisa_id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue('id', $id);
+
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0):
+      $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+       return $resultado;
+    endif;
+
+  } 
 }
 
 ?>

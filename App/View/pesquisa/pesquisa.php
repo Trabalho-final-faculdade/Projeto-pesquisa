@@ -128,7 +128,7 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
                                                         <table class="table table-striped" id="datatable">
                                                             <thead>
                                                                 <tr>
-                                                                    <th><?php echo $todas_perguntas[$i]['pergunta'] ?> </th>
+                                                                    <th><?php echo utf8_encode($todas_perguntas[$i]['pergunta']) ?> </th>
                                                                     <input type="hidden" name="indice" value="<?php echo $i ?>">
                                                                     <input type="hidden" name="pesquisa" value="<?php echo $todas_perguntas[$i]['pesquisa_id'] ?>">
                                                                     <input type="hidden" name="pergunta" value="<?php echo $todas_perguntas[$i]['id'] ?>">
@@ -141,9 +141,9 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
                                                                     <?php
                                                                     foreach($respostaDao->read($todas_perguntas[$i]['id']) as $r): ?>
                                                                         <?php if($todas_perguntas[$i]['tipo'] == 'dicotonica' || $todas_perguntas[$i]['tipo'] == 'resposta_unica'){ ?>
-                                                                            <td><input type='radio' value="<?php echo $r['id'] ?>" name="resposta[]" ><?php echo $r['resposta'] ?></td>
+                                                                            <td><input type='radio' value="<?php echo $r['id'] ?>" name="resposta[]" ><?php echo utf8_encode($r['resposta']) ?></td>
                                                                         <?php  }else{ ?>
-                                                                            <td><input type='checkbox' value="<?php echo $r['id'] ?>" name="resposta[]" ><?php echo $r['resposta'] ?></td>
+                                                                            <td><input type='checkbox' value="<?php echo $r['id'] ?>" name="resposta[]" ><?php echo utf8_encode($r['resposta']) ?></td>
                                                                         <?php  }
                                                                     endforeach;?>
                                                                     </br>
