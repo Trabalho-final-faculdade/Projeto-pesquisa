@@ -67,6 +67,25 @@ class PesquisaDao {
         return $resultado;
 
     }else{
+        return 0;
+    }
+  }
+
+  public function buscar_pesquisas_estado_aberta($status) {
+    global $pdo;
+    $sql = "SELECT * FROM pesquisas WHERE status = :status AND fechada = false";
+    
+    $sql = $pdo->prepare($sql);
+
+    $sql->bindValue('status', $status);
+
+    $sql->execute();
+
+    if($sql->rowCount() > 0){
+        $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
+
+    }else{
         return false;
     }
   }
@@ -118,7 +137,7 @@ class PesquisaDao {
 
   public function retornar_numero_pesquisas_realizadas(){
     global $pdo;
-    $sql = 'select pesquisa_id, count(DISTINCT entrevistado_id) from questionarios group by pesquisa_id';
+    $sql = 'select pesquisa_id, count(DISTINCT entrevistado_email) from questionarios group by pesquisa_id';
     $stmt = $pdo->prepare($sql);
 
     $stmt->execute();

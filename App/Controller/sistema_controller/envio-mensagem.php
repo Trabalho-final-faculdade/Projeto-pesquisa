@@ -1,8 +1,8 @@
 <?php
 session_start();
-  require_once('../../../PHPMailer/src/PHPMailer.php');
-  require_once('../../../PHPMailer/src/SMTP.php');
-  require_once('../../../PHPMailer/src/Exception.php');
+  require_once '../../../PHPMailer/src/PHPMailer.php';
+  require_once '../../../PHPMailer/src/SMTP.php';
+  require_once '../../../PHPMailer/src/Exception.php';
   
   use PHPMailer\PHPMailer\SMTP;
   use PHPMailer\PHPMailer\Exception;
@@ -30,7 +30,7 @@ if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['message'])
           $mail->addAddress('dan_casimiro@hotmail.com');
 
           $mail->isHTML(true);
-          $mail->Subject = "Sistema de Pesquisas < Recuperar senha > ";
+          $mail->Subject = "Sistema de Pesquisas < Fale conosco > ";
           $mail->Body = "<h2> Mensagem enviada do site.</h2>
           <p>Nome: $nome</p>
           <p>email de contato: $email</p>

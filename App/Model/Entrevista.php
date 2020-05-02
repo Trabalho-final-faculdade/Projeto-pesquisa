@@ -46,3 +46,4 @@ class Entrevista {
   public function setRespostaId($resposta_id) {
     $this->resposta_id = $resposta_id;
   }
+}

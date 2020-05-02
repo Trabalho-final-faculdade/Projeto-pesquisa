@@ -126,7 +126,7 @@ endforeach;
                             <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                                 <div class="panel">
                                     <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $i ?>" aria-expanded="true" aria-controls="collapseOne">
-                                    <h4 class="panel-title"><?php echo utf8_encode($questionario['pergunta']) ?></h4>
+                                    <h4 class="panel-title"><?php echo $questionario['pergunta'] ?></h4>
                                     </a>
                                     <div id="collapseOne<?php echo $i ?>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                         <div class="panel-body">
@@ -141,7 +141,7 @@ endforeach;
                                                     <?php foreach($respostasDao->read($questionario['id']) as $resposta):?>
                                                     <tr>
                                                     <th scope="row">1</th>
-                                                    <td><?php echo utf8_encode($resposta['resposta']);?></td>
+                                                    <td><?php echo $resposta['resposta'];?></td>
                                                     </tr>
                                                     <?php endforeach;?>
                                                 </tbody>

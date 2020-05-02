@@ -6,6 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="App/Public/stylesheets/main.css" />
 		<link rel="stylesheet" href="App/Public/stylesheets/font-awesome.min.css" />
+		<style>
+			html {
+  				scroll-behavior: smooth;
+			}
+		</style>
 	</head>
 	<body>
 		<header id="header" class="alt">
@@ -16,10 +21,10 @@
 				<ul class="links">
 					<li><a href="index.php">Página inicial</a></li>
 					<li><a href="App/View/sistema/tela-login.php">Logar</a></li>
-					<li><a href="elements.html">Pesquisas abertas</a></li>
+					<li><a href="App/View/pesquisa/pesquisa-fechada.php">Realizar Pesquisas</a></li>
 					<li><a href="elements.html">Quem somos</a></li>
 					<li><a href="elements.html">Dúvidas frequentes</a></li>
-					<li><a href="elements.html">Fale conosco</a></li>
+					<li><a href="#fale_conosco">Fale conosco</a></li>
 				</ul>
 			</nav>
 			<div class="image fit">
@@ -141,7 +146,7 @@
 
 		<!-- Footer -->
 			<footer id="footer" class="wrapper">
-				<div class="inner">
+				<div class="inner" id="fale_conosco">
 					<section>
 						<div class="box">
 							<div class="content">
@@ -181,6 +186,5 @@
 			<script src="App/Public/javascripts/skel.min.js"></script>
 			<script src="App/Public/javascripts/util.js"></script>
 			<script src="App/Public/javascripts/main.js"></script>
-
 	</body>
 </html>

@@ -31,8 +31,8 @@ if(isset($_POST['observacao']) && !empty($_POST['observacao'])
       $ext = explode(".", $nome);
       $extensao = end($ext);
 
-      if($extensao != "txt"){
-          echo "Extensao invalida";   
+      if($extensao != "csv"){
+        $_SESSION['arquivo_invalido'] = true;
           header("Location: ../../View/pesquisa/cadastrar-pesquisa.php");
       }else{
 
@@ -41,15 +41,8 @@ if(isset($_POST['observacao']) && !empty($_POST['observacao'])
           
           $objeto = fopen($arquivo, 'r');
           while(($dados = fgetcsv($objeto, 1000, ";")) !== FALSE){
-            // $email = utf8_encode($dados);
-              $array_emails = $dados;
-          }
-
-          foreach($array_emails as $email):
-            if(isset($email) and $email != ''):
-            $ep->create($resultado[0]['id'], $email);
-            endif;
-          endforeach;
+              $ep->create($resultado[0]['id'], $dados[0]);
+          } 
           
           $_SESSION['pesquisa_cadastrada'] = true;
           header("Location: ../../View/pergunta/cadastrar-pergunta.php?id=".$resultado[0]['id']);

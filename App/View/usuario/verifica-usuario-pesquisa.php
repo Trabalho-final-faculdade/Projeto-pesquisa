@@ -62,12 +62,12 @@ endforeach;
                   </div>
                   <div class="x_content">
                     <div id="step-1">
-                      <form class="form-horizontal form-label-left" action="../../Controller/usuario_controller/buscar-entrevistado.php" method="POST">                 
+                      <form class="form-horizontal form-label-left" action="../pesquisa/pesquisa.php" method="POST">                 
                         <div class="form-group row" id="busca">
-                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="cpf"> <span class="required">Insira aqui o CPF do entrevistado:</span>
+                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="email"> <span class="required">Insira aqui o email do entrevistado:</span>
                           </label>
                           <div class="col-md-3 col-sm-3 ">
-                              <input type="text" id="cpf" value="<?php if(isset($_POST['cpf'])) echo $_POST['cpf'];?>" name="cpf" required="required" class="form-control" onkeypress="$(this).mask('000.000.000-00');">
+                            <input type="email" id="email" name="email" required="required" maxlength="50" autocomplete="off" class="form-control ">
                           </div>
                         </div>
                         <div class="ln_solid">

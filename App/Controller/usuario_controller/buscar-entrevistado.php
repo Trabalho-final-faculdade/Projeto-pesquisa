@@ -10,7 +10,7 @@ require '../../Model/UsuarioDao.php';
 
 $ud = new \App\Model\UsuarioDao();
 
-    $resultado = $ud->buscar_entrevistado($_POST['cpf'], $_SESSION['empresa_id']);
+    $resultado = $ud->buscar_entrevistado($_POST['email'], $_SESSION['empresa_id']);
     if(isset($resultado)){
         $_SESSION['id_entrevistado'] = $resultado[0]['id'];
         header("Location: ../../View/pesquisa/pesquisa.php");

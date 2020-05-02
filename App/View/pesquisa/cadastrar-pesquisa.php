@@ -55,16 +55,17 @@ endforeach;
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
                         <form action="../../Controller/pesquisa_controller/cadastrar-pesquisa.php" method="POST" enctype="multipart/form-data">
-                            <?php
-                              if(isset($_SESSION['pesquisa_cadastrada'])):                       
-                            ?>
-                              <div class="alert alert-success" role="alert">
-                                Pesquisa cadastrada com sucesso!!!
-                              </div>
-                            <?php 
-                                unset($_SESSION['pesquisa_cadastrada']);
-                              endif;
-                            ?>  
+                            <?php if(isset($_SESSION['pesquisa_cadastrada'])): ?>
+                              <div class="alert alert-success" role="alert">Pesquisa cadastrada com sucesso!!!</div>
+                            <?php unset($_SESSION['pesquisa_cadastrada']); endif; ?> 
+
+                            <?php if(isset($_SESSION['arquivo_invalido'])): ?>
+                              <div class="alert alert-error" role="alert">Por gentileza, adicione um arquivo com extensão csv.</div>
+                            <?php unset($_SESSION['arquivo_invalido']); endif; ?>  
+
+                            <?php if(isset($_SESSION['pesquisa_finalizada'])): ?>
+                              <div class="alert alert-error" role="alert">Pesquisa finalizada com sucesso.</div>
+                            <?php unset($_SESSION['pesquisa_finalizada']); endif; ?>  
                             <div class="x_title">
                                 <h2>Iniciar uma nova pesquisa.</h2>
                                 <ul class="nav navbar-right panel_toolbox">
@@ -78,7 +79,7 @@ endforeach;
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="titulo">Titulo da pesquisa: <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="titulo" name="titulo" minlength="5" value="" required="required" autocomplete="off" class="form-control" maxlength="40">
+                                    <input type="text" id="titulo" name="titulo" minlength="5" value="" required="required" autocomplete="off" class="form-control" maxlength="100">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -101,7 +102,7 @@ endforeach;
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="observacao">Observação: <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="observacao" name="observacao" minlength="5" value="" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required="required" autocomplete="off" class="form-control" maxlength="40">
+                                    <input type="text" id="observacao" name="observacao" minlength="5" value="" required="required" autocomplete="off" class="form-control" maxlength="100">
                                 </div>
                             </div>
                             <div class="form-group row" id="estado">

@@ -14,7 +14,7 @@ foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
 endforeach;
 
-$pd = new \App\Model\PesquisaDao(); 
+$pd = new \App\Model\PesquisaDao();
 $p = new \App\Model\Pesquisa();
 if(isset($_SESSION['indice'])){
     $i = $_SESSION['indice'];
@@ -26,9 +26,9 @@ $pergunta = new \App\Model\Pergunta();
 $perguntaDao = new \App\Model\PerguntaDao();
 
 $resposta = new \App\Model\Resposta();
-$respostaDao = new \App\Model\RespostaDao(); 
+$respostaDao = new \App\Model\RespostaDao();
 
-$resultados = $pd->buscar_pesquisas_estado("em andamento");
+$resultados = $pd->buscar_pesquisas_estado_aberta("em andamento");
 $resultado = $ud->read($_SESSION['id_entrevistado']);
 
 ?>
@@ -36,10 +36,10 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
     <div class="main_container">
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
-                <?php 
-                include_once '../../includes/imagem_empresa.php';   
-                include_once '../../includes/left_menu.php';    
-                include_once '../../includes/menu_top.php';    
+                <?php
+                include_once '../../includes/imagem_empresa.php';
+                include_once '../../includes/left_menu.php';
+                include_once '../../includes/menu_top.php';
                 ?>
                 <div class="right_col" role="main">
                     <div class="">
@@ -68,17 +68,17 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
                                                     <h2>Escolha a pesquisa</h2>
                                                     <ul class="nav navbar-right panel_toolbox">
                                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                    </li>   
+                                                    </li>
                                                     </ul>
                                                     <div class="clearfix"></div>
                                                 </div>
                                                 <div class="x_content">
                                                     <div id="step-1">
                                                         <div class="form-group row">
-                                                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="cpf"> <span class="required">Nome do entrevistado:</span>
+                                                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="cpf"> <span class="required">Email do entrevistado:</span>
                                                             </label>
                                                             <div class="col-md-6 col-sm-6 ">
-                                                                <input type="text" disabled="disabled" id="cpf" value="<?php echo $resultado[0]['nome']?>" name="cpf" required="required" class="form-control" onkeypress="$(this).mask('000.000.000-00');">
+                                                                <input type="text" disabled="disabled" id="cpf" value="<?php echo $_POST['email'] ?>" name="cpf" required="required" class="form-control" onkeypress="$(this).mask('000.000.000-00');">
                                                             </div>
                                                         </div></br>
                                                         <div class="form-group row">
@@ -137,7 +137,7 @@ $resultado = $ud->read($_SESSION['id_entrevistado']);
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>                                      
+                                                                <tr>
                                                                     <?php
                                                                     foreach($respostaDao->read($todas_perguntas[$i]['id']) as $r): ?>
                                                                         <?php if($todas_perguntas[$i]['tipo'] == 'dicotonica' || $todas_perguntas[$i]['tipo'] == 'resposta_unica'){ ?>

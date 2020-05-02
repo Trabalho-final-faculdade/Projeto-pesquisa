@@ -3,9 +3,6 @@
 require_once 'vendor/autoload.php';
 
 session_start();
-if(!isset($_SESSION['id'])):
-    header("Location: ../sistema/tela-login.php");
-endif;
 
 $ud = new \App\Model\UsuarioDao();
 $epd = new \App\Model\EnviarPesquisaDao();

@@ -17,8 +17,23 @@ $todos_usuarios = $ud->todos_usuarios();
 $count = 0;
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
+  $usuario_logado->setNivelAcessoId = $usuario['nivel'];
 endforeach;
 $pesquisas_andamento = $pesquisas->buscar_pesquisas_estado('em andamento');
+if(isset($pesquisas_andamento) && !empty($pesquisas_andamento)){
+  $pesquisas_andamento = count($pesquisas_andamento);
+}else{
+  $pesquisas_andamento = 0;
+}
+
+$pesquisas_realizadas = $pesquisas->retornar_numero_pesquisas_realizadas();
+if(isset($pesquisas_realizadas) && !empty($pesquisas_realizadas)){
+  foreach($pesquisas_realizadas as $pesquisa_realizada):
+    $count += $pesquisa_realizada['count(DISTINCT entrevistado_id)'];
+  endforeach;
+}else{
+  $count = 0;
+}
 
 ?>
 <div class="container body">
@@ -43,6 +58,7 @@ $pesquisas_andamento = $pesquisas->buscar_pesquisas_estado('em andamento');
     <!-- /top navigation -->
 
     <!-- page content -->
+  <?php if($usuario['nivel'] == "Administrador"){ ?>
     <div class="right_col" role="main">
       <!-- top tiles -->
       <div class="row" style="display: block;" >
@@ -53,14 +69,10 @@ $pesquisas_andamento = $pesquisas->buscar_pesquisas_estado('em andamento');
         </div>
         <div class="col-sm-4  tile_stats_count">
           <span class="count_top"><i class="fa fa-clock-o"></i> Pesquisas andamento </span>
-          <div class="count"><?php echo count($pesquisas_andamento) ?> </div>
+          <div class="count"><?php echo $pesquisas_andamento ?> </div>
         </div>
         <div class="col-sm-4  tile_stats_count">
           <span class="count_top"><i class="fa fa-user"></i> Pesquisas respondidas</span>
-          <?php foreach($pesquisas->retornar_numero_pesquisas_realizadas() as $todas_pesquisas):
-            $count += $todas_pesquisas['count(DISTINCT entrevistado_id)'];
-            
-          endforeach;?>
           <div class="count"><?php echo $count ?> </div>
         </div>
       </div>
@@ -707,17 +719,18 @@ $pesquisas_andamento = $pesquisas->buscar_pesquisas_estado('em andamento');
         </div>
       </div>
     </div>
-    <!-- /page content -->
-
-    <!-- footer content -->
+  </div>
+</div>
+  <?php }else{ ?>
+    
+  <?php } ?>
    <?php 
    
    include_once '../../includes/rodape_pagina.php';
    
    ?>
     <!-- /footer content -->
-  </div>
-</div>
+ 
 <?php
 include_once '../../includes/footer.php';
 ?>

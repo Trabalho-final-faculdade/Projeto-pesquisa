@@ -2,9 +2,9 @@
 session_start();
 
 define("sitedir", "http://localhost:8080/pesquisa-fechada.php", true);
-  require_once('../../../PHPMailer/src/PHPMailer.php');
-  require_once('../../../PHPMailer/src/SMTP.php');
-  require_once('../../../PHPMailer/src/Exception.php');
+  require_once '../../../PHPMailer/src/PHPMailer.php';
+  require_once '../../../PHPMailer/src/SMTP.php';
+  require_once '../../../PHPMailer/src/Exception.php';
   
   use PHPMailer\PHPMailer\SMTP;
   use PHPMailer\PHPMailer\Exception;
@@ -41,7 +41,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
         $mail->addAddress($send_email);
 
         $mail->isHTML(true);
-        $mail->Subject = "Sistema de Pesquisas < Recuperar senha > ";
+        $mail->Subject = "Sistema de Pesquisas < Nova pesquisa > ";
         $mail->Body = "<h2> Olá, estamos lhe convidando para participar de uma pesquisa. </h2>
         <p>Acesse este link <a href='".sitedir."?pesquisa-fechada.php&email=$send_email'>".sitedir."?pesquisa-fechada.php&email=$send_email</a></p>";
         $mail->AltBody = 'chegou email altbody';
@@ -49,17 +49,18 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
         if($mail->send()) {
             echo 'email enviado com sucesso';
             $mail->ClearAddresses();
-            $_SESSION['pesquinsa_cadastrada'] = true;
+            $_SESSION['pesquisa_finalizada'] = true;
+
             echo '<script type="text/javascript">window.location = "../../View/pesquisa/cadastrar-pesquisa.php"</script>';
         }else{
             echo 'email nao enviado';
-            $_SESSION['pesquinsa_cadastrada'] = false;
+            $_SESSION['pesquisa_finalizada'] = false;
             header("Location: ../../View/pesquisa/cadastrar-pesquisa.php");
         }
     
     }catch (Exception $e){
         echo "erro ao enviar mensagem: {$mail->ErrorInfo}";
-        $_SESSION['pesquinsa_cadastrada'] = false;
+        $_SESSION['pesquisa_finalizada'] = false;
         header("Location: ../../View/pesquisa/cadastrar-pesquisa.php");
     }    
     endforeach;

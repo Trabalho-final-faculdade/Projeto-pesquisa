@@ -123,7 +123,7 @@ endforeach;
                                   <label class="col-form-label col-md-3 col-sm-3 label-align" for="pergunta">Pergunta: <span class="required">*</span>
                                   </label>
                                   <div class="col-md-6 col-sm-6 ">
-                                  <input type="text" id="pergunta" name="pergunta" minlength="5" value="" required="required" autocomplete="off" class="form-control" maxlength="40">
+                                  <input type="text" id="pergunta" name="pergunta" minlength="5" value="" required="required" autocomplete="off" class="form-control" maxlength="100">
                                 </div>
                             </div>
                             <div class="form-group row">
