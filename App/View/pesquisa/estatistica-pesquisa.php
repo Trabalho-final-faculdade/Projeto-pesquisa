@@ -116,28 +116,28 @@ $perguntas_respostas = $peguntaDao->buscar_pergunta_pesquisa($_GET['id']);
                       </li>
                      
                     </ul>
-                    <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
-                    <div id="step-1">
-                        <table class="table">
-                            <tbody>
-                              <?php $count = 1; ?>
-                            <?php foreach($perguntas_respostas as $pergunta): ?>
-                                <tr>
-                                    <td>Pergunta <?php echo $count++?></td>
-                                    <td><?php echo $pergunta['pergunta'] ?></td>
-                                </tr>
-                                <tr><?php $resultados = $questionarioDao->read($pergunta['id']);?>
-                                <?php $respostas_escolhidas = $rd->resultado_por_pergunta($pergunta['id']);?>
-                                <?php foreach($respostas_escolhidas as $resposta):?>
-                                     <td>Resposta: <?php echo $resposta['resposta'] ?> quantidade: <?php echo $resposta['quantidade']?></td>
+                  <div class="container">
+                      <table class="bordered striped centered">
+                          <thead>
+                            <?php $count = 1; 
+                               foreach($perguntas_respostas as $pergunta): ?>
+                            <tr>
+                                <th>Pergunta <?php echo $count++?></th>
+                                <th><?php echo $pergunta['pergunta'] ?></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                <?php $resultados = $questionarioDao->read($pergunta['id']);
+                                  $respostas_escolhidas = $rd->resultado_por_pergunta($pergunta['id']);
+                                  foreach($respostas_escolhidas as $resposta):?>
+                                    <td>Resposta: <?php echo $resposta['resposta'] ?> quantidade: <?php echo $resposta['quantidade']?></td>
                                 <?php endforeach;?>
-                                </tr>
-                            </tbody>
-                            <?php endforeach;?></br>
-                        </table>
-                    </div>
+                              </tr>
+                          </tbody>
+                          <?php endforeach;?></br>
+                      </table>
                   </div>
               </div>
             </div>

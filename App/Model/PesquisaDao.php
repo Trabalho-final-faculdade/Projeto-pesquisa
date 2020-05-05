@@ -108,7 +108,7 @@ class PesquisaDao {
 
   public function buscar_finalizadas($id){
     global $pdo;
-    $sql = 'SELECT * FROM questionarios WHERE pesquisa_id = :id GROUP BY entrevistado_id;';
+    $sql = 'SELECT * FROM questionarios WHERE pesquisa_id = :id GROUP BY entrevistado_email;';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue('id', $id);
 

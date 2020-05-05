@@ -28,8 +28,9 @@ if(isset($pesquisas_andamento) && !empty($pesquisas_andamento)){
 
 $pesquisas_realizadas = $pesquisas->retornar_numero_pesquisas_realizadas();
 if(isset($pesquisas_realizadas) && !empty($pesquisas_realizadas)){
+
   foreach($pesquisas_realizadas as $pesquisa_realizada):
-    $count += $pesquisa_realizada['count(DISTINCT entrevistado_id)'];
+    $count += $pesquisa_realizada['count(DISTINCT entrevistado_email)'];
   endforeach;
 }else{
   $count = 0;

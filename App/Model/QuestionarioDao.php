@@ -35,6 +35,22 @@ class QuestionarioDao {
 
   } 
 
+  public function verifica_usuario_ja_respondeu($pesquisa, $email){
+    global $pdo;
+    $sql = 'SELECT * FROM questionarios WHERE pesquisa_id = :pesquisa_id and entrevistado_email = :entrevistado_email';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue('pesquisa_id', $pesquisa);
+    $stmt->bindValue('entrevistado_email', $email);
+
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0){
+      return true;
+    }else{
+      return false;
+    }
+
+  } 
   public function buscar_questionario_pesquisa($id){
     global $pdo;
     $sql = 'SELECT * FROM questionarios WHERE pesquisa_id = :id';
