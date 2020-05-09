@@ -129,11 +129,17 @@ $perguntas_respostas = $peguntaDao->buscar_pergunta_pesquisa($_GET['id']);
                           </thead>
                           <tbody>
                               <tr>
-                                <?php $resultados = $questionarioDao->read($pergunta['id']);
-                                  $respostas_escolhidas = $rd->resultado_por_pergunta($pergunta['id']);
-                                  foreach($respostas_escolhidas as $resposta):?>
-                                    <td>Resposta: <?php echo $resposta['resposta'] ?> quantidade: <?php echo $resposta['quantidade']?></td>
-                                <?php endforeach;?>
+                                  <?php $respostas = $rd->read($pergunta['id']); 
+                                  foreach($respostas as $resposta):
+                                    $votos_por_resposta = $rd->resultado_por_resposta($resposta['id']); 
+                                    if(isset($votos_por_resposta) && !empty($votos_por_resposta)){ ?>                                    
+                                      <td>Resposta: <?php echo $votos_por_resposta[0]['resposta']." Votos: ".$votos_por_resposta[0]['quantidade'] ?></td>
+                                    <?php }else{ ?>
+                                      <td>Resposta: <?php echo $resposta['resposta'].' Votos: 0'?></td>
+                                    <?php } ?>
+                                  <?php endforeach; 
+                                  
+                                  ?>
                               </tr>
                           </tbody>
                           <?php endforeach;?></br>

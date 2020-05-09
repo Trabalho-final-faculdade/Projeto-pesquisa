@@ -48,11 +48,11 @@ class RespostaDao {
     return true;
   }
 
-  public function resultado_por_pergunta($id) {
+  public function resultado_por_resposta($resposta_id) {
     global $pdo;
-    $sql = 'SELECT count(*) AS quantidade, resposta_id, respostas.resposta FROM questionarios JOIN respostas ON respostas.id = questionarios.resposta_id WHERE questionarios.pergunta_id = :id GROUP BY questionarios.resposta_id';
+    $sql = 'SELECT count(respostas.id) AS quantidade, resposta, resposta_id FROM questionarios JOIN respostas ON respostas.id = questionarios.resposta_id WHERE resposta_id = :resposta_id GROUP BY resposta';
     $sql = $pdo->prepare($sql);
-    $sql->bindValue('id', $id);
+    $sql->bindValue('resposta_id', $resposta_id);
 
     $sql->execute();
 

@@ -108,7 +108,15 @@ endforeach;
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
        <script>
                 var index = 1;
+                var checkeds = new Array();
                 $(document).on('click', '.proxima_pergunta', function(){
+                  $("input[name='resposta_selecionada[]']:checked").each(function ()
+                    {
+                      // valores inteiros usa-se parseInt
+                      //checkeds.push(parseInt($(this).val()));
+                      // string
+                      checkeds.push( $(this).val());
+                    });    
                     var pesquisa_id = $("#pesquisa_selecionada").val();
                     var pergunta =  $("#pergunta").val();
                     var resposta_selecionada = $("input[name='resposta_selecionada']:checked").val();
@@ -122,6 +130,7 @@ endforeach;
                             pergunta: pergunta,
                             id_usuario: id_usuario,
                             email_usuario: email_usuario,
+                            array_respostas: checkeds
                         };
                         $.post('../../Controller/pesquisa_controller/buscar-pesquisas-abertas.php', dados, function(retorno){
                             jQuery.noConflict();

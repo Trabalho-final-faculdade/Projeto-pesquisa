@@ -137,7 +137,7 @@ class PesquisaDao {
 
   public function retornar_numero_pesquisas_realizadas(){
     global $pdo;
-    $sql = 'select pesquisa_id, count(DISTINCT entrevistado_email) from questionarios group by pesquisa_id';
+    $sql = 'select count(concluido) as quantidade from questionarios where concluido = 1;';
     $stmt = $pdo->prepare($sql);
 
     $stmt->execute();

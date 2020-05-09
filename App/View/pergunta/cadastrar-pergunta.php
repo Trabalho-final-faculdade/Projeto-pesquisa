@@ -66,25 +66,9 @@ endforeach;
             </div>
             <div class="clearfix"></div>
             </style>
-            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script type="text/javascript">
-              $(function () {
-                function removeCampo() {
-                $(".removerCampo").unbind("click");
-                $(".removerCampo").bind("click", function () {
-                  if($("tr.linhas").length > 1){
-                  $(this).parent().parent().remove();
-                  }
-                });
-                }
-              
-                $(".adicionarCampo").click(function () {
-                novoCampo = $("tr.linhas:first").clone();
-                novoCampo.find("input").val("");
-                novoCampo.insertAfter("tr.linhas:last");
-                removeCampo();
-                });
-              });
+          
             </script>
             <div class="row">
                 <div class="col-md-12 col-sm-12 ">
@@ -132,7 +116,6 @@ endforeach;
                               <div class="col-md-6 col-sm-6 ">
                                 <select name="tipo_pergunta" id="select" class="form-control" required="required">
                                   <option value="">Selecione</option>
-                                  <option value="dicotonica">Dicotônica</option>
                                   <option value="matriz">Matriz</option>
                                   <option value="multipla_escolha">Múltiplia escolha</option>
                                   <option value="resposta_unica">Resposta única</option>
@@ -140,41 +123,57 @@ endforeach;
                               </div>
                             </div>
                           </br>
-                          <div id="tudo">
-                            <table cellpadding="4" cellspacing="6">
-                              <h2>Cadastrar respostas.</h2>
-                              <hr>
-                              <div class="clearfix"></div>      
-                              <tr>                        
-                                <td class="bd_titulo">Respostas</td>
-                              </tr>
-                              <tr class="linhas">
-                                <div class="x_content">
-                                  <div id="step-1">
-                                    <div class="form-group row">
-                                      <td><input type="text" name="descricao[]" required="required" class="form-control"/></td>   
-                                    </div>
-                                  </div>
-                                </div>
-                                <td><a href="#" class="removerCampo" title="Remover linha">Remover resposta</a></td>
-                              </tr>
-                              <tr>
-                                <td colspan="4">
-                                  <a href="#" class="adicionarCampo" title="Adicionar item">Adicionar resposta</a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td align="right" colspan="4"><input type="submit" id="btn-cadastrar" value="Cadastrar" class="btn btn-danger"></td>
-                                <?php if($p->getFechada() == "1"){ ?>
-                                  <td><a href="../../Controller/pesquisa_controller/enviar-pesquisa-email.php?id=<?php echo $p->getId()?>" class="btn btn-info btn-xs"> Finalizar pesquisa </a></td>
-                              <?php }else{ 
-                                  $_SESSION['pesquisa_cadastrada'] = true;?>
-                                  <td><a href="../../View/pesquisa/cadastrar-pesquisa.php" class="btn btn-info btn-xs"> Finalizar pesquisa </a></td>
-                              <?php }?>
-                              </tr> 
-                            </table>
-                          </div>
-                        </form>
+                          <h2>Cadastrar respostas.</h2>
+                              <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                              </ul>
+                          <form>
+                            <div id="formulario"> 
+                                  <button type="button" id="add-campo"> Adicionar pergunta </button>
+                            </div>
+                          <h2>Cadastrar Escalas.</h2>
+                            <div id="formulario_escala">
+                                  <button type="button" id="add-escala"> Adicionar escala </button>
+                            </div>
+                            
+                            <input type="submit" id="btn-cadastrar" value="Cadastrar" class="btn btn-danger">  
+                            <?php if($p->getFechada() == "1"){ ?>
+                              <a href="../../Controller/pesquisa_controller/enviar-pesquisa-email.php?id=<?php echo $p->getId()?>" class="btn btn-info btn-xs"> Finalizar pesquisa </a>
+                            <?php }else{ 
+                              $_SESSION['pesquisa_cadastrada'] = true;?>
+                              <a href="../../View/pesquisa/cadastrar-pesquisa.php" class="btn btn-info btn-xs"> Finalizar pesquisa </a>
+                            <?php }?>
+
+                            
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                            <script>
+                                var cont = 1;
+                                var cont_escala = 1;
+                                $('#add-campo').click(function () {
+                                    cont++;
+                                    $('#formulario').append('<div class="form-group row" id="campo' + cont + '"> <label class="col-md-3 col-sm-3 label-align">Resposta</label><div class="col-md-3 col-sm-3"><input type="text" name="titulo['+cont+']" class="form-control"><button type="button" id="' + cont + '" class="btn-apagar"> - </button></br></div></div>');
+                                });                                                              
+                                                            
+                                $('form').on('click', '.btn-apagar', function () {
+                                    var button_id = $(this).attr("id");
+                                    $('#campo' + button_id + '').remove();
+                                });
+
+                                $('#add-escala').click(function () {
+                                    cont++;
+                                    $('#formulario_escala').append('<div class="form-group row" id="campo_escala' + cont_escala + '"> <label class="col-md-3 col-sm-3 label-align">Resposta</label><div class="col-md-3 col-sm-3"><input type="text" name="titulo['+cont_escala+']" class="form-control"><button type="button" id="' + cont_escala + '" class="btn-apagar-escala"> - </button></br></div></div>');
+                                });                                                              
+                                                            
+                                $('form').on('click', '.btn-apagar-escala', function () {
+                                    var button_id = $(this).attr("id");
+                                    $('#campo_escala' + button_id + '').remove();
+                                });
+                                
+                                
+
+                               
+                            </script>
+                          </form>
                         <form>
                         <?php if(isset($resultado_perguntas)): ?>
                           <?php foreach($resultado_perguntas as $questionario):

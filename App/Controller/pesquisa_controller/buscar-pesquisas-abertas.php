@@ -15,26 +15,33 @@ $p = new \App\Model\Pesquisa();
 $resultado = '';
 
 $pesquisa_selecionada = $_POST['pesquisa_id'];
-
 if(isset($_POST['index'])){
     $index = $_POST['index'];
 }else{
     $index = 0;
 }    
 
-if(isset($_POST['resposta_selecionada']) && $_POST['resposta_selecionada'] != '' 
-    && isset($_POST['pergunta']) && $_POST['pergunta'] != '' 
+if(isset($_POST['pergunta']) && $_POST['pergunta'] != '' 
     && isset($_POST['id_usuario']) && $_POST['id_usuario'] != ''){
         require '../../Model/Questionario.php';
 
         $questionario = new \App\Model\Questionario();
         $questionarioDao = new \App\Model\QuestionarioDao();
 
+        if($_POST['array_respostas']){
+            foreach($_POST['array_respostas'] as $array){
+                $resposta .= $array.';';
+            };
+            $questionario->setRespostaId(addslashes($resposta));
+        }else{
+            $questionario->setRespostaId(addslashes($_POST['resposta_selecionada']));
+        }
+
         $questionario->setEntrevistadoEmail(addslashes($_SESSION['email_usuario']));
-        $questionario->setRespostaId(addslashes($_POST['resposta_selecionada']));
         $questionario->setPerguntaId(addslashes($_POST['pergunta']));
         $questionario->setPesquisaId(addslashes($pesquisa_selecionada));
         $questionario->setOperadorId(addslashes($_POST['id_usuario']));
+        $questionario->setConcluido(addslashes(0));
         $questionarioDao->create($questionario);
 }
 
@@ -68,11 +75,18 @@ if(isset($_POST['email_usuario']) && $_POST['email_usuario'] != ''){
 //Logo após selecionar uma pesquisa
 }else if(isset($pesquisa_selecionada) && $pesquisa_selecionada != ''){
     $rd = new \App\Model\PerguntaDao();
+    $contador = false;
     $questionarioDao = new \App\Model\QuestionarioDao();
-    $respondeu = $questionarioDao->verifica_usuario_ja_respondeu($pesquisa_selecionada, $_SESSION['email_usuario']);
-    if($respondeu == false){
+    $respondeu_questionario = $questionarioDao->verifica_usuario_ja_respondeu_questionario($pesquisa_selecionada, $_SESSION['email_usuario']);
+    if($respondeu_questionario == false){
         $perguntas = $rd->buscar_pergunta_pesquisa($pesquisa_selecionada);
         //Exibe a pergunta e as respostas
+        do{
+            $pergunta = $questionarioDao->verifica_usuario_ja_respondeu_pergunta($perguntas[$index]['id'], $_SESSION['email_usuario']);
+            if($pergunta == true)
+                $index++;
+            
+        }while($pergunta == true);
         if(isset($perguntas[$index]['id']) && !empty($perguntas[$index]['id'])){
             $resposta = $r->read($perguntas[$index]['id']);
             $_SESSION['pesquisa_selecionada'] = $pesquisa_selecionada;
@@ -86,7 +100,11 @@ if(isset($_POST['email_usuario']) && $_POST['email_usuario'] != ''){
 
             foreach($resposta as $r):
                 $resultado .= '<dl class="row">';
-                $resultado .= '<dd class="col-sm=9"><input type="checkbox" id="resposta_selecionada" name="resposta_selecionada" value='.$r['id'].'> '.$r['resposta'];
+                if($perguntas[$index]['tipo'] == 'resposta_unica'){
+                    $resultado .= '<dd class="col-sm=9"><input type="radio" id="resposta_selecionada" name="resposta_selecionada" value='.$r['id'].'> '.$r['resposta'];
+                }else if($perguntas[$index]['tipo'] == 'multipla_escolha'){
+                    $resultado .= '<dd class="col-sm=9"><input type="checkbox" id="resposta_selecionada" name="resposta_selecionada[]" value='.$r['id'].'> '.$r['resposta'];
+                }
                 $resultado .= '</dl>';
             endforeach;
             $resultado .= '<dd class="modal-footer">';
@@ -98,11 +116,13 @@ if(isset($_POST['email_usuario']) && $_POST['email_usuario'] != ''){
       
         // Caso nao tenha mais perguntas, cai neste else para exibir para o usuario que acabou.
         }else{
-            require '../../Model/EnviarPesquisaDao.php';
-
-            $enviar_pesquisaDao = new \App\Model\EnviarPesquisaDao();
-            $enviar_pesquisaDao->update($_POST['email_usuario'], $_POST['pesquisa_id']);
-
+            $index--;
+  
+            if(empty($questionario)){
+                $questionarioDao->concluir_pesquisa($pesquisa_selecionada, $_SESSION['email_usuario'], $perguntas[$index]['id']);
+            }else{
+                $questionarioDao->concluir_pesquisa($questionario->getPesquisaId(), $questionario->getEntrevistadoEmail(), $questionario->getPerguntaId());       
+            }
             $resultado .= '<div class="alert alert-success" role="alert">';
             $resultado .= 'Obrigado por responder este questionario. Clique em Fechar para responder mais questionários!</div>';
             $resultado .= '<dd class="modal-footer">';

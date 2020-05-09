@@ -92,7 +92,6 @@ $resultado = $perguntaDao->buscar_pergunta($pergunta->getId());
                           <div class="col-md-6 col-sm-6 ">
                             <select name="tipo_pergunta" id="select" class="form-control" required="required">
                               <option value="">Selecione</option>
-                              <option value="dicotonica" <?php if($pergunta->getTipoPergunta() == "dicotonica") echo "selected"; ?>>Dicotônica</option>
                               <option value="matriz" <?php if($pergunta->getTipoPergunta() == "matriz") echo "selected"; ?>>Matriz</option>
                               <option value="multipla_escolha" <?php if($pergunta->getTipoPergunta() == "multipla_escolha") echo "selected"; ?>>Múltiplia escolha</option>
                               <option value="resposta_unica" <?php if($pergunta->getTipoPergunta() == "resposta_unica") echo "selected"; ?>>Resposta única</option>
