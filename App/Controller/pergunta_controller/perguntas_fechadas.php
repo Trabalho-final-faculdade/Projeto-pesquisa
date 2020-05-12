@@ -9,7 +9,11 @@ if(isset($_POST['pesquisa_id']) && $_POST['pesquisa_id'] != ''){
     require '../../Model/Conexao.php';
     require '../../Model/PerguntaDao.php';
     require '../../Model/RespostaDao.php';
+    require '../../Model/Questionario.php';
+    require '../../Model/QuestionarioDao.php';
 
+    $questionario = new \App\Model\Questionario();
+    $questionarioDao = new \App\Model\QuestionarioDao();
     $r = new \App\Model\RespostaDao();
     $rd = new \App\Model\PerguntaDao();
     $resultado = '';
@@ -22,23 +26,26 @@ if(isset($_POST['pesquisa_id']) && $_POST['pesquisa_id'] != ''){
     if(isset($_POST['resposta_selecionada']) && $_POST['resposta_selecionada'] != '' 
     && isset($_POST['pergunta']) && $_POST['pergunta'] != '' 
     && isset($_POST['id_usuario']) && $_POST['id_usuario'] != ''){
-        require '../../Model/Questionario.php';
-        require '../../Model/QuestionarioDao.php';
+      
 
-        $questionario = new \App\Model\Questionario();
-        $questionarioDao = new \App\Model\QuestionarioDao();
-
-        $questionario->setEntrevistadoId(addslashes($_POST['id_usuario']));
+        $questionario->setEntrevistadoEmail(addslashes($_POST['email_usuario']));
         $questionario->setRespostaId(addslashes($_POST['resposta_selecionada']));
         $questionario->setPerguntaId(addslashes($_POST['pergunta']));
         $questionario->setPesquisaId(addslashes($_POST['pesquisa_id']));
         $questionario->setOperadorId(null);
+        $questionario->setConcluido(0);
 
         $questionarioDao->create($questionario);
     }
-
+    
     $perguntas = $rd->buscar_pergunta_pesquisa($_POST['pesquisa_id']);
-
+    do{
+        $pergunta_respondida = $questionarioDao->verifica_usuario_ja_respondeu_pergunta($perguntas[$index]['id'], $_POST['email_usuario']);
+           if($pergunta_respondida == true)
+              $index++;
+        
+    }while($pergunta_respondida == true);
+   
     if(isset($perguntas[$index]['id']) && !empty($perguntas[$index]['id'])){
         $resposta = $r->read($perguntas[$index]['id']);
         $resultado .= '<dl class="row">';
@@ -62,6 +69,16 @@ if(isset($_POST['pesquisa_id']) && $_POST['pesquisa_id'] != ''){
 
         $enviar_pesquisaDao = new \App\Model\EnviarPesquisaDao();
         $enviar_pesquisaDao->update($_POST['email_usuario'], $_POST['pesquisa_id']);
+        $index--;
+  
+        if(!empty($questionario->getPesquisaId())){
+            $questionarioDao->concluir_pesquisa($questionario->getPesquisaId(), $questionario->getEntrevistadoEmail(), $questionario->getPerguntaId());       
+        }else{
+            var_dump($_POST['pesquisa_id']);
+            var_dump($_POST['email_usuario']);
+            var_dump($perguntas[$index]['id']);
+            $questionarioDao->concluir_pesquisa($_POST['pesquisa_id'], $_POST['email_usuario'], $perguntas[$index]['id']);
+        }        
 
         $resultado .= '<div class="alert alert-success" role="alert">';
         $resultado .= 'Obrigado por responder este questionario. Clique em Fechar para responder mais questionários!</div>';

@@ -2,6 +2,7 @@
 
 namespace App\Model;
 require_once "Conexao.php";
+
 class QuestionarioDao {
 
   public function create(Questionario $q) {
@@ -26,6 +27,20 @@ class QuestionarioDao {
     $sql = 'SELECT * FROM questionarios WHERE pergunta_id = :id';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue('id', $id);
+
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0):
+      $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+       return $resultado;
+    endif;
+
+  } 
+
+  public function teste(){
+    global $pdo;
+    $sql = 'SELECT * FROM questionarios';
+    $stmt = $pdo->prepare($sql);
 
     $stmt->execute();
 

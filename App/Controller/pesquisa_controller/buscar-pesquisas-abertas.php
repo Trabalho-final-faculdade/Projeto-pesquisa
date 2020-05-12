@@ -8,7 +8,9 @@ require '../../Model/PesquisaDao.php';
 require '../../Model/PerguntaDao.php';
 require '../../Model/RespostaDao.php';
 require '../../Model/QuestionarioDao.php';
+require '../../Model/Questionario.php';
 
+$questionarioDao = new \App\Model\QuestionarioDao();
 $pd = new \App\Model\PesquisaDao();
 $r = new \App\Model\RespostaDao();
 $p = new \App\Model\Pesquisa();
@@ -23,10 +25,9 @@ if(isset($_POST['index'])){
 
 if(isset($_POST['pergunta']) && $_POST['pergunta'] != '' 
     && isset($_POST['id_usuario']) && $_POST['id_usuario'] != ''){
-        require '../../Model/Questionario.php';
 
         $questionario = new \App\Model\Questionario();
-        $questionarioDao = new \App\Model\QuestionarioDao();
+        
 
         if($_POST['array_respostas']){
             foreach($_POST['array_respostas'] as $array){
@@ -76,7 +77,7 @@ if(isset($_POST['email_usuario']) && $_POST['email_usuario'] != ''){
 }else if(isset($pesquisa_selecionada) && $pesquisa_selecionada != ''){
     $rd = new \App\Model\PerguntaDao();
     $contador = false;
-    $questionarioDao = new \App\Model\QuestionarioDao();
+    
     $respondeu_questionario = $questionarioDao->verifica_usuario_ja_respondeu_questionario($pesquisa_selecionada, $_SESSION['email_usuario']);
     if($respondeu_questionario == false){
         $perguntas = $rd->buscar_pergunta_pesquisa($pesquisa_selecionada);
