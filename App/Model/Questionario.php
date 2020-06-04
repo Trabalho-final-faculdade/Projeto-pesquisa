@@ -5,7 +5,7 @@ require_once "../../Model/Conexao.php";
 
 class Questionario {
 
-  private $id, $pesquisa_id, $pergunta_id, $resposta_id, $operador_id, $entrevistado_email, $concluido;
+  private $id, $pesquisa_id, $pergunta_id, $resposta_id, $escala_id, $operador_id, $entrevistado_email, $concluido;
 
   public function getId() {
     return $this->id;
@@ -37,6 +37,14 @@ class Questionario {
 
   public function setRespostaId($resposta_id) {
     $this->resposta_id = $resposta_id;
+  }
+
+  public function getEscalaId() {
+    return $this->escala_id;
+  }
+
+  public function setEscalaId($escala_id) {
+    $this->escala_id = $escala_id;
   }
 
   public function getOperadorId() {

@@ -13,6 +13,7 @@ $usuario_logado = new \App\Model\Usuario();
 $ud = new \App\Model\UsuarioDao();
 $peguntaDao = new \App\Model\PerguntaDao();
 $questionarioDao = new \App\Model\QuestionarioDao();
+$escalas = new \App\Model\EscalaPerguntaDao();
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
 endforeach;
@@ -116,34 +117,62 @@ $perguntas_respostas = $peguntaDao->buscar_pergunta_pesquisa($_GET['id']);
                       </li>
                      
                     </ul>
-                  </div>
+                  </div></br>
                   <div class="container">
+                  <?php $count = 1; 
+                    foreach($perguntas_respostas as $pergunta): ?>
+                    <?php if($pergunta['tipo'] != 'matriz'){ ?>
                       <table class="bordered striped centered">
                           <thead>
-                            <?php $count = 1; 
-                               foreach($perguntas_respostas as $pergunta): ?>
                             <tr>
                                 <th>Pergunta <?php echo $count++?></th>
                                 <th><?php echo $pergunta['pergunta'] ?></th>
                             </tr>
                           </thead>
-                          <tbody>
-                              <tr>
-                                  <?php $respostas = $rd->read($pergunta['id']); 
-                                  foreach($respostas as $resposta):
-                                    $votos_por_resposta = $rd->resultado_por_resposta($resposta['id']); 
-                                    if(isset($votos_por_resposta) && !empty($votos_por_resposta)){ ?>                                    
-                                      <td>Resposta: <?php echo $votos_por_resposta[0]['resposta']." Votos: ".$votos_por_resposta[0]['quantidade'] ?></td>
-                                    <?php }else{ ?>
-                                      <td>Resposta: <?php echo $resposta['resposta'].' Votos: 0'?></td>
-                                    <?php } ?>
-                                  <?php endforeach; 
-                                  
-                                  ?>
-                              </tr>
+                          <tbody> 
+                              <?php $respostas = $rd->read($pergunta['id']); 
+                                foreach($respostas as $resposta):
+                                  $votos_por_resposta = $rd->resultado_por_resposta($resposta['id']); 
+                                  if(isset($votos_por_resposta) && !empty($votos_por_resposta)){ ?>       
+                                  <tr>                             
+                                    <td>Resposta: <?php echo $votos_por_resposta[0]['resposta']." Votos: ".$votos_por_resposta[0]['quantidade'] ?></td>
+                                  <?php }else{ ?>
+                                    <td>Resposta: <?php echo $resposta['resposta'].' Votos: 0'?></td>
+                                  <?php } ?>
+                                  </tr>
+                                <?php endforeach;                              
+                              ?>
                           </tbody>
-                          <?php endforeach;?></br>
                       </table>
+                      <?php }else{  
+                        
+                        $todas_escalas = $escalas->read($pergunta['id']); ?>
+                        
+                        <table>
+                            <tr>
+                              <th>Pergunta <?php echo $count++?></th>
+                              <th><?php echo $pergunta['pergunta'] ?></th>
+                            </tr>
+                        <?php foreach($rd->read($pergunta['id']) as $r): ?> 
+                          <tr>
+                              <td><?php echo $r['resposta'] ?></td>
+                              <?php $votos_por_resposta = $escalas->resultado_por_resposta($r['id']);?>
+                              <?php foreach($votos_por_resposta as $votos): 
+                                      foreach($todas_escalas as $escala):  ?>
+                                  <?php if ($escala['escala_descricao'] == $votos['escala_descricao']) {  ?>
+                                    <td><?php echo $votos['escala_descricao']." Votos: ".$votos['quantidade'] ?></td>
+                                  <?php }else{  ?>
+                                    <td><?php  $escala['escala_descricao']." Votos: 0" ?></td>
+                                  <?php } ?></td>
+                              <?php endforeach; ?>
+                              <td><?php if(empty($votos_por_resposta)){ 
+                              echo $escala['escala_descricao']." Votos: 0" ?></td>
+                          <?php } endforeach;?>
+                          </tr>
+                        <?php endforeach; ?>  
+                        </table>
+                     <?php }
+                     endforeach; ?>     
                   </div>
               </div>
             </div>

@@ -131,11 +131,12 @@ endforeach;
                             <div id="formulario"> 
                                   <button type="button" id="add-campo"> Adicionar pergunta </button>
                             </div>
-                          <h2>Cadastrar Escalas.</h2>
+                          <div id="matriz_ativada">
+                            <h2>Cadastrar Escalas.</h2>
                             <div id="formulario_escala">
                                   <button type="button" id="add-escala"> Adicionar escala </button>
                             </div>
-                            
+                          </div>
                             <input type="submit" id="btn-cadastrar" value="Cadastrar" class="btn btn-danger">  
                             <?php if($p->getFechada() == "1"){ ?>
                               <a href="../../Controller/pesquisa_controller/enviar-pesquisa-email.php?id=<?php echo $p->getId()?>" class="btn btn-info btn-xs"> Finalizar pesquisa </a>
@@ -160,8 +161,8 @@ endforeach;
                                 });
 
                                 $('#add-escala').click(function () {
-                                    cont++;
-                                    $('#formulario_escala').append('<div class="form-group row" id="campo_escala' + cont_escala + '"> <label class="col-md-3 col-sm-3 label-align">Resposta</label><div class="col-md-3 col-sm-3"><input type="text" name="titulo['+cont_escala+']" class="form-control"><button type="button" id="' + cont_escala + '" class="btn-apagar-escala"> - </button></br></div></div>');
+                                    cont_escala++;
+                                    $('#formulario_escala').append('<div class="form-group row" id="campo_escala' + cont_escala + '"> <label class="col-md-3 col-sm-3 label-align">Resposta</label><div class="col-md-3 col-sm-3"><input type="text" name="escala['+cont_escala+']" class="form-control"><button type="button" id="' + cont_escala + '" class="btn-apagar-escala"> - </button></br></div></div>');
                                 });                                                              
                                                             
                                 $('form').on('click', '.btn-apagar-escala', function () {
@@ -170,7 +171,23 @@ endforeach;
                                 });
                                 
                                 
+                                $(document).ready(function(){
+                                  var matriz = document.getElementById('matriz_ativada');
+                                      select = document.getElementById('select');
 
+                                  function show(){
+                                    if(select.value == 'matriz'){
+                                      matriz.style.display = 'block';
+                                    }else{
+                                      matriz.style.display = 'none';
+                                    }
+                                  }
+                                  select.addEventListener('change', function(){
+                                    show();
+                                    
+                                  });
+                                  show();
+                                });
                                
                             </script>
                           </form>

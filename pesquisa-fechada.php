@@ -109,14 +109,34 @@ endif;
 
             <script>
                 var index = 1;
+                var checkeds = new Array();
+                var array_matriz = new Array();
+                var array_escala_matriz = new Array();
+                
+                function adicionaResposta(obj, id_resposta){
+                  array_matriz[id_resposta] = obj.value;   
+                } 
                 //var id_usuario = document.getElementById('id_usuario');
                 $(document).ready(function(){
                     $(document).on('click', '.proxima_pergunta', function(){
+                        $("input[name='resposta_selecionada[]']:checked").each(function ()
+                        {
+                        // valores inteiros usa-se parseInt
+                        //checkeds.push(parseInt($(this).val()));
+                        // string
+                            checkeds.push( $(this).val());
+                        });    
+                        for(var i = 0; i <= array_matriz.length; i++){
+                            if(typeof(array_matriz[i]) != 'undefined'){
+                                array_escala_matriz.push(array_matriz[i]);
+                            }
+                        }
                         var pesquisa_id = $(this).attr('id');
                         var pergunta =  $("#pergunta").val();
                         var resposta_selecionada = $("input[name='resposta_selecionada']:checked").val();
                         var id_usuario = $('#id_usuario').val();
                         var email_usuario = $('#email_usuario').val();
+                        
                         if(pesquisa_id != ''){
                             var dados = {
                                 pesquisa_id: pesquisa_id,
@@ -125,6 +145,8 @@ endif;
                                 pergunta: pergunta,
                                 id_usuario: id_usuario,
                                 email_usuario: email_usuario,
+                                array_respostas: checkeds,
+                                array_escala_matriz: array_escala_matriz,
                             };
                             $.post('App/Controller/pergunta_controller/perguntas_fechadas.php', dados, function(retorno){
                                 jQuery.noConflict();
@@ -132,6 +154,9 @@ endif;
                                 $('#VisualizarPesquisa').modal('show');
                             })
                             index ++;
+                            checkeds = new Array();
+                            array_matriz = new Array();
+                            array_escala_matriz = new Array();
                         }                     
                     });
                     $(document).on('click', '.view_data', function(){

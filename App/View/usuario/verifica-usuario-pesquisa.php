@@ -109,19 +109,35 @@ endforeach;
        <script>
                 var index = 1;
                 var checkeds = new Array();
+                var array_matriz = new Array();
+                var array_escala_matriz = new Array();
+                var array_resposta_matriz = new Array();
+                
+                function adicionaResposta(obj, id_resposta){
+                  array_matriz[id_resposta] = obj.value;  
+                } 
+                
                 $(document).on('click', '.proxima_pergunta', function(){
-                  $("input[name='resposta_selecionada[]']:checked").each(function ()
-                    {
+                    $("input[name='resposta_selecionada[]']:checked").each(function ()
+                    {0
+
                       // valores inteiros usa-se parseInt
                       //checkeds.push(parseInt($(this).val()));
                       // string
                       checkeds.push( $(this).val());
                     });    
+                    for(var i = 0; i <= array_matriz.length; i++){
+                      if(typeof(array_matriz[i]) != 'undefined'){
+                        array_escala_matriz.push([i, array_matriz[i]]);
+                      }
+                    }
+                    
                     var pesquisa_id = $("#pesquisa_selecionada").val();
                     var pergunta =  $("#pergunta").val();
                     var resposta_selecionada = $("input[name='resposta_selecionada']:checked").val();
                     var id_usuario = $('#usuario_id').val();
                     var email_usuario = $('#email_usuario').val();
+                
                     if(pesquisa_id != ''){
                         var dados = {
                             pesquisa_id: pesquisa_id,
@@ -130,7 +146,9 @@ endforeach;
                             pergunta: pergunta,
                             id_usuario: id_usuario,
                             email_usuario: email_usuario,
-                            array_respostas: checkeds
+                            array_respostas: checkeds,
+                            array_escala_matriz: array_escala_matriz,
+
                         };
                         $.post('../../Controller/pesquisa_controller/buscar-pesquisas-abertas.php', dados, function(retorno){
                             jQuery.noConflict();
@@ -138,6 +156,8 @@ endforeach;
                             $('#VisualizarPesquisa').modal('show');
                         })
                         index ++;
+                        array_matriz = new Array();
+                        array_escala_matriz = new Array();
                     }                     
                 });
 

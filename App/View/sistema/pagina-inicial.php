@@ -66,7 +66,7 @@ $pesquisas_realizadas = $pesquisas->retornar_numero_pesquisas_realizadas();
         </div>
         <div class="col-sm-4  tile_stats_count">
           <span class="count_top"><i class="fa fa-user"></i> Pesquisas respondidas</span>
-          <div class="count"><?php echo $pesquisas_realizadas[0]['quantidade'] ?> </div>
+          <div class="count"><?php echo count($pesquisas_realizadas) ?> </div>
         </div>
       </div>
     </div>

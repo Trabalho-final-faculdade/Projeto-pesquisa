@@ -108,7 +108,7 @@ class PesquisaDao {
 
   public function buscar_finalizadas($id){
     global $pdo;
-    $sql = 'SELECT * FROM questionarios WHERE pesquisa_id = :id GROUP BY entrevistado_email;';
+    $sql = 'SELECT * FROM questionarios WHERE pesquisa_id = :id  AND concluido = 1 GROUP BY entrevistado_email;';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue('id', $id);
 
@@ -137,7 +137,7 @@ class PesquisaDao {
 
   public function retornar_numero_pesquisas_realizadas(){
     global $pdo;
-    $sql = 'select count(concluido) as quantidade from questionarios where concluido = 1;';
+    $sql = 'SELECT * FROM questionarios WHERE concluido = 1 GROUP BY entrevistado_email;';
     $stmt = $pdo->prepare($sql);
 
     $stmt->execute();
