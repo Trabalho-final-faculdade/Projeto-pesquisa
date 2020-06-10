@@ -10,7 +10,6 @@
                   <ul class="nav child_menu">
                     <li><a href="../usuario/cadastro-usuario.php">Cadastrar</a></li>
                     <li><a href="../usuario/buscar-usuarios.php">Buscar</a></li>
-                    <li><a href="tables.html">Histórico de pesquisas#</a></li>
                     <li><a href="../usuario/usuarios-bloqueados.php">Listar bloqueados</a></li>
                   </ul>
                 </li>
@@ -25,13 +24,6 @@
                 </ul>
               </li>
               <?php if($usuario['nivel'] == "Administrador"): ?>
-                <li><a><i class="fa fa-bar-chart-o"></i> Configurações#<span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu">
-                    <li><a href="chartjs.html">Sistema#</a></li>
-                    <li><a href="chartjs2.html">Layout#</a></li>
-                  
-                  </ul>
-                </li>
                 <li><a><i class="fa fa-clone"></i>Relatórios <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="../relatorio/resultado-pesquisa.php">Resultados de pesquisas</a></li>

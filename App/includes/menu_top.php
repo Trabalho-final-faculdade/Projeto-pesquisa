@@ -10,13 +10,11 @@
                 <img src="../../Public/imagens/admin-image.png" alt=""><?php echo $usuario['nome'] ?>
               </a>
               <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item"  href="../usuario/editar-dados.php?id=<?php echo $usuario['id']?>"> Editar dados</a>
+                <a class="dropdown-item"  href="../usuario/editar-dados.php?id=<?php echo $_SESSION['id']?>"> Editar dados</a>
               <?php if($usuario['nivel'] == "Administrador"): ?>  
                 <a class="dropdown-item"  href="../sistema/configuracoes.php">
-                    <span class="badge bg-red pull-right">50%</span>
                     <span>Configuracoes</span>
                 </a>
-              <a class="dropdown-item"  href="javascript:;">Ajuda</a>
               <?php endif; ?>
               <a class="dropdown-item"  href="../../Controller/sistema_controller/logout.php"><i class="fa fa-sign-out pull-right"></i> Sair</a>
               </div>

@@ -13,7 +13,7 @@ require_once '../../Model/Conexao.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Nome da empresa | </title>
+    <title>Pesquisa inteligente Tecnologia | </title>
 
     <link href="../../Public/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -60,15 +60,15 @@ require_once '../../Model/Conexao.php';
 
               <div class="separator">
                 <p class="change_link">Novo no site?
-                  <a href="#signup" class="to_register"> Clique aqui e conheça mais sobre nós </a>
+                  <a href="../../../index.php" class="to_register"> Clique aqui e conheça mais sobre nós </a>
                 </p>
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Nome da empresa!</h1>
-                  <p> Breve texto sobre direitos reservados, desde quando a empresa se encontra aberta e termos de privacidade.</p>
+                  <h1><i class="fa fa-paw"></i> Pesquisa inteligente Tecnologia</h1>
+                  <p> Todas as pesquisas possuem direitos reservados, consulte os termos de privacidade.</p>
                 </div>
               </div>
             </form>

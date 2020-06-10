@@ -1,5 +1,5 @@
 <div class="navbar nav_title" style="border: 0;">
-    <a href="../sistema/pagina-inicial.php" class="site_title"><i class="fa fa-paw"></i> <span>Nome sistema!</span></a>
+    <a href="../sistema/pagina-inicial.php" class="site_title"><i class="fa fa-paw"></i> <span>PI Tecnologia</span></a>
 </div>
 
 <div class="clearfix"></div>

@@ -30,11 +30,19 @@ foreach($ud->read($_GET['id']) as $ub):
     $usuario_buscado->setGenero($ub['genero']);
     $usuario_buscado->setNascimento($ub['data_nascimento']);
     $usuario_buscado->setNivelAcessoId($ub['nivel_acesso_id']);
+    $usuario_logado->setNivelAcessoId($usuario['nivel_acesso_id']);
+
 endforeach;
 
 $retorno_telefone = $telefoneDao->buscar_telefone($ub['telefone_id']);
 $telefone->setTelefone($retorno_telefone[0]['telefone']);
 $telefone->setCelular($retorno_telefone[0]['celular']);
+
+if($usuario['nivel_acesso_id'] != '1') {
+  if($_SESSION['id'] != $_GET['id']) {
+    header("Location: ../sistema/tela-login.php");
+  }
+}
 
 ?>
 <div class="container body">
@@ -52,16 +60,7 @@ $telefone->setCelular($retorno_telefone[0]['celular']);
               <div class="title_left">
                 <h3>Editar</h3>
               </div>
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5  form-group row pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+              
             </div>
             <div class="clearfix"></div>
 
@@ -71,11 +70,7 @@ $telefone->setCelular($retorno_telefone[0]['celular']);
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Editando os dados.</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                     
-                    </ul>
+                    
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -161,20 +156,22 @@ $telefone->setCelular($retorno_telefone[0]['celular']);
                           <input type="text" id="celular" name="celular" value="<?php echo $telefone->getCelular()?>" required="required" class="form-control" onkeypress="$(this).mask('(00)00000-0000');">
                         </div>
                       </div>
-                      <div class="form-group row">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="nivel_acesso_id">Nivel de acesso <span class="required">*</span>
-                        </label>
-                        <?php $query = $nd->read() ?>
-                        <div class="col-md-6 col-sm-6 ">
-                          <select name="nivel_acesso_id" id="select" class="form-control" required="required">
-                            <?php foreach($query as $nivel) { ?>
-                                <option value="<?php echo $nivel['id']?>" <?php if($nivel['id'] == $usuario_buscado->getNivelAcessoId()) echo "selected"; ?>>
-                                    <?php echo $nivel['nivel']; ?>
-                                </option>
-                            <?php } ?>
-                          </select>
+                      <?php if($usuario_buscado->getNivelAcessoId() == 1 ){ ?>
+                        <div class="form-group row">
+                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="nivel_acesso_id">Nivel de acesso <span class="required">*</span>
+                          </label>
+                          <?php $query = $nd->read() ?>
+                          <div class="col-md-6 col-sm-6 ">
+                            <select name="nivel_acesso_id" id="select" class="form-control" required="required">
+                              <?php foreach($query as $nivel) { ?>
+                                  <option value="<?php echo $nivel['id']?>" <?php if($nivel['id'] == $usuario_buscado->getNivelAcessoId()) echo "selected"; ?>>
+                                      <?php echo $nivel['nivel']; ?>
+                                  </option>
+                              <?php } ?>
+                            </select>
+                          </div>
                         </div>
-                      </div>
+                      <?php } ?>
                       <div class="actionBar">
                         <div class="loader">
                           <button type="submit" name="btnCadastrar" class="buttonNext btn btn-success">Editar</button>

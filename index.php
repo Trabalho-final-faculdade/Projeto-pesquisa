@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<header id="header" class="alt">
-			<div class="logo"><a href="index.php">Nome da empresa <span>Texto auxiliar</span></a></div>
+			<div class="logo"><a href="index.php"> Pesquisa Inteligente Tecnologia<span> referencia em pesquisas online</span></a></div>
 			<a href="#menu" class="toggle"><span>Menu</span></a>
 		</header>
 			<nav id="menu">			
@@ -22,8 +22,6 @@
 					<li><a href="index.php">Página inicial</a></li>
 					<li><a href="App/View/sistema/tela-login.php">Logar</a></li>
 					<li><a href="App/View/pesquisa/pesquisa-fechada.php">Realizar Pesquisas</a></li>
-					<li><a href="elements.html">Quem somos</a></li>
-					<li><a href="elements.html">Dúvidas frequentes</a></li>
 					<li><a href="#fale_conosco">Fale conosco</a></li>
 				</ul>
 			</nav>
@@ -31,9 +29,8 @@
 				<img src="App/Public/imagens/banner-tela-inicial.jpg" alt="" />
 				<div class="inner" style="position: absolute; top: 200px; width: 1400px; text-align: center; line-height: 30px; font-size: 120%">
 					<h1>Transitive</h1>
-					<p>A full responsive, business-oriented HTML5/CSS3 template<br />
-					built by <a href="https://templated.co/">Templated</a> and released under the <a href="https://templated.co/license">Creative Commons</a>.</p>
-					<a href="#one" class="button special scrolly">Get Started</a>
+					<p> A Pesquisa inteligente Tecnologia veio para inovar a forma<br />
+					de fazer pesquisas. </p>
 				</div>
 			</div>
 

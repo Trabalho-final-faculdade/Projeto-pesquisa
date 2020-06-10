@@ -2,8 +2,7 @@
 
 namespace App\Model;
 
-require_once "../../Model/Conexao.php";
-
+require_once "Conexao.php";
 
 class PerguntaDao {
 

@@ -9,6 +9,10 @@ if(!isset($_GET['rash'])) {
 $sr = new \App\Model\SenhaRecuperadaDao();
 
 $resultado = $sr->read($_GET['rash']);
+
+if(!isset($resultado) || empty($resultado)) {
+  header("Location: App/View/sistema/tela-login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +23,7 @@ $resultado = $sr->read($_GET['rash']);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Nome da empresa | </title>
+    <title>Pesquisas inteligentes tecnologia | </title>
 
     <link href="App/Public/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -42,10 +46,10 @@ $resultado = $sr->read($_GET['rash']);
         <div class="animate form login_form">
           <section class="login_content">
             <form action="App/Controller/usuario_controller/editar_senha.php" method="POST">
-              <h1>Frase ou banner a escolher</h1>
+              <h1>Redefinir senha</h1>
               <div>
                 <input type="hidden" name="email" class="form-control" value="<?php echo $resultado[0]['email'] ?>" />
-                <input type="text" name="senha" class="form-control" placeholder="Insira sua nova senha aqui" required="" />
+                <input type="password" name="senha" class="form-control" placeholder="Insira sua nova senha aqui" required="" />
               </div>    
               <div>
                 <button type="submit" name="btnEnviar" class="btn btn-default submit">Enviar dados</button>
@@ -56,15 +60,15 @@ $resultado = $sr->read($_GET['rash']);
 
               <div class="separator">
                 <p class="change_link">Novo no site?
-                  <a href="#signup" class="to_register"> Clique aqui e conheça mais sobre nós </a>
+                  <a href="../../../index.php" class="to_register"> Clique aqui e conheça mais sobre nós </a>
                 </p>
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Nome da empresa!</h1>
-                  <p> Breve texto sobre direitos reservados, desde quando a empresa se encontra aberta e termos de privacidade.</p>
+                  <h1><i class="fa fa-paw"></i> Pesquisa Inteligente Tecnologia</h1>
+                  <p> Todas as pesquisas possuem direitos reservados, consulte os termos de privacidade.</p>
                 </div>
               </div>
             </form>

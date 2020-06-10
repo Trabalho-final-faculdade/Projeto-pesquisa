@@ -30,8 +30,12 @@ $e->setCep($resultados[0]['cep']);
 
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
+  $usuario_logado->setNivelAcessoId = $usuario['nivel_acesso_id'];
 endforeach;
 
+if($usuario['nivel_acesso_id'] != '1') {
+  header("Location: ../sistema/tela-login.php");
+}
 $c = new \App\Model\Configuracao();
 $cd = new \App\Model\ConfiguracaoDao();
 
@@ -60,17 +64,6 @@ $resultado = $cd->read($_SESSION['empresa_id']);
               <div class="title_left">
                 <h3>Configuração</h3>
               </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5  form-group row pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="clearfix"></div>
 
@@ -89,9 +82,6 @@ $resultado = $cd->read($_SESSION['empresa_id']);
                       <!-- Nav tabs -->
                       <div class="nav nav-tabs flex-column  bar_tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Dados da empresa</a>
-                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Acessos</a>
-                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Financeiro</a>
-                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Demais configurações</a>
                       </div>
             
                     </div>
@@ -154,102 +144,7 @@ $resultado = $cd->read($_SESSION['empresa_id']);
                           </form>
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <form class="form-horizontal form-label-left" action="../../Controller/sistema_controller/editar-configuracoes.php" method="POST" >
-                         
-                        <input type="hidden" name="empresa_id" value="<?php echo $_SESSION['empresa_id']?>">
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-7 col-sm-6 label-align" for="cadastro">Habilitar cadastro:
-                            </label>
-                            <?php $query = $nad->read() ?>
-                            <div class="col-md-5 col-sm-14 ">
-                              <select name="cadastro" id="select" class="form-control" required="required">
-                                <?php foreach($query as $nivel) { ?>
-                                    <option value="<?php echo $nivel['id']?>" <?php if($c->getCadastro() == $nivel['id']) echo "selected"?> >
-                                        <?php echo $nivel['nivel']; ?>
-                                    </option>
-                                <?php } ?>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-7 col-sm-6 label-align" for="dados_usuario">Habilitar visualização de dados de usuários:
-                            </label>
-                            <?php $query = $nad->read() ?>
-                            <div class="col-md-5 col-sm-14 ">
-                              <select name="dados_usuario" id="select" class="form-control" required="required">
-                                <?php foreach($query as $nivel) { ?>
-                                    <option value="<?php echo $nivel['id']?>" <?php if($c->getVisualizarDadosUsuarios() == $nivel['id']) echo "selected"?> >
-                                        <?php echo $nivel['nivel']; ?>
-                                    </option>
-                                <?php } ?>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-7 col-sm-6 label-align" for="dados_pesquisa">Habilitar visualização de dados de pesquisas:
-                            </label>
-                            <?php $query = $nad->read() ?>
-                            <div class="col-md-5 col-sm-14 ">
-                              <select name="dados_pesquisa" id="select" class="form-control" required="required">
-                                <?php foreach($query as $nivel) { ?>
-                                    <option value="<?php echo $nivel['id']?>" <?php if($c->getVisualizarDadosPesquisa() == $nivel['id']) echo "selected"?>>
-                                        <?php echo $nivel['nivel']; ?>
-                                    </option>
-                                <?php } ?>
-                              </select>
-                            </div>
-                          </div>
-                          
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-7 col-sm-6 label-align" for="visualizar_pesquisa">Habilitar visualização de resultados de pesquisas:
-                            </label>
-                            <?php $query = $nad->read() ?>
-                            <div class="col-md-5 col-sm-14 ">
-                              <select name="visualizar_pesquisa" id="select" class="form-control" required="required">
-                                <?php foreach($query as $nivel) { ?>
-                                    <option value="<?php echo $nivel['id']?>" <?php if($c->getVisualizarResultadoPesquisa() == $nivel['id']) echo "selected"?> >
-                                        <?php echo $nivel['nivel']; ?>
-                                    </option>
-                                <?php } ?>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-7 col-sm-6 label-align" for="visualizar_grafico">Habilitar visualização de gráficos:
-                            </label>
-                            <?php $query = $nad->read() ?>
-                            <div class="col-md-5 col-sm-14 ">
-                              <select name="visualizar_grafico" id="select" class="form-control" required="required">
-                                <?php foreach($query as $nivel) { ?>
-                                    <option value="<?php echo $nivel['id']?>" <?php if($c->getVisualizarGrafico() == $nivel['id']) echo "selected"?> >
-                                        <?php echo $nivel['nivel']; ?>
-                                    </option>
-                                <?php } ?>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-7 col-sm-6 label-align" for="gerar_relatorio">Habilitar gerar relatórios:
-                            </label>
-                            <?php $query = $nad->read() ?>
-                            <div class="col-md-5 col-sm-14 ">
-                              <select name="gerar_relatorio" id="select" class="form-control" required="required">
-                                <?php foreach($query as $nivel) { ?>
-                                    <option value="<?php echo $nivel['id']?>" <?php if($c->getGerarRelatorio() == $nivel['id']) echo "selected"?>>
-                                        <?php echo $nivel['nivel']; ?>
-                                    </option>
-                                <?php } ?>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="actionBar">
-                            <div class="loader">
-                              <button type="submit" name="btnCadastrar" class="buttonNext btn btn-success">Editar</button>
-                            </div>
-                          </div>
-                        </form>
-                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Dados financeiros aqui</div>
-                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Demais dados aqui</div>
+                        
                       </div>
                     </div>
 

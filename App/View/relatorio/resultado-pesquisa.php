@@ -15,9 +15,14 @@ $nad = new \App\Model\NivelDeAcessoDao();
 
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
+  $usuario_logado->setNivelAcessoId = $usuario['nivel_acesso_id'];
 endforeach;
 $pd = new \App\Model\PesquisaDao(); 
 $p = new \App\Model\Pesquisa();
+
+if($usuario['nivel_acesso_id'] != '1') {
+  header("Location: ../sistema/tela-login.php");
+}
 ?>
 <div class="container body">
   <div class="main_container">
@@ -38,9 +43,7 @@ $p = new \App\Model\Pesquisa();
               <div class="title_right">
                 <div class="col-md-5 col-sm-5  form-group row pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button">Go!</button>
                     </span>
                   </div>
                 </div>
@@ -55,8 +58,6 @@ $p = new \App\Model\Pesquisa();
                   <div class="x_title">
                     <h2>Buscar pesquisa</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
                      
                     </ul>
                     <div class="clearfix"></div>
@@ -72,7 +73,6 @@ $p = new \App\Model\Pesquisa();
                                 <option value="">Selecione</option>
                                 <option value="id" <?php if(isset($_POST['select_busca']) && ($_POST['select_busca'] == "id")) echo "selected"; ?>>ID</option>
                                 <option value="titulo" <?php if(isset($_POST['select_busca']) && ($_POST['select_busca'] == "titulo")) echo "selected"; ?>>Titulo</option>
-                                <option value="periodo" <?php if(isset($_POST['select_busca']) && ($_POST['select_busca'] == "periodo")) echo "selected"; ?>>Período</option>
                                 <option value="estado" <?php if(isset($_POST['select_busca']) && ($_POST['select_busca'] == "estado")) echo "selected"; ?>>Estado</option>
                               </select>
                             </div>
@@ -152,7 +152,7 @@ $p = new \App\Model\Pesquisa();
                                         <td><?php echo $resultado['observacao'] ?> </td>
                                         <td><?php echo $resultado['status'] ?> </td>
                                         <td> <a href="../../View/pesquisa/estatistica-pesquisa.php?id=<?php echo $resultado['id']?>" class="btn btn-success btn-xs"><i class="fa fa-folder"></i> Estatísticas </a></td>     
-                                        <td><a href="" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Gráficos* </a></td>
+                                        <td><a href="../../View/pesquisa/graficos.php?id=<?php echo $resultado['id']?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Gráficos </a></td>
                                       </tr>
                                       <?php } ?>
                                     </tbody>

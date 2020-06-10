@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-require_once "../../Model/Conexao.php";
+require_once "Conexao.php";
 header('Content-Type: text/html; charset=utf-8');
 
 class RespostaDao {

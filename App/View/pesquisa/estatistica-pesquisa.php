@@ -4,11 +4,11 @@ require_once '../../../vendor/autoload.php';
 
 include_once '../../includes/header.php';
 include_once '../../Model/Nivel_de_acessoDao.php';
+
 session_start();
 if(!isset($_SESSION['id'])) {
     header("Location: ../sistema/tela-login.php");
 }
-
 $usuario_logado = new \App\Model\Usuario();
 $ud = new \App\Model\UsuarioDao();
 $peguntaDao = new \App\Model\PerguntaDao();
@@ -39,17 +39,6 @@ $perguntas_respostas = $peguntaDao->buscar_pergunta_pesquisa($_GET['id']);
               <div class="title_left">
                 <h3>Dados estatísticos</h3>
               </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5  form-group row pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="clearfix"></div>
 
@@ -58,12 +47,16 @@ $perguntas_respostas = $peguntaDao->buscar_pergunta_pesquisa($_GET['id']);
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Dados estatísticos da pesquisa</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                     
-                    </ul>
-                    <div class="clearfix"></div>
+                    <form action="../../../relatorio_pdf.php" method="post">
+                      <center><button type="submit" name="btn_pdf" id="btn_pdf" class="btn btn-primary">Gerar PDF</button></center>
+                      <input type="hidden" name="dados_pesquisa_titulo" value="<?php echo $dados_pesquisa[0]['titulo'] ?>">
+                      <input type="hidden" name="dados_pesquisa_observacao" value="<?php echo $dados_pesquisa[0]['observacao'] ?>">
+                      <input type="hidden" name="dados_pesquisa_criada_em" value="<?php echo $dados_pesquisa[0]['criada_em'] ?>"> 
+                      <input type="hidden" name="dados_pesquisa_data_inicial" value="<?php echo $dados_pesquisa[0]['data_inicial'] ?>">
+                      <input type="hidden" name="dados_pesquisa_data_final" value="<?php echo $dados_pesquisa[0]['data_final'] ?>">
+                      <input type="hidden" name="dados_pesquisa_finalizadas" value="<?php echo count($finalizadas) ?>">
+                      <input type="hidden" name="dados_pesquisa_pesquisa_id" value="<?php echo $_GET['id'] ?>">
+                    </form>
                   </div>
                   <div class="x_content">
                     <div id="step-1">
@@ -112,11 +105,7 @@ $perguntas_respostas = $peguntaDao->buscar_pergunta_pesquisa($_GET['id']);
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Dados estatísticos das perguntas</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                     
-                    </ul>
+                  
                   </div></br>
                   <div class="container">
                   <?php $count = 1; 

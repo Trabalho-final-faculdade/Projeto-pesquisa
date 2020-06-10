@@ -15,8 +15,13 @@ $nad = new \App\Model\NivelDeAcessoDao();
 
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
+  $usuario_logado->setNivelAcessoId = $usuario['nivel_acesso_id'];
 endforeach;
 $usuario_profile = $ud->read($_GET['id']);
+
+if($usuario['nivel_acesso_id'] != '1') {
+    header("Location: ../sistema/tela-login.php");
+  }
 ?>
 <link href="../../Public/stylesheets/profile.css" rel="stylesheet">
 <div class="container body">

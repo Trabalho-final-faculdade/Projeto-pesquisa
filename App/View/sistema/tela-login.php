@@ -18,7 +18,7 @@ if(isset($_SESSION['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Nome da empresa | </title>
+    <title>Pesquisas inteligentes tecnologia | </title>
 
     <link href="../../Public/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -41,7 +41,7 @@ if(isset($_SESSION['id'])) {
         <div class="animate form login_form">
           <section class="login_content">
             <form action="../../Controller/sistema_controller/logar.php" method="POST">
-              <h1>Frase ou banner a escolher</h1>
+              <h1>Realize seu login e consulte as pesquisas em andamento</h1>
 
               <div>
                 <input type="text" name="email" class="form-control" placeholder="Insira seu email aqui" required="" />
@@ -78,15 +78,15 @@ if(isset($_SESSION['id'])) {
 
               <div class="separator">
                 <p class="change_link">Novo no site?
-                  <a href="#signup" class="to_register"> Clique aqui e conheça mais sobre nós </a>
+                  <a href="../../../index.php" class="to_register"> Clique aqui e conheça mais sobre nós </a>
                 </p>
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Nome da empresa!</h1>
-                  <p> Breve texto sobre direitos reservados, desde quando a empresa se encontra aberta e termos de privacidade.</p>
+                  <h1><i class="fa fa-paw"></i> Pesquisa Inteligente Tecnologia</h1>
+                  <p> Todas as pesquisas possuem direitos reservados, consulte os termos de privacidade.</p>
                   <!-- <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p> -->
                 </div>
               </div>
