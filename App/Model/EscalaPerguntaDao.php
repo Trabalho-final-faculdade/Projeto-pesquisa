@@ -40,12 +40,13 @@ class EscalaPerguntaDao {
     $stmt->execute();
   }
 
-  public function resultado_por_resposta($id){
+  public function resultado_por_resposta($pergunta_id, $resposta_id){
     global $pdo;
-    $sql = 'select count(escala_id) as quantidade, resposta_id, escala_id, escala_descricao from questionarios join escala_perguntas on escala_perguntas.id = questionarios.escala_id where resposta_id = :id group by escala_id;';
+    $sql = 'SELECT *, (select count(*) from questionarios q where q.escala_id = e.id and q.pergunta_id = e.pergunta_id and q.resposta_id = :resposta_id) as quantidade from escala_perguntas e where pergunta_id = :pergunta_id;';
 
     $sql = $pdo->prepare($sql);
-    $sql->bindValue('id', $id);
+    $sql->bindValue('pergunta_id', $pergunta_id);
+    $sql->bindValue('resposta_id', $resposta_id);
 
     $sql->execute();
 
