@@ -125,13 +125,31 @@ $todas_perguntas = $peguntaDao->buscar_pergunta_pesquisa($_GET['id']);
         // Some raw data (not necessarily accurate)
         var data = google.visualization.arrayToDataTable([
           <?php $todas_escalas = $escalas->read($select); ?>
-          ['Month', '<?php echo $todas_escalas[0]['escala_descricao'] ?>', '<?php echo $todas_escalas[1]['escala_descricao'] ?>', '<?php echo $todas_escalas[2]['escala_descricao'] ?>', '<?php echo $todas_escalas[3]['escala_descricao'] ?>'],
-         
-          <?php foreach($todas_respostas->read($select) as $respostas): ?>
+          <?php if(count($todas_escalas) == 2){ ?>
+            ['Month', '<?php echo $todas_escalas[0]['escala_descricao'] ?>', '<?php echo $todas_escalas[1]['escala_descricao'] ?>', '<?php echo $todas_escalas[2]['escala_descricao'] ?>'],
+          <?php } else if(count($todas_escalas) == 3){ ?>
+            ['Month', '<?php echo $todas_escalas[0]['escala_descricao'] ?>', '<?php echo $todas_escalas[1]['escala_descricao'] ?>', '<?php echo $todas_escalas[2]['escala_descricao'] ?>'],
+          <?php } else if(count($todas_escalas) == 4){ ?>
+            ['Month', '<?php echo $todas_escalas[0]['escala_descricao'] ?>', '<?php echo $todas_escalas[1]['escala_descricao'] ?>', '<?php echo $todas_escalas[2]['escala_descricao'] ?>', '<?php echo $todas_escalas[3]['escala_descricao'] ?>'],
+          <?php } else if(count($todas_escalas) == 5){ ?>
+            ['Month', '<?php echo $todas_escalas[0]['escala_descricao'] ?>', '<?php echo $todas_escalas[1]['escala_descricao'] ?>', '<?php echo $todas_escalas[2]['escala_descricao'] ?>'], '<?php echo $todas_escalas[3]['escala_descricao'] ?>', '<?php echo $todas_escalas[4]['escala_descricao'] ?>'],
+          <?php } else if(count($todas_escalas) == 6){ ?>
+            ['Month', '<?php echo $todas_escalas[0]['escala_descricao'] ?>', '<?php echo $todas_escalas[1]['escala_descricao'] ?>', '<?php echo $todas_escalas[2]['escala_descricao'] ?>'], '<?php echo $todas_escalas[3]['escala_descricao'] ?>', '<?php echo $todas_escalas[4]['escala_descricao'] ?>', '<?php echo $todas_escalas[5]['escala_descricao'] ?>'],
+          
+          <?php } foreach($todas_respostas->read($select) as $respostas): ?>
             <?php $votos_por_resposta = $escalas->resultado_por_resposta($pergunta_selecionada[0]['id'], $respostas['id']); ?>
-
-          ['<?php echo $respostas['resposta']?>', <?php echo (int)$votos_por_resposta[0]['quantidade'] ?>, <?php echo (int)$votos_por_resposta[1]['quantidade']?>, <?php echo (int)$votos_por_resposta[2]['quantidade'] ?>, <?php echo (int)$votos_por_resposta[3]['quantidade']?>],
-          <?php endforeach; ?>
+          <?php if(count($todas_escalas) == 2){ ?>
+            ['<?php echo $respostas['resposta']?>', <?php echo (int)$votos_por_resposta[0]['quantidade'] ?>, <?php echo (int)$votos_por_resposta[1]['quantidade'] ?>],
+          <?php } else if(count($todas_escalas) == 3){ ?>
+            ['<?php echo $respostas['resposta']?>', <?php echo (int)$votos_por_resposta[0]['quantidade'] ?>, <?php echo (int)$votos_por_resposta[1]['quantidade']?>, <?php echo (int)$votos_por_resposta[2]['quantidade'] ?>],
+          <?php } else if(count($todas_escalas) == 4){ ?>
+            ['<?php echo $respostas['resposta']?>', <?php echo (int)$votos_por_resposta[0]['quantidade'] ?>, <?php echo (int)$votos_por_resposta[1]['quantidade']?>, <?php echo (int)$votos_por_resposta[2]['quantidade'] ?>, <?php echo (int)$votos_por_resposta[3]['quantidade']?>],
+          <?php } else if(count($todas_escalas) == 5){ ?>
+            ['<?php echo $respostas['resposta']?>', <?php echo (int)$votos_por_resposta[0]['quantidade'] ?>, <?php echo (int)$votos_por_resposta[1]['quantidade']?>, <?php echo (int)$votos_por_resposta[2]['quantidade'] ?>, <?php echo (int)$votos_por_resposta[3]['quantidade']?>, <?php echo (int)$votos_por_resposta[4]['quantidade']?>],
+          <?php } else if(count($todas_escalas) == 6){ ?>
+            ['<?php echo $respostas['resposta']?>', <?php echo (int)$votos_por_resposta[0]['quantidade'] ?>, <?php echo (int)$votos_por_resposta[1]['quantidade']?>, <?php echo (int)$votos_por_resposta[2]['quantidade'] ?>, <?php echo (int)$votos_por_resposta[3]['quantidade']?>, <?php echo (int)$votos_por_resposta[4]['quantidade']?>, <?php echo (int)$votos_por_resposta[5]['quantidade']?>],
+          
+          <?php } endforeach; ?>
         ]);
 
         var options = {
