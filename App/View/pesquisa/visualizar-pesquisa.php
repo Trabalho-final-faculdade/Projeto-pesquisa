@@ -25,8 +25,6 @@ $resultado_perguntas = $perguntaDao->buscar_pergunta_pesquisa($_GET['id']);
 $resultado = $pd->read($_GET['id']);
 $p->setId(addslashes($resultado[0]['id']));
 $p->setTitulo(addslashes($resultado[0]['titulo']));
-$p->setDataFinal(addslashes($resultado[0]['data_final']));
-$p->setDataInicial(addslashes($resultado[0]['data_inicial']));
 $p->setObservacao(addslashes($resultado[0]['observacao']));
 
 foreach($ud->read($_SESSION['id']) as $usuario):
@@ -84,24 +82,6 @@ endforeach;
                                   <div class="col-md-6 col-sm-6 ">
                                   <input type="hidden" id="pesquisa" name="pesquisa" minlength="5" value="<?php echo $p->getId()?>" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required="required" autocomplete="off" class="form-control" maxlength="40">  
                                   <input type="text" id="" disabled="true" name="" minlength="5" value="<?php echo $p->getTitulo()?>" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required="required" autocomplete="off" class="form-control" maxlength="40">
-                                </div>
-                            </div>
-                            <div class="x_content">
-                                <div id="step-1">
-                                  <div class="form-group row">
-                                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="data_inicial">Data inicial da pesquisa: <span class="required">*</span>
-                                  </label>
-                                  <div class="col-md-6 col-sm-6 ">
-                                  <input type="date" id="data_inicial" disabled="true" name="data_inicial" class="date-picker form-control" required="required" value="<?php echo $p->getDataInicial()?>">
-                                </div>
-                            </div>
-                            <div class="x_content">
-                                <div id="step-1">
-                                  <div class="form-group row">
-                                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="data_final">Data final da pesquisa: <span class="required">*</span>
-                                  </label>
-                                  <div class="col-md-6 col-sm-6 ">
-                                  <input type="date" id="data_final" disabled="true" name="data_final" class="date-picker form-control" required="required" value="<?php echo $p->getDataFinal()?>">                            </div>
                                 </div>
                             </div>
                             <div id="step-1">

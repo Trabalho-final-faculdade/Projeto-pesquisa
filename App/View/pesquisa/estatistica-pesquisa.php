@@ -52,8 +52,14 @@ $perguntas_respostas = $peguntaDao->buscar_pergunta_pesquisa($_GET['id']);
                       <input type="hidden" name="dados_pesquisa_titulo" value="<?php echo $dados_pesquisa[0]['titulo'] ?>">
                       <input type="hidden" name="dados_pesquisa_observacao" value="<?php echo $dados_pesquisa[0]['observacao'] ?>">
                       <input type="hidden" name="dados_pesquisa_criada_em" value="<?php echo $dados_pesquisa[0]['criada_em'] ?>"> 
-                      <input type="hidden" name="dados_pesquisa_data_inicial" value="<?php echo $dados_pesquisa[0]['data_inicial'] ?>">
-                      <input type="hidden" name="dados_pesquisa_data_final" value="<?php echo $dados_pesquisa[0]['data_final'] ?>">
+                      <input type="hidden" name="dados_pesquisa_finalizadas" value="<?php echo count($finalizadas) ?>">
+                      <input type="hidden" name="dados_pesquisa_pesquisa_id" value="<?php echo $_GET['id'] ?>">
+                    </form>
+                    <form action="../../../relatorio_excel.php" method="post">
+                      <center><button type="submit" name="btn_excel" id="btn_excel" class="btn btn-primary">Gerar Excel</button></center>
+                      <input type="hidden" name="dados_pesquisa_titulo" value="<?php echo $dados_pesquisa[0]['titulo'] ?>">
+                      <input type="hidden" name="dados_pesquisa_observacao" value="<?php echo $dados_pesquisa[0]['observacao'] ?>">
+                      <input type="hidden" name="dados_pesquisa_criada_em" value="<?php echo $dados_pesquisa[0]['criada_em'] ?>"> 
                       <input type="hidden" name="dados_pesquisa_finalizadas" value="<?php echo count($finalizadas) ?>">
                       <input type="hidden" name="dados_pesquisa_pesquisa_id" value="<?php echo $_GET['id'] ?>">
                     </form>
@@ -73,14 +79,6 @@ $perguntas_respostas = $peguntaDao->buscar_pergunta_pesquisa($_GET['id']);
                                 <tr>
                                     <td>Data de criação</td>
                                     <td><?php echo date('d/m/Y', strtotime($dados_pesquisa[0]['criada_em'])) ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Data de início</td>
-                                    <td><?php echo date('d/m/Y', strtotime($dados_pesquisa[0]['data_inicial'])) ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Data de término</td>
-                                    <td><?php echo date('d/m/Y', strtotime($dados_pesquisa[0]['data_final'])) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Pesquisas finalizadas </td>

@@ -25,6 +25,8 @@ class UsuarioDao {
     $stmt->bindValue('criado_em', date('Y/m/d'));
 
     $stmt->execute();
+
+    return true;
   }
 
   
@@ -76,6 +78,20 @@ class UsuarioDao {
     $sql = $pdo->prepare($sql);
 
     $sql->bindValue("email", $email);
+    $sql->execute();
+
+     if($sql->rowCount() > 0):
+       $resultado = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $resultado;
+      endif;
+  }
+
+  public function verificar_cpf($cpf) {
+    global $pdo;
+    $sql = "SELECT * FROM usuarios WHERE cpf = :cpf";
+    $sql = $pdo->prepare($sql);
+
+    $sql->bindValue("cpf", $cpf);
     $sql->execute();
 
      if($sql->rowCount() > 0):

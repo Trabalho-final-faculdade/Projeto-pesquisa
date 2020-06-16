@@ -37,16 +37,6 @@ $html .=      '<td> '.date('d/m/Y', strtotime($_POST['dados_pesquisa_criada_em']
 $html .=    '</tr>';
 
 $html .=    '<tr>';
-$html .=      '<td>Data de início</td>';
-$html .=      '<td> '.date('d/m/Y', strtotime($_POST['dados_pesquisa_data_inicial'])).' </td>';
-$html .=    '</tr>';
-
-$html .=    '<tr>';
-$html .=      '<td>Data de término</td>';
-$html .=      '<td> '.date('d/m/Y', strtotime($_POST['dados_pesquisa_data_final'])).' </td>';
-$html .=    '</tr>';
-
-$html .=    '<tr>';
 $html .=      '<td>Pesquisas finalizadas</td>';
 $html .=      '<td> '.$pesquisa_finalizada.' </td>';
 $html .=    '</tr>';
@@ -94,16 +84,15 @@ foreach($perguntas_respostas as $pergunta):
     $html .=       '<th>Pergunta '.++$count.'</th>';
     $html .=      '<th>'.$pergunta['pergunta'].'</th>';
     $html .=     '</tr>';
+
     foreach($rd->read($pergunta['id']) as $r):  
       $html .=   '<tr>';
       $html .=     '<td>'.$r['resposta'].'</td>';
-      $votos_por_resposta = $escalas->resultado_por_resposta($r['id']);
+      $votos_por_resposta = $escalas->resultado_por_resposta($pergunta['id'], $r['id']);
       foreach($votos_por_resposta as $votos): 
-          foreach($todas_escalas as $escala):  
-            if ($escala['escala_descricao'] == $votos['escala_descricao']) {  
-                  $html .=        '<td>'.$votos['escala_descricao']." Votos: ".$votos['quantidade'].' </td>';
-            }
-          endforeach;
+           
+                  $html .= ' <td>'.$votos['escala_descricao'].'  teve '.$votos['quantidade'].' votos</td>';
+            
           if(empty($votos_por_resposta)){ 
             $html .= '<td>'.$escala['escala_descricao'].' Votos: 0</td>';
           } 
@@ -112,8 +101,6 @@ foreach($perguntas_respostas as $pergunta):
     endforeach;   
     $html .= '</table></div>';
    }
-
-
 
 endforeach;
 

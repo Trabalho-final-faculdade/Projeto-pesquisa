@@ -5,7 +5,7 @@ require_once "../../Model/Conexao.php";
 
 class Pesquisa {
 
-  private $id, $titulo, $data_inicial, $data_final, $observacao, $status, $criada_em, $fechada;
+  private $id, $titulo, $observacao, $status, $criada_em, $fechada;
 
   public function getId() {
     return $this->id;
@@ -21,22 +21,6 @@ class Pesquisa {
 
   public function setTitulo($titulo) {
     $this->titulo = $titulo;
-  }
-
-  public function getDataInicial() {
-    return $this->data_inicial;
-  }
-
-  public function setDataInicial($data_inicial) {
-    $this->data_inicial = $data_inicial;
-  }
-
-  public function getDataFinal() {
-    return $this->data_final;
-  }
-
-  public function setDataFinal($data_final) {
-    $this->data_final = $data_final;
   }
 
   public function getObservacao() {

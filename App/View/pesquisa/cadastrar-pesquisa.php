@@ -74,20 +74,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                                     <input type="text" id="titulo" name="titulo" minlength="5" value="" required="required" autocomplete="off" class="form-control" maxlength="100">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align">Data de início <span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                <input type="date" id="data_inicial" name="data_inicial" class="date-picker form-control" required="required">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align">Data final <span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                <input type="date" id="data_final" name="data_final" class="date-picker form-control" required="required">
-                                </div>
-                            </div>
+                           
                             <div class="x_content">
                                 <div id="step-1">
                                     <div class="form-group row">

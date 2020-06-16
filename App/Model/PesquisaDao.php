@@ -11,11 +11,9 @@ class PesquisaDao {
     date_default_timezone_set('America/Sao_Paulo');
     $data = date('Y/m/d');
     global $pdo;
-    $sql = 'INSERT INTO pesquisas VALUES(default, :titulo, DATE(:data_inicial), DATE(:data_final), :observacao, :status, :criada_em, :fechada)';
+    $sql = 'INSERT INTO pesquisas VALUES(default, :titulo, :observacao, :status, :criada_em, :fechada)';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue('titulo', $p->getTitulo());
-    $stmt->bindValue('data_inicial', $p->getDataInicial());
-    $stmt->bindValue('data_final', $p->getDataFinal());
     $stmt->bindValue('observacao', $p->getObservacao());
     $stmt->bindValue('status', $p->getStatus());
     $stmt->bindValue('criada_em', $data);
@@ -151,12 +149,10 @@ class PesquisaDao {
 
   public function update(Pesquisa $p) {
     global $pdo;
-    $sql = 'UPDATE pesquisas SET titulo = :titulo,  data_inicial = :data_inicial, data_final = :data_final, status = :status , observacao = :observacao WHERE id = :id';
+    $sql = 'UPDATE pesquisas SET titulo = :titulo, status = :status , observacao = :observacao WHERE id = :id';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue('status', $p->getStatus());
     $stmt->bindValue('titulo', $p->getTitulo());
-    $stmt->bindValue('data_inicial', $p->getDataInicial());
-    $stmt->bindValue('data_final', $p->getDataFinal());
     $stmt->bindValue('observacao', $p->getObservacao());
     $stmt->bindValue('id', $p->getId());
 

@@ -24,8 +24,6 @@ $resultado_perguntas = $perguntaDao->buscar_pergunta_pesquisa($_GET['id']);
 
 $resultado = $pd->read($_GET['id']);
 $p->setId(addslashes($resultado[0]['id']));
-$p->setDataInicial(addslashes($resultado[0]['data_inicial']));
-$p->setDataFinal(addslashes($resultado[0]['data_final']));
 $p->setObservacao(addslashes($resultado[0]['observacao']));
 $p->setTitulo(addslashes($resultado[0]['titulo']));
 $p->setStatus(addslashes($resultado[0]['status']));
@@ -128,12 +126,14 @@ if($usuario['nivel_acesso_id'] != '1') {
                             </div>
                           </div>
                             <input type="submit" id="btn-cadastrar" value="Cadastrar" class="btn btn-danger">  
-                            <?php if($p->getFechada() == "1"){ ?>
-                              <a href="../../Controller/pesquisa_controller/enviar-pesquisa-email.php?id=<?php echo $p->getId()?>" class="btn btn-info btn-xs"> Finalizar pesquisa </a>
-                            <?php }else{ 
-                              $_SESSION['pesquisa_cadastrada'] = true;?>
-                              <a href="../../View/pesquisa/cadastrar-pesquisa.php" class="btn btn-info btn-xs"> Finalizar pesquisa </a>
-                            <?php }?>
+                            <?php if(isset($resultado_perguntas) && count($resultado_perguntas) >= 3){ ?>
+                              <?php if($p->getFechada() == "1"){ ?>
+                                <a href="../../Controller/pesquisa_controller/enviar-pesquisa-email.php?id=<?php echo $p->getId()?>" class="btn btn-info btn-xs"> Finalizar pesquisa </a>
+                              <?php }else{ 
+                                $_SESSION['pesquisa_cadastrada'] = true;?>
+                                <a href="../../View/pesquisa/cadastrar-pesquisa.php" class="btn btn-info btn-xs"> Finalizar pesquisa </a>
+                              <?php }?>
+                            <?php } ?>
 
                             
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -142,7 +142,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                                 var cont_escala = 1;
                                 $('#add-campo').click(function () {
                                     cont++;
-                                    $('#formulario').append('<div class="form-group row" id="campo' + cont + '"> <label class="col-md-3 col-sm-3 label-align">Resposta</label><div class="col-md-3 col-sm-3"><input type="text" name="titulo['+cont+']" class="form-control"><button type="button" id="' + cont + '" class="btn-apagar"> - </button></br></div></div>');
+                                    $('#formulario').append('<div class="form-group row" id="campo' + cont + '"> <label class="col-md-3 col-sm-3 label-align">Resposta</label><div class="col-md-3 col-sm-3"><input type="text" name="titulo['+cont+']" class="form-control" required="required"><button type="button" id="' + cont + '" class="btn-apagar"> - </button></br></div></div>');
                                 });                                                              
                                                             
                                 $('form').on('click', '.btn-apagar', function () {
@@ -152,7 +152,7 @@ if($usuario['nivel_acesso_id'] != '1') {
 
                                 $('#add-escala').click(function () {
                                     cont_escala++;
-                                    $('#formulario_escala').append('<div class="form-group row" id="campo_escala' + cont_escala + '"> <label class="col-md-3 col-sm-3 label-align">Resposta</label><div class="col-md-3 col-sm-3"><input type="text" name="escala['+cont_escala+']" class="form-control"><button type="button" id="' + cont_escala + '" class="btn-apagar-escala"> - </button></br></div></div>');
+                                    $('#formulario_escala').append('<div class="form-group row" id="campo_escala' + cont_escala + '"> <label class="col-md-3 col-sm-3 label-align">Resposta</label><div class="col-md-3 col-sm-3"><input type="text" required="required" name="escala['+cont_escala+']" class="form-control"><button type="button" id="' + cont_escala + '" class="btn-apagar-escala"> - </button></br></div></div>');
                                 });                                                              
                                                             
                                 $('form').on('click', '.btn-apagar-escala', function () {

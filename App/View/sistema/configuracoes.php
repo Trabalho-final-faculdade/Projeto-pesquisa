@@ -36,17 +36,6 @@ endforeach;
 if($usuario['nivel_acesso_id'] != '1') {
   header("Location: ../sistema/tela-login.php");
 }
-$c = new \App\Model\Configuracao();
-$cd = new \App\Model\ConfiguracaoDao();
-
-$resultado = $cd->read($_SESSION['empresa_id']);
-  $c->setEmpresaId(addslashes($resultado[0]['empresa_id']));
-  $c->setCadastro(addslashes($resultado[0]['cadastro']));
-  $c->setVisualizarDadosUsuario(addslashes($resultado[0]['visualizar_dados_usuario']));
-  $c->setVisualizarDadosPesquisa(addslashes($resultado[0]['visualizar_dados_pesquisa']));
-  $c->setVisualizarResultadoPesquisa(addslashes($resultado[0]['visualizar_resultado_pesquisa']));
-  $c->setVisualizarGrafico(addslashes($resultado[0]['visualizar_grafico']));
-  $c->setGerarRelatorio($resultado[0]['gerar_relatorios']);
 
 ?>
 <div class="container body">

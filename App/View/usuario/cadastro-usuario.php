@@ -60,17 +60,24 @@ if($usuario['nivel_acesso_id'] != '1') {
                   <div class="x_content">
                        <div id="step-1">
                         <form class="form-horizontal form-label-left" action="../../Controller/usuario_controller/cadastrar.php" method="POST" onsubmit="return validaForm(this);">
-                        <?php
-                          if(isset($_SESSION['cadastro'])):
-                          
-                        ?>
+                        <?php if(isset($_SESSION['cadastro']) && $_SESSION['cadastro'] == true){ ?>
                           <div class="alert alert-success" role="alert">
                             Cadastro realizado com sucesso!!!
                           </div>
-                        <?php 
-                            unset($_SESSION['cadastro']);
-                          endif;
-                        ?>
+                        <?php unset($_SESSION['cadastro']); } ?>
+                        
+                        <?php if(isset($_SESSION['email_cadastrado']) && $_SESSION['email_cadastrado'] == true){ ?>
+                          <div class="alert alert-danger" role="alert">
+                            Email já cadastrado!!!
+                          </div>
+                        <?php unset($_SESSION['email_cadastrado']); } ?>
+
+                        <?php if(isset($_SESSION['cpf_cadastrado']) && $_SESSION['cpf_cadastrado'] == true){ ?>
+                          <div class="alert alert-danger" role="alert">
+                            CPF já cadastrado!!!
+                          </div>
+                        <?php unset($_SESSION['cpf_cadastrado']); } ?>
+
                           <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="nome">Nome completo <span class="required">*</span>
                             </label>

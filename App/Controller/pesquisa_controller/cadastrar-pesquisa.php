@@ -1,10 +1,7 @@
 <?php
 session_start();
 
-if(isset($_POST['observacao']) && !empty($_POST['observacao'])
-&& isset($_POST['data_final']) && !empty($_POST['data_final'])
-&& isset($_POST['data_inicial']) && !empty($_POST['data_inicial'])
-&& isset($_POST['titulo']) && !empty($_POST['titulo'])){
+if(isset($_POST['observacao']) && !empty($_POST['observacao']) && isset($_POST['titulo']) && !empty($_POST['titulo'])){
 
     require '../../Model/Conexao.php';
     require '../../Model/Pesquisa.php';
@@ -16,8 +13,6 @@ if(isset($_POST['observacao']) && !empty($_POST['observacao'])
     $ep = new \App\Model\EnviarPesquisaDao();
 
     $p->setObservacao(addslashes($_POST['observacao']));
-    $p->setDataFinal(addslashes($_POST['data_final']));
-    $p->setDataInicial(addslashes($_POST['data_inicial']));
     $p->setTitulo(addslashes($_POST['titulo']));
     $p->setStatus("em andamento");
     $p->setFechada(addslashes($_POST['select_pesquisa']));

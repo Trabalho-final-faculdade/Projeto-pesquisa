@@ -25,8 +25,6 @@ endforeach;
 
 $resultados = $pd->read($_GET['id']);
 $p->setId($resultados[0]['id']);
-$p->setDataInicial($resultados[0]['data_inicial']);
-$p->setDataFinal($resultados[0]['data_final']);
 $p->setObservacao($resultados[0]['observacao']);
 $p->setTitulo($resultados[0]['titulo']);
 $p->setStatus($resultados[0]['status']); 
@@ -103,20 +101,6 @@ $todas_perguntas = $perguntaDao->buscar_pergunta_pesquisa($p->getId());
                         <div class="col-md-6 col-sm-6 ">
                           <input type="text" id="titulo" name="titulo" minlength="5" value="<?php echo $p->getTitulo(); ?>" required="required" autocomplete="off" class="form-control" maxlength="40">
                         </div>
-                      </div>
-                  
-                      <div class="form-group row">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Data inicial <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                        <input type="date" id="data_inicial" name="data_inicial" class="date-picker form-control" required="required" value="<?php echo $p->getDataInicial()?>">                            </div>
-                      </div>
-                  
-                      <div class="form-group row">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Data final <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                        <input type="date" id="data_final" name="data_final" class="date-picker form-control" required="required" value="<?php echo $p->getDataFinal()?>">                            </div>
                       </div>
                     
                       <div class="form-group row">

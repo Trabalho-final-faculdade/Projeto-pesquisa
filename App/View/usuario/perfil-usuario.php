@@ -86,7 +86,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                                            
                                             <a class="list-group-item active" href="#" id="profile_button"  role="button"><i class="fe-icon-user text-muted"></i>Dados do perfil 
                                             
-                                            <a class="list-group-item" href="#" id="endereco_button" role="button"><i class="fe-icon-user text-muted"></i>Endereco
+                                            <a class="list-group-item" href="#" id="" role="button"><i class="fe-icon-user text-muted"></i>
                                             </a>
                                         </nav>
                                     </div>

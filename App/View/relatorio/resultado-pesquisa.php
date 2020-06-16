@@ -147,8 +147,6 @@ if($usuario['nivel_acesso_id'] != '1') {
                                       <tr>
                                       <td><?php echo $resultado['id'] ?> </td> 
                                         <td><?php echo $resultado['titulo'] ?> </td>
-                                        <td><?php echo date('d-m-Y', strtotime($resultado['data_inicial'])); ?> </td>
-                                        <td><?php echo date('d-m-Y', strtotime($resultado['data_final'])); ?> </td>
                                         <td><?php echo $resultado['observacao'] ?> </td>
                                         <td><?php echo $resultado['status'] ?> </td>
                                         <td> <a href="../../View/pesquisa/estatistica-pesquisa.php?id=<?php echo $resultado['id']?>" class="btn btn-success btn-xs"><i class="fa fa-folder"></i> Estatísticas </a></td>     
