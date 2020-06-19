@@ -40,16 +40,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                 <h3>Perfil</h3>
               </div>
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5  form-group row pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+              
             </div>
             <div class="clearfix"></div>
 
@@ -59,11 +50,6 @@ if($usuario['nivel_acesso_id'] != '1') {
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Perfil usuário.</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                     
-                    </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -74,7 +60,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                                     <!-- Account Sidebar-->
                                     <div class="author-card pb-3">
                                         <div class="author-card-profile">
-                                            <div class="author-card-avatar"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Daniel Adams">
+                                            <div class="author-card-avatar"><img src="../../Public/imagens/<?php echo  $usuario_profile[0]['foto']?>" alt='Foto de exibição' /><br />>
                                             </div>
                                             <div class="author-card-details">
                                                 <h5 class="author-card-name text-lg"><?php echo $usuario_profile[0]['nome'] ?></h5><span class="author-card-position" >Cadastrado em <?php echo date('d/m/Y', strtotime($usuario_profile[0]['criado_em']));?> </span>
@@ -136,7 +122,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                                                 <div class="custom-control custom-checkbox d-block">
                                                     <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
                                                 </div>
-                                                <td> <a href="../usuario/editar-dados.php?id=<?php echo $usuario_profile[0]['id']?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Editar perfil </a></td>     
+                                                <td> <a href="../usuario/editar-dados.php?id=<?php echo $_GET['id'] ?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Editar perfil </a></td>     
                                             </div>
                                         </div>
                                     </form>

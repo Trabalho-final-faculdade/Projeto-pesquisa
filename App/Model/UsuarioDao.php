@@ -10,7 +10,7 @@ class UsuarioDao {
     date_default_timezone_set('America/Sao_Paulo');
 
     global $pdo;
-    $sql = 'INSERT INTO usuarios (id, nome, cpf, data_nascimento, genero, email, senha, endereco_id, telefone_id, nivel_acesso_id, empresa_id, criado_em) VALUES(default, :nome, :cpf, DATE( :data_nascimento ), :genero, :email, MD5(:senha), :endereco_id, :telefone_id, :nivelAcesso_id, :empresa_id, :criado_em)';
+    $sql = 'INSERT INTO usuarios (id, nome, cpf, data_nascimento, genero, email, senha, endereco_id, telefone_id, nivel_acesso_id, empresa_id, criado_em, foto) VALUES(default, :nome, :cpf, DATE( :data_nascimento ), :genero, :email, MD5(:senha), :endereco_id, :telefone_id, :nivelAcesso_id, :empresa_id, :criado_em, :foto)';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue('nome', $u->getNome());
     $stmt->bindValue('cpf', $u->getCpf());
@@ -22,6 +22,7 @@ class UsuarioDao {
     $stmt->bindValue('telefone_id', $u->getTelefoneId());
     $stmt->bindValue('nivelAcesso_id', $u->getNivelAcessoId());
     $stmt->bindValue('empresa_id', $u->getEmpresaId());
+    $stmt->bindValue('foto', $u->getFoto());
     $stmt->bindValue('criado_em', date('Y/m/d'));
 
     $stmt->execute();
@@ -102,7 +103,7 @@ class UsuarioDao {
 
   public function update(Usuario $u) {
     global $pdo;
-    $sql = 'UPDATE usuarios SET nome = :nome, cpf = :cpf, data_nascimento = DATE(:data_nascimento), genero = :genero, email = :email, senha = MD5(:senha), nivel_acesso_id = :nivelAcesso_id WHERE id = :id';
+    $sql = 'UPDATE usuarios SET foto = :foto, nome = :nome, cpf = :cpf, data_nascimento = DATE(:data_nascimento), genero = :genero, email = :email, senha = MD5(:senha), nivel_acesso_id = :nivelAcesso_id WHERE id = :id';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue('nome', $u->getNome());
     $stmt->bindValue('cpf', $u->getCpf());
@@ -112,6 +113,18 @@ class UsuarioDao {
     $stmt->bindValue('senha', $u->getSenha());
     $stmt->bindValue('nivelAcesso_id', $u->getNivelAcessoId());
     $stmt->bindValue('id', $u->getId());
+    $stmt->bindValue('foto', $u->getFoto());
+
+    $stmt->execute();
+ 
+  }
+
+  public function update_foto(Usuario $u) {
+    global $pdo;
+    $sql = 'UPDATE usuarios SET foto = :foto WHERE id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue('id', $u->getId());
+    $stmt->bindValue('foto', $u->getFoto());
 
     $stmt->execute();
  

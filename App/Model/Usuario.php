@@ -5,7 +5,7 @@ require_once "../../Model/Conexao.php";
 
 class Usuario {
 
-  private $id, $nome, $cpf, $data_nascimento, $genero, $email, $senha, $endereco_id, $telefone_id, $nivel_acesso_id, $empresa_id, $criado_em, $deletado_em;
+  private $id, $nome, $cpf, $data_nascimento, $genero, $email, $senha, $endereco_id, $telefone_id, $nivel_acesso_id, $empresa_id, $criado_em, $deletado_em, $foto;
 
   public function getId() {
     return $this->id;
@@ -131,6 +131,15 @@ class Usuario {
           return false;
         }
 
-    }
+  }
+
+  public function getFoto() {
+    return $this->foto;
+  }
+
+  public function setFoto($foto) {
+    $this->foto = $foto;
+  }
   
 }
+

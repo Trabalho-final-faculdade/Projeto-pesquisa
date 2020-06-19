@@ -59,7 +59,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                   </div>
                   <div class="x_content">
                        <div id="step-1">
-                        <form class="form-horizontal form-label-left" action="../../Controller/usuario_controller/cadastrar.php" method="POST" onsubmit="return validaForm(this);">
+                        <form class="form-horizontal form-label-left" action="../../Controller/usuario_controller/cadastrar.php" method="POST" enctype="multipart/form-data" onsubmit="return validaForm(this);">
                         <?php if(isset($_SESSION['cadastro']) && $_SESSION['cadastro'] == true){ ?>
                           <div class="alert alert-success" role="alert">
                             Cadastro realizado com sucesso!!!
@@ -145,6 +145,15 @@ if($usuario['nivel_acesso_id'] != '1') {
                               <input type="tel" id="celular" name="celular" required="required" minlength="14" autocomplete="off" class="form-control" onkeypress="$(this).mask('(00)00000-0000');">
                             </div>
                           </div>
+                          
+                          <div class="form-group row">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="arquivos">Foto: <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                              <input type="file" name="arquivos" id="arquivos"><br>
+                            </div>
+                          </div>
+                           
                           <div class="form-group row">
                           <label class="col-form-label col-md-3 col-sm-3 label-align" for="nivel_acesso_id">Nivel de acesso <span class="required">*</span>
                           </label>
@@ -159,6 +168,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                               <?php } ?>
                             </select>
                           </div>
+                          
                           <div class="actionBar">
                             <div class="loader">
                             <button type="submit" name="btnCadastrar" class="buttonNext btn btn-success">Cadastrar</button>

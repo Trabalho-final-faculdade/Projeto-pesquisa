@@ -30,6 +30,7 @@ foreach($ud->read($_GET['id']) as $ub):
     $usuario_buscado->setGenero($ub['genero']);
     $usuario_buscado->setNascimento($ub['data_nascimento']);
     $usuario_buscado->setNivelAcessoId($ub['nivel_acesso_id']);
+    $usuario_buscado->setFoto($ub['foto']);
     $usuario_logado->setNivelAcessoId($usuario['nivel_acesso_id']);
 
 endforeach;
@@ -75,7 +76,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                   </div>
                   <div class="x_content">
                     <div id="step-1">
-                    <form class="form-horizontal form-label-left" action="../../Controller/usuario_controller/editar.php?id=<?php echo $_GET['id']?>" method="POST" onsubmit="return validaForm(this);">
+                    <form class="form-horizontal form-label-left" action="../../Controller/usuario_controller/editar.php?id=<?php echo $_GET['id']?>" method="POST" enctype="multipart/form-data" onsubmit="return validaForm(this);">
                     <input type="hidden" name="id" value="<?php echo $usuario_buscado->getId();?>">
                     <input type="hidden" name="telefone_id" value="<?php echo $retorno_telefone[0]['id'];?>">
                     <?php
@@ -172,6 +173,13 @@ if($usuario['nivel_acesso_id'] != '1') {
                           </div>
                         </div>
                       <?php } ?>
+                      <div class="form-group row">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="arquivos">Foto: <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                          <input type="file" name="arquivos" id="arquivos"><br>
+                        </div>
+                      </div>
                       <div class="actionBar">
                         <div class="loader">
                           <button type="submit" name="btnCadastrar" class="buttonNext btn btn-success">Editar</button>
