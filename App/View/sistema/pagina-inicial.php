@@ -18,6 +18,7 @@ $count = 0;
 foreach($ud->read($_SESSION['id']) as $usuario):
   $usuario_logado->setNome = $usuario['nome'];
   $usuario_logado->setNivelAcessoId = $usuario['nivel'];
+  $usuario_logado->setFoto = $usuario['foto'];
 endforeach;
 $pesquisas_andamento = $pesquisas->buscar_pesquisas_estado('em andamento');
 if(isset($pesquisas_andamento) && !empty($pesquisas_andamento)){

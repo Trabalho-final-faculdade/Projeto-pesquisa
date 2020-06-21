@@ -8,7 +8,7 @@
 <div class="profile clearfix">
     <div class="profile_pic">
     
-    <img src="../../Public/imagens/<?php echo  $usuario_profile[0]['foto']?>" class="img-circle profile_img" alt='' /><br />
+    <img src="../../Public/imagens/<?php echo  $usuario['foto']?>" class="img-circle profile_img" alt='' /><br />
 
     </div>
     <div class="profile_info">

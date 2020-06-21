@@ -90,6 +90,10 @@ if($usuario['nivel_acesso_id'] != '1') {
                             unset($_SESSION['editar']);
                           endif;
                         ?>
+
+                        <?php if(isset($_SESSION['arquivo_invalido']) && $_SESSION['arquivo_invalido'] == true): ?>
+                          <div class="alert alert-error" role="alert">Por gentileza, adicione uma foto válida.</div>
+                        <?php unset($_SESSION['arquivo_invalido']); endif; ?>
                     
                       <div class="form-group row">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="nome">Nome completo <span class="required">*</span>
@@ -177,7 +181,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="arquivos">Foto: <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <input type="file" name="arquivos" id="arquivos"><br>
+                          <input type="file" name="arquivos" id="arquivos" required><br>
                         </div>
                       </div>
                       <div class="actionBar">

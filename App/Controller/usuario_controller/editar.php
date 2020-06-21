@@ -4,8 +4,7 @@ session_start();
 if(isset($_POST['nome']) && !empty($_POST['nome']) 
 && isset($_POST['aniversario']) && !empty($_POST['aniversario']) && isset($_POST['cpf']) && !empty($_POST['cpf'])
 && isset($_POST['genero']) && !empty($_POST['genero']) && isset($_POST['email']) && !empty($_POST['email'])
-&& isset($_POST['senha']) && !empty($_POST['senha']) && isset($_POST['nivel_acesso_id'])
-&& !empty($_POST['nivel_acesso_id'])){
+&& isset($_POST['senha']) && !empty($_POST['senha'])){
 
 
 require '../../Model/Conexao.php';
@@ -87,11 +86,14 @@ $u->setTelefoneId(addslashes($_POST['telefone_id']));
 $u->setEnderecoId(1);
 $u->setNivelAcessoId(addslashes($_POST['nivel_acesso_id']));
 $u->setEmpresaId($_POST['empresa_id']);
-
+var_dump($u->getFoto());
 if($td->update($t, $u));
   if($ud->update($u)){
     if(!empty($u->getFoto())){
-      $ud->update_foto($u); 
+      $ud->update_foto($u);
+      $_SESSION['arquivo_invalido'] = false; 
+    }else{
+      $_SESSION['arquivo_invalido'] = true;
     }
     $_SESSION['editar'] = true;
   }else{
