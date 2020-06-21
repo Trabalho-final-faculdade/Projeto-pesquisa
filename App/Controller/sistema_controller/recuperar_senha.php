@@ -38,7 +38,7 @@ if(isset($_POST['email']) && !empty($_POST['email'])){
           $mail->Port = 587;
 
           $mail->setFrom('projeto.pesquisa.tcc.positivo@gmail.com');
-          $mail->addAddress('dan_casimiro@hotmail.com');
+          $mail->addAddress($email);
 
           $mail->isHTML(true);
           $mail->Subject = "Sistema de Pesquisas < Recuperar senha > ";
