@@ -70,15 +70,34 @@ $pesquisas_realizadas = $pesquisas->retornar_numero_pesquisas_realizadas();
             <span class="count_top"><i class="fa fa-user"></i> Pesquisas respondidas</span>
             <div class="count"><?php echo count($pesquisas_realizadas) ?> </div>
           </div>
-        </div>
-      <?php  } ?>
+        </div> 
+      <?php  } ?> 
+	  
+		
+		
+		
+		
+
+
       </div>
+	  <div  style="text-align: center;font-size: 40px;color:black;background-size: cover; text-align: center; line-height: 30px; font-size: 120%">
+					 <h1><b>I.D.E.I.<span style="color:blue;">A</span>.A <b><h1>
+					 
+		</div>
+		<div class="inner" style="background-size: cover; line-height: 30px; font-size: 120%; text-align: center;">
+		
+					 <b><span style="color:black; font-size: 20px;text-align: center;">
+					 (Investigar, descobrir, Entender, Inovar, Analisar, Agir)
+					 </span> <b>
+		</div>
     </div>
       <!-- /top tiles -->
   
   </div>
 </div>
+	
 </div>
+
    
  <?php include_once '../../includes/rodape_pagina.php';
    

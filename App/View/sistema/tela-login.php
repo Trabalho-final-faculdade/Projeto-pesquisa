@@ -30,10 +30,19 @@ if(isset($_SESSION['id'])) {
 
     <!-- Custom Theme Style -->
     <link href="../../Public/stylesheets/custom.min.css" rel="stylesheet">
+  <style>
+  .TelaFundoLogin{
+  	  background: url('https://i.imgur.com/F3oAZAY.png') no-repeat;
+	background-size: cover;
+  }
+  </style>
+  
   </head>
 
-  <body class="login">
-    <div>
+  <body class="TelaFundoLogin">
+	
+
+    <div >
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
 
@@ -41,7 +50,7 @@ if(isset($_SESSION['id'])) {
         <div class="animate form login_form">
           <section class="login_content">
             <form action="../../Controller/sistema_controller/logar.php" method="POST">
-              <h1>Realize seu login e consulte as pesquisas em andamento</h1>
+              <h4><span style="color:black;">Realize o login e consulte as pesquisas em andamento</span></h4>
 
               <div>
                 <input type="text" name="email" class="form-control" placeholder="Insira seu email aqui" required="" />
@@ -71,22 +80,23 @@ if(isset($_SESSION['id'])) {
               ?>
               <div>
                 <button type="submit" name="btnLogar" class="btn btn-default submit">Logar</button>
-                <a class="reset_pass" href="../sistema/recuperar-senha.php">Esqueci minha senha?</a>
+                <a class="reset_pass" href="../sistema/recuperar-senha.php"> Esqueceu a senha?</a>
               </div>
 
               <div class="clearfix"></div>
 
-              <div class="separator">
-                <p class="change_link">Novo no site?
-                  <a href="../../../index.php" class="to_register"> Clique aqui e conheça mais sobre nós </a>
-                </p>
+              <div class="separator"> <span style="color:black;">
+                <p class="change_link">Novo no site? Conheça mais sobre nós clicando
+                  <a href="../../../index.php" class="to_register"> aqui </a>
+                </p></span>
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Pesquisa Inteligente Tecnologia</h1>
-                  <p> Todas as pesquisas possuem direitos reservados, consulte os termos de privacidade.</p>
+                  <h1><span style="color:black;">IDEIAA</span></h1>
+				  
+                  <p><span style="color:black;"> Todas as pesquisas possuem direitos reservados.</span></p>
                   <!-- <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p> -->
                 </div>
               </div>
@@ -121,10 +131,7 @@ if(isset($_SESSION['id'])) {
                 <div class="clearfix"></div>
                 <br />
 
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
+                
               </div>
             </form>
           </section>

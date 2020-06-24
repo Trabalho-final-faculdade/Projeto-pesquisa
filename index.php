@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Transitive by TEMPLATED</title>
+		<title>IDEIAA</title>
 		<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="App/Public/stylesheets/main.css" />
@@ -13,8 +13,9 @@
 		</style>
 	</head>
 	<body>
-		<header id="header" class="alt">
-			<div class="logo"><a href="index.php"> Pesquisa Inteligente Tecnologia<span> referencia em pesquisas online</span></a></div>
+		<header id="header" class="alt" >
+		
+			
 			<a href="#menu" class="toggle"><span>Menu</span></a>
 		</header>
 			<nav id="menu">			
@@ -26,15 +27,19 @@
 				</ul>
 			</nav>
 			<div class="image fit">
-				<img src="App/Public/imagens/banner-tela-inicial.jpg" alt="" />
-				<div class="inner" style="position: absolute; top: 200px; width: 1400px; text-align: center; line-height: 30px; font-size: 120%">
-					<h1>Transitive</h1>
-					<p> A Pesquisa inteligente Tecnologia veio para inovar a forma<br />
-					de fazer pesquisas. </p>
+	<!--			<img src="App/Public/imagens/banner-tela-inicial.jpg" alt="" /> -->
+					<img src="Adicionar um título.png" alt="" />
+					<div class="inner" style="position: absolute; top: 200px; width: 400px; text-align: center; line-height: 30px; font-size: 120%">
+					 <b><span style="color:black; font-size: 35px;">IDEIAA </span> <b>
+
+					</div>
+
+				<div class="inner" style="position: absolute; top: 265px; width: 400px; line-height: 30px; font-size: 120%; margin-left:30px;">
+					<p><span style="color:black; font-size: 30px; font-family: league gothic:  font-weight: bold;">A pesquisa inteligente <br>que veio para inovar a forma <br>de realizar <span style="color: #243274">pesquisas online</spean>.</span></p>
 				</div>
 			</div>
 
-			<section id="one" class="wrapper style2">
+<!--			<section id="one" class="wrapper style2">
 				<div class="inner">
 					<div>
 						<div class="box">
@@ -47,7 +52,7 @@
 									<p>maecenas feugiat ex purus, quis volutpat lacus placerat</p>
 								</header>
 								<hr />
-								<p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada. Praesent in sem ex. Morbi mattis sapien pretium tellus venenatis, at egestas urna ornare.</p>
+								<!---<p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada. Praesent in sem ex. Morbi mattis sapien pretium tellus venenatis, at egestas urna ornare.</p>
 								<p>Vivamus fermentum nibh vel pharetra blandit. Cras a purus urna. Sed et libero ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse id hendrerit felis. Nulla viverra tempor dui at congue. Pellentesque quis nulla ornare, congue nisi id, finibus nulla. Aliquam sit amet hendrerit purus. Donec libero massa, posuere fermentum eros sit amet, maximus fringilla augue. Maecenas at rhoncus lorem. Vivamus ultricies consequat est, efficitur convallis libero. Vivamus rutrum semper mauris, vitae consequat eros tempor ac. Pellentesque et ornare sapien</p>
 							</div>
 						</div>
@@ -127,9 +132,9 @@
 
 					</div>
 				</div>
-			</section>
+			</section> -->
 
-		<!-- Four -->
+		<!-- Four 
 			<section id="four" class="wrapper style3">
 				<div class="inner">
 
@@ -141,18 +146,18 @@
 				</div>
 			</section>
 
-		<!-- Footer -->
+		 Footer -->
 			<footer id="footer" class="wrapper">
 				<div class="inner" id="fale_conosco">
 					<section>
 						<div class="box">
 							<div class="content">
-								<h2 class="align-center">Nos envie um email</h2>
+								<h4 class="align-center"> <span style="color: #243274; font-weight: bold;">FALE CONOSCO</span></h4>
 								<hr />
 								<form action="App/Controller/sistema_controller/envio-mensagem.php" method="post">
 									<div class="field half first">
 										<label for="name">Nome</label>
-										<input name="name" id="name" type="text" placeholder="Name">
+										<input name="name" id="name" type="text" placeholder="Nome">
 									</div>
 									<div class="field half">
 										<label for="email">Email</label>
@@ -161,18 +166,16 @@
 									
 									<div class="field">
 										<label for="message">Mensagem</label>
-										<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+										<textarea name="mesagem" id="message" rows="6" placeholder="Mesagem"></textarea>
 									</div>
 									<ul class="actions align-center">
-										<li><input value="Send Message" class="button special" type="submit"></li>
+										<li><input value="Enviar Mensagem" class="button special" type="submit"></li>
 									</ul>
 								</form>
 							</div>
 						</div>
 					</section>
-					<div class="copyright">
-						&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a href="https://unsplash.com/">Unsplash</a>. Video <a href="http://coverr.co/">Coverr</a>.
-					</div>
+					
 				</div>
 			</footer>
 

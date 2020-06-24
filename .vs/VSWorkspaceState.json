@@ -3,8 +3,14 @@
     "",
     "\\App",
     "\\App\\Controller",
-    "\\App\\View"
+    "\\App\\includes",
+    "\\App\\Public",
+    "\\App\\Public\\imagens",
+    "\\App\\Public\\stylesheets",
+    "\\App\\View",
+    "\\App\\View\\sistema",
+    "\\PHPMailer"
   ],
-  "SelectedNode": "\\App\\View\\tela-login.php",
+  "SelectedNode": "\\App\\View\\sistema\\recuperar-senha.php",
   "PreviewInSolutionExplorer": false
 }
