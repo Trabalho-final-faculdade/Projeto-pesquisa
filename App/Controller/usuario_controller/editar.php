@@ -84,7 +84,11 @@ $u->setEmail(addslashes($_POST['email']));
 $u->setSenha(addslashes($_POST['senha']));
 $u->setTelefoneId(addslashes($_POST['telefone_id']));
 $u->setEnderecoId(1);
-$u->setNivelAcessoId(addslashes($_POST['nivel_acesso_id']));
+if(isset($_POST['nivel_acesso_id']) && !empty($_POST['nivel_acesso_id'])){
+  $u->setNivelAcessoId(addslashes($_POST['nivel_acesso_id']));
+}else{
+  $u->setNivelAcessoId(4);
+}
 $u->setEmpresaId($_POST['empresa_id']);
 var_dump($u->getFoto());
 if($td->update($t, $u));
