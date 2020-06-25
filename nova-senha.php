@@ -23,7 +23,7 @@ if(!isset($resultado) || empty($resultado)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Pesquisas inteligentes tecnologia | </title>
+    <title>IDEIAA </title>
 
     <link href="App/Public/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -35,9 +35,18 @@ if(!isset($resultado) || empty($resultado)) {
 
     <!-- Custom Theme Style -->
     <link href="App/Public/stylesheets/custom.min.css" rel="stylesheet">
+
+	<style>
+  .TelaFundoLogin{
+  	  background: url('https://i.imgur.com/F3oAZAY.png') no-repeat;
+	background-size: cover;
+	color:Black;
+  }
+  </style>
+
   </head>
 
-  <body class="login">
+  <body class="TelaFundoLogin">
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
@@ -59,9 +68,10 @@ if(!isset($resultado) || empty($resultado)) {
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">Novo no site?
-                  <a href="../../../index.php" class="to_register"> Clique aqui e conheça mais sobre nós </a>
-                </p>
+                <span style="color:black;">
+                <p class="change_link">Novo no site? Conheça mais sobre nós clicando
+                  <a href="../../../index.php" class="to_register"> aqui </a>
+                </p></span>
 
                 <div class="clearfix"></div>
                 <br />

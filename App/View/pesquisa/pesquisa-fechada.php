@@ -13,7 +13,7 @@ require_once '../../Model/Conexao.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Pesquisa inteligente Tecnologia | </title>
+    <title>IDEIAA</title>
 
     <link href="../../Public/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -25,9 +25,18 @@ require_once '../../Model/Conexao.php';
 
     <!-- Custom Theme Style -->
     <link href="../../Public/stylesheets/custom.min.css" rel="stylesheet">
+
+	<style>
+  .TelaFundoLogin{
+  	  background: url('https://i.imgur.com/F3oAZAY.png') no-repeat;
+	background-size: cover;
+	color:Black;
+  }
+  </style>
+
   </head>
 
-  <body class="login">
+  <body class="TelaFundoLogin">
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
@@ -59,16 +68,17 @@ require_once '../../Model/Conexao.php';
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">Novo no site?
-                  <a href="../../../index.php" class="to_register"> Clique aqui e conheça mais sobre nós </a>
-                </p>
+                <span style="color:black;">
+                <p class="change_link">Novo no site? Conheça mais sobre nós clicando
+                  <a href="../../../index.php" class="to_register"> aqui </a>
+                </p></span>
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Pesquisa inteligente Tecnologia</h1>
-                  <p> Todas as pesquisas possuem direitos reservados, consulte os termos de privacidade.</p>
+                  <h1> IDEIAA</h1>
+                  <p> Todas as pesquisas possuem direitos reservados.</p>
                 </div>
               </div>
             </form>
