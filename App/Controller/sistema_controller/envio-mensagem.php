@@ -8,9 +8,10 @@ session_start();
   use PHPMailer\PHPMailer\Exception;
   use PHPMailer\PHPMailer\PHPMailer;
 
-if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['message']) && !empty($_POST['message'])
-&& isset($_POST['name']) && !empty($_POST['name'])){
 
+if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['mesagem']) && !empty($_POST['mesagem'])
+&& isset($_POST['name']) && !empty($_POST['name'])){
+echo "bbbbbb";
   require '../../Model/Conexao.php';
 
   $mail = new PHPMailer(true);

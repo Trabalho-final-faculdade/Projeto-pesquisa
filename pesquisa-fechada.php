@@ -8,8 +8,7 @@ $ud = new \App\Model\UsuarioDao();
 $epd = new \App\Model\EnviarPesquisaDao();
 $pesquisaDao = new \App\Model\PesquisaDao(); 
 
-$usuario_email = $ud->verificar_email($_GET['email']);
-$pesquisas_encontradas = $epd->buscar_pesquisas_nao_realizadas($usuario_email[0]['email']);
+$pesquisas_encontradas = $epd->buscar_pesquisas_nao_realizadas($_GET['email']);
 if(isset($pesquisas_encontradas) && !empty($pesquisas_encontradas)):
     foreach($pesquisas_encontradas as $pesquisa):
         $ids_pesquisas[] = $pesquisa['pesquisa_id'];
