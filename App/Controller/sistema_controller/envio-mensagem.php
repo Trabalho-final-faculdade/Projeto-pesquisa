@@ -15,7 +15,7 @@ echo "bbbbbb";
   require '../../Model/Conexao.php';
 
   $mail = new PHPMailer(true);
-  $message = $_POST['message'];
+  $message = $_POST['mesagem'];
   $nome = $_POST['name'];
   $email = $_POST['email'];
       try {
@@ -35,7 +35,7 @@ echo "bbbbbb";
           $mail->Body = "<h2> Mensagem enviada do site.</h2>
           <p>Nome: $nome</p>
           <p>email de contato: $email</p>
-          <p>$message</p>";
+          <p>Mesange: $message</p>";
           $mail->AltBody = 'chegou email altbody';
 
           if($mail->send()) {

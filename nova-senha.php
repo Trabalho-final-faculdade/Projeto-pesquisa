@@ -77,8 +77,8 @@ if(!isset($resultado) || empty($resultado)) {
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Pesquisa Inteligente Tecnologia</h1>
-                  <p> Todas as pesquisas possuem direitos reservados, consulte os termos de privacidade.</p>
+                  <h1>IDEIAA</h1>
+                  <p> Todas as pesquisas possuem direitos reservados.</p>
                 </div>
               </div>
             </form>

@@ -13,7 +13,7 @@ require_once '../../Model/Conexao.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Nome da empresa | </title>
+    <title>IDEIAA</title>
 
     <link href="../../Public/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
