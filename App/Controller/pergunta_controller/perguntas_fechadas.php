@@ -36,7 +36,7 @@ if(isset($_POST['pesquisa_id']) && $_POST['pesquisa_id'] != ''){
                 $questionario->setEntrevistadoEmail(addslashes($_POST['email_usuario']));
                 $questionario->setPerguntaId(addslashes($_POST['pergunta']));
                 $questionario->setPesquisaId(addslashes($_POST['pesquisa_id']));
-                $questionario->setOperadorId(addslashes(null));
+                $questionario->setOperadorId(addslashes(81));
                 $questionario->setConcluido(addslashes(0));
                 $questionarioDao->create($questionario);   
              
@@ -49,7 +49,7 @@ if(isset($_POST['pesquisa_id']) && $_POST['pesquisa_id'] != ''){
                 $questionario->setEntrevistadoEmail(addslashes($_POST['email_usuario']));
                 $questionario->setPerguntaId(addslashes($_POST['pergunta']));
                 $questionario->setPesquisaId(addslashes($_POST['pesquisa_id']));
-                $questionario->setOperadorId(addslashes(null));
+                $questionario->setOperadorId(addslashes(81));
                 $questionario->setConcluido(addslashes(0));
                 $questionarioDao->create($questionario);
             };
@@ -59,7 +59,7 @@ if(isset($_POST['pesquisa_id']) && $_POST['pesquisa_id'] != ''){
             $questionario->setRespostaId(addslashes($_POST['resposta_selecionada']));
             $questionario->setPerguntaId(addslashes($_POST['pergunta']));
             $questionario->setPesquisaId(addslashes($_POST['pesquisa_id']));
-            $questionario->setOperadorId(null);
+            $questionario->setOperadorId(81);
             $questionario->setConcluido(0);
             $questionarioDao->create($questionario);
         
@@ -84,13 +84,13 @@ if(isset($_POST['pesquisa_id']) && $_POST['pesquisa_id'] != ''){
         if($perguntas[$index]['tipo'] == 'resposta_unica'){
             foreach($resposta as $r):
                 $resultado .= '<dl class="row">';
-                $resultado .= '<dd class="col-sm=9"><input type="checkbox" id="resposta_selecionada" name="resposta_selecionada[]" value='.$r['id'].'> '.$r['resposta'];
+                $resultado .= '<dd class="col-sm=9"><input type="radio" id="resposta_selecionada" name="resposta_selecionada[]" value='.$r['id'].'> '.$r['resposta'];
                 $resultado .= '</dl>';
             endforeach;        
         }else if($perguntas[$index]['tipo'] == 'multipla_escolha'){
             foreach($resposta as $r):
             $resultado .= '<dl class="row">';
-            $resultado .= '<dd class="col-sm=9"><input type="radio" id="resposta_selecionada" name="resposta_selecionada" value='.$r['id'].'> '.$r['resposta'];
+            $resultado .= '<dd class="col-sm=9"><input type="checkbox" id="resposta_selecionada" name="resposta_selecionada" value='.$r['id'].'> '.$r['resposta'];
             $resultado .= '</dl>';
             endforeach;
         }else if($perguntas[$index]['tipo'] == 'matriz'){

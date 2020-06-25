@@ -129,7 +129,7 @@ if($usuario['nivel_acesso_id'] != '1') {
                               <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $e->getCep(); ?>">
                             </div>
                           </div>
-                          <a href="../empresa/editar-dados-empresa.php?id=<?php echo $e->getId()?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                          <a href="../empresa/editar-dados-empresa.php?id=<?php echo $_SESSION['id'] ?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
                           </form>
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">

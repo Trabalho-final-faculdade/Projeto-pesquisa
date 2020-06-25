@@ -49,16 +49,7 @@ $e->setCep($resultados[0]['cep']);
               <div class="title_left">
                 <h3>Editar</h3>
               </div>
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5  form-group row pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+             
             </div>
             <div class="clearfix"></div>
 
@@ -68,10 +59,7 @@ $e->setCep($resultados[0]['cep']);
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Editando os dados.</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                    </ul>
+                    
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
