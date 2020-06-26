@@ -18,7 +18,10 @@ $r = new \App\Model\RespostaDao();
 $p = new \App\Model\Pesquisa();
 $resultado = '';
 
-$pesquisa_selecionada = $_POST['pesquisa_id'];
+if(isset($_POST['pesquisa_id']) && !empty($_POST['pesquisa_id'])){
+
+    $pesquisa_selecionada = $_POST['pesquisa_id'];
+}
 if(isset($_POST['index'])){
     $index = $_POST['index'];
 }else{
