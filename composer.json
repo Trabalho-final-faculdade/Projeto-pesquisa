@@ -3,7 +3,7 @@
     "name": "nodestudio/composer",
     "description": "Projeto composer",
     "require": {
-        "dompdf/dompdf": "^0.8.5",
+        "dompdf/dompdf": "^2.0.0",
         "phpmailer/phpmailer": "6.0.*"
     },
     "authors": [
